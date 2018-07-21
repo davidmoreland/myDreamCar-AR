@@ -1,0 +1,605 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F6254A282102A55C00D124B9 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6254A272102A55C00D124B9 /* Empty.xib */; };
+		F6254A2A2102A59100D124B9 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6254A292102A59100D124B9 /* View.xib */; };
+		F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065620FF10D20039D14A /* AppDelegate.swift */; };
+		F64F065920FF10D20039D14A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F64F065820FF10D20039D14A /* art.scnassets */; };
+		F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065A20FF10D20039D14A /* placeCarVC.swift */; };
+		F64F065E20FF10D20039D14A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F065C20FF10D20039D14A /* Main.storyboard */; };
+		F64F066020FF10DA0039D14A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64F065F20FF10DA0039D14A /* Assets.xcassets */; };
+		F64F066320FF10DA0039D14A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */; };
+		F64F066E20FF10DA0039D14A /* ramp_upTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F066D20FF10DA0039D14A /* ramp_upTests.swift */; };
+		F64F067920FF10DA0039D14A /* ramp_upUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F067820FF10DA0039D14A /* ramp_upUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F64F066A20FF10DA0039D14A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F64F064B20FF10D10039D14A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F64F065220FF10D20039D14A;
+			remoteInfo = "ramp-up";
+		};
+		F64F067520FF10DA0039D14A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F64F064B20FF10D10039D14A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F64F065220FF10D20039D14A;
+			remoteInfo = "ramp-up";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F6254A272102A55C00D124B9 /* Empty.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
+		F6254A292102A59100D124B9 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
+		F64F065320FF10D20039D14A /* myDreamCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDreamCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64F065620FF10D20039D14A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F64F065820FF10D20039D14A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		F64F065A20FF10D20039D14A /* placeCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeCarVC.swift; sourceTree = "<group>"; };
+		F64F065D20FF10D20039D14A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F64F065F20FF10DA0039D14A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F64F066220FF10DA0039D14A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F64F066420FF10DA0039D14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F64F066920FF10DA0039D14A /* myDreamCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myDreamCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64F066D20FF10DA0039D14A /* ramp_upTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ramp_upTests.swift; sourceTree = "<group>"; };
+		F64F066F20FF10DA0039D14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F64F067420FF10DA0039D14A /* myDreamCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myDreamCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64F067820FF10DA0039D14A /* ramp_upUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ramp_upUITests.swift; sourceTree = "<group>"; };
+		F64F067A20FF10DA0039D14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F64F065020FF10D20039D14A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64F066620FF10DA0039D14A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64F067120FF10DA0039D14A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F64F064A20FF10D10039D14A = {
+			isa = PBXGroup;
+			children = (
+				F64F065520FF10D20039D14A /* DreamCar */,
+				F64F066C20FF10DA0039D14A /* my Dream Car Tests */,
+				F64F067720FF10DA0039D14A /* my Dream Car UITests */,
+				F64F065420FF10D20039D14A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F64F065420FF10D20039D14A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F64F065320FF10D20039D14A /* myDreamCar.app */,
+				F64F066920FF10DA0039D14A /* myDreamCarTests.xctest */,
+				F64F067420FF10DA0039D14A /* myDreamCarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F64F065520FF10D20039D14A /* DreamCar */ = {
+			isa = PBXGroup;
+			children = (
+				F64F065620FF10D20039D14A /* AppDelegate.swift */,
+				F64F065820FF10D20039D14A /* art.scnassets */,
+				F64F065A20FF10D20039D14A /* placeCarVC.swift */,
+				F64F065C20FF10D20039D14A /* Main.storyboard */,
+				F6254A272102A55C00D124B9 /* Empty.xib */,
+				F6254A292102A59100D124B9 /* View.xib */,
+				F64F065F20FF10DA0039D14A /* Assets.xcassets */,
+				F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */,
+				F64F066420FF10DA0039D14A /* Info.plist */,
+			);
+			path = DreamCar;
+			sourceTree = "<group>";
+		};
+		F64F066C20FF10DA0039D14A /* my Dream Car Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F64F066D20FF10DA0039D14A /* ramp_upTests.swift */,
+				F64F066F20FF10DA0039D14A /* Info.plist */,
+			);
+			path = "my Dream Car Tests";
+			sourceTree = "<group>";
+		};
+		F64F067720FF10DA0039D14A /* my Dream Car UITests */ = {
+			isa = PBXGroup;
+			children = (
+				F64F067820FF10DA0039D14A /* ramp_upUITests.swift */,
+				F64F067A20FF10DA0039D14A /* Info.plist */,
+			);
+			path = "my Dream Car UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F64F065220FF10D20039D14A /* myDreamCar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F64F067D20FF10DA0039D14A /* Build configuration list for PBXNativeTarget "myDreamCar" */;
+			buildPhases = (
+				F64F064F20FF10D20039D14A /* Sources */,
+				F64F065020FF10D20039D14A /* Frameworks */,
+				F64F065120FF10D20039D14A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myDreamCar;
+			productName = "ramp-up";
+			productReference = F64F065320FF10D20039D14A /* myDreamCar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F64F066820FF10DA0039D14A /* myDreamCarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F64F068020FF10DA0039D14A /* Build configuration list for PBXNativeTarget "myDreamCarTests" */;
+			buildPhases = (
+				F64F066520FF10DA0039D14A /* Sources */,
+				F64F066620FF10DA0039D14A /* Frameworks */,
+				F64F066720FF10DA0039D14A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F64F066B20FF10DA0039D14A /* PBXTargetDependency */,
+			);
+			name = myDreamCarTests;
+			productName = "ramp-upTests";
+			productReference = F64F066920FF10DA0039D14A /* myDreamCarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F64F067320FF10DA0039D14A /* myDreamCarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F64F068320FF10DA0039D14A /* Build configuration list for PBXNativeTarget "myDreamCarUITests" */;
+			buildPhases = (
+				F64F067020FF10DA0039D14A /* Sources */,
+				F64F067120FF10DA0039D14A /* Frameworks */,
+				F64F067220FF10DA0039D14A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F64F067620FF10DA0039D14A /* PBXTargetDependency */,
+			);
+			name = myDreamCarUITests;
+			productName = "ramp-upUITests";
+			productReference = F64F067420FF10DA0039D14A /* myDreamCarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F64F064B20FF10D10039D14A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "DigitalSuccess-Systems";
+				TargetAttributes = {
+					F64F065220FF10D20039D14A = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					F64F066820FF10DA0039D14A = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = F64F065220FF10D20039D14A;
+					};
+					F64F067320FF10DA0039D14A = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = F64F065220FF10D20039D14A;
+					};
+				};
+			};
+			buildConfigurationList = F64F064E20FF10D10039D14A /* Build configuration list for PBXProject "myDreamCar" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F64F064A20FF10D10039D14A;
+			productRefGroup = F64F065420FF10D20039D14A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F64F065220FF10D20039D14A /* myDreamCar */,
+				F64F066820FF10DA0039D14A /* myDreamCarTests */,
+				F64F067320FF10DA0039D14A /* myDreamCarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F64F065120FF10D20039D14A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6254A282102A55C00D124B9 /* Empty.xib in Resources */,
+				F64F065920FF10D20039D14A /* art.scnassets in Resources */,
+				F64F066320FF10DA0039D14A /* LaunchScreen.storyboard in Resources */,
+				F64F066020FF10DA0039D14A /* Assets.xcassets in Resources */,
+				F6254A2A2102A59100D124B9 /* View.xib in Resources */,
+				F64F065E20FF10D20039D14A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64F066720FF10DA0039D14A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64F067220FF10DA0039D14A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F64F064F20FF10D20039D14A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */,
+				F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64F066520FF10DA0039D14A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F64F066E20FF10DA0039D14A /* ramp_upTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64F067020FF10DA0039D14A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F64F067920FF10DA0039D14A /* ramp_upUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F64F066B20FF10DA0039D14A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F64F065220FF10D20039D14A /* myDreamCar */;
+			targetProxy = F64F066A20FF10DA0039D14A /* PBXContainerItemProxy */;
+		};
+		F64F067620FF10DA0039D14A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F64F065220FF10D20039D14A /* myDreamCar */;
+			targetProxy = F64F067520FF10DA0039D14A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F64F065C20FF10D20039D14A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F64F065D20FF10D20039D14A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F64F066220FF10DA0039D14A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F64F067B20FF10DA0039D14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F64F067C20FF10DA0039D14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F64F067E20FF10DA0039D14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QZJ2GF69ZP;
+				INFOPLIST_FILE = "ramp-up/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.digitalsuccess-systems.myDreamCar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F64F067F20FF10DA0039D14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QZJ2GF69ZP;
+				INFOPLIST_FILE = "ramp-up/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.digitalsuccess-systems.myDreamCar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F64F068120FF10DA0039D14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QZJ2GF69ZP;
+				INFOPLIST_FILE = "ramp-upTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.digitalsuccess-systems.ramp-upTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myDreamCar.app/myDreamCar";
+			};
+			name = Debug;
+		};
+		F64F068220FF10DA0039D14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QZJ2GF69ZP;
+				INFOPLIST_FILE = "ramp-upTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.digitalsuccess-systems.ramp-upTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myDreamCar.app/myDreamCar";
+			};
+			name = Release;
+		};
+		F64F068420FF10DA0039D14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QZJ2GF69ZP;
+				INFOPLIST_FILE = "ramp-upUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.digitalsuccess-systems.ramp-upUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ramp-up";
+			};
+			name = Debug;
+		};
+		F64F068520FF10DA0039D14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QZJ2GF69ZP;
+				INFOPLIST_FILE = "ramp-upUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.digitalsuccess-systems.ramp-upUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ramp-up";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F64F064E20FF10D10039D14A /* Build configuration list for PBXProject "myDreamCar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F64F067B20FF10DA0039D14A /* Debug */,
+				F64F067C20FF10DA0039D14A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F64F067D20FF10DA0039D14A /* Build configuration list for PBXNativeTarget "myDreamCar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F64F067E20FF10DA0039D14A /* Debug */,
+				F64F067F20FF10DA0039D14A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F64F068020FF10DA0039D14A /* Build configuration list for PBXNativeTarget "myDreamCarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F64F068120FF10DA0039D14A /* Debug */,
+				F64F068220FF10DA0039D14A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F64F068320FF10DA0039D14A /* Build configuration list for PBXNativeTarget "myDreamCarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F64F068420FF10DA0039D14A /* Debug */,
+				F64F068520FF10DA0039D14A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F64F064B20FF10D10039D14A /* Project object */;
+}
