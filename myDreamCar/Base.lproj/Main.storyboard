@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XdG-kC-l2l">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--About-->
+        <scene sceneID="3ex-7a-nJB">
+            <objects>
+                <viewController id="aja-mK-w3k" customClass="AboutVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PgW-vi-lB1" customClass="AboutVC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="CBb-3l-oqw"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="About" id="WXx-qS-IOP"/>
+                    <connections>
+                        <outlet property="view" destination="PgW-vi-lB1" id="IkT-pQ-HLb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3L4-2Z-6Fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1857" y="-1630"/>
+        </scene>
+        <!--carPlacementVC-->
+        <scene sceneID="b7J-6b-kQN">
+            <objects>
+                <viewController id="yol-Iu-WAK" userLabel="carPlacementVC" customClass="placeCarVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zAr-2A-nSh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </arscnView>
+                    <tabBarItem key="tabBarItem" title="Viewer" id="r7Q-tM-90d"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="sceneView" destination="zAr-2A-nSh" id="3Gg-dG-XAb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ee-wG-3my" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1857" y="-840"/>
+        </scene>
+        <!--myInventory-->
+        <scene sceneID="ekj-Np-s9W">
+            <objects>
+                <collectionViewController id="0jX-4E-Ndo" userLabel="myInventory" customClass="MyInventoryCollectionView" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2cx-G1-u1z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5TP-GA-7YH">
+                            <size key="itemSize" width="225" height="185"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="InventoryCell" id="BQc-Ns-7Vv" customClass="InventoryCell" customModule="myDreamCar" customModuleProvider="target">
+                                <rect key="frame" x="75" y="0.0" width="225" height="185"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="225" height="185"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVJ-pr-rja">
+                                            <rect key="frame" x="-8" y="0.0" width="240" height="185"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LABLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tT-16-aAK">
+                                            <rect key="frame" x="7" y="11" width="206" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="0jX-4E-Ndo" id="Px1-Ze-WiR"/>
+                            <outlet property="delegate" destination="0jX-4E-Ndo" id="y5k-CS-5ew"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Inventory" id="ax0-yJ-FrX"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3df-4H-Fk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1856.8" y="-119.1904047976012"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="zv1-U1-l78">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="XdG-kC-l2l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vMQ-0d-glq">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="yol-Iu-WAK" kind="relationship" relationship="viewControllers" id="fKw-rx-7Wp"/>
+                        <segue destination="0jX-4E-Ndo" kind="relationship" relationship="viewControllers" id="emi-Xm-Nzm"/>
+                        <segue destination="aja-mK-w3k" kind="relationship" relationship="viewControllers" id="UXf-pf-MyD"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ub-Hz-Yh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarItem title="Item" id="Dgo-qb-VMJ"/>
+                <tabBarItem title="Item" id="9fa-nG-ibz"/>
+            </objects>
+            <point key="canvasLocation" x="924" y="-233.43328335832086"/>
+        </scene>
+    </scenes>
+</document>

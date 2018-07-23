@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F6254A282102A55C00D124B9 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6254A272102A55C00D124B9 /* Empty.xib */; };
-		F6254A2A2102A59100D124B9 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6254A292102A59100D124B9 /* View.xib */; };
 		F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065620FF10D20039D14A /* AppDelegate.swift */; };
-		F64F065920FF10D20039D14A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F64F065820FF10D20039D14A /* art.scnassets */; };
 		F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065A20FF10D20039D14A /* placeCarVC.swift */; };
 		F64F065E20FF10D20039D14A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F065C20FF10D20039D14A /* Main.storyboard */; };
 		F64F066020FF10DA0039D14A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64F065F20FF10DA0039D14A /* Assets.xcassets */; };
 		F64F066320FF10DA0039D14A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */; };
 		F64F066E20FF10DA0039D14A /* ramp_upTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F066D20FF10DA0039D14A /* ramp_upTests.swift */; };
 		F64F067920FF10DA0039D14A /* ramp_upUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F067820FF10DA0039D14A /* ramp_upUITests.swift */; };
+		F672290C21035A3500C2126A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F672290B21035A3500C2126A /* art.scnassets */; };
+		F672290E2104233F00C2126A /* myInventoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672290D2104233F00C2126A /* myInventoryCollectionView.swift */; };
+		F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */; };
+		F6C6BE4B2104B49000606B51 /* IInventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BE4A2104B49000606B51 /* IInventoryCell.swift */; };
+		F6C6BE4D2104C39D00606B51 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BE4C2104C39D00606B51 /* AboutVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F6254A272102A55C00D124B9 /* Empty.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
-		F6254A292102A59100D124B9 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		F64F065320FF10D20039D14A /* myDreamCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDreamCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64F065620FF10D20039D14A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F64F065820FF10D20039D14A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		F64F065A20FF10D20039D14A /* placeCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeCarVC.swift; sourceTree = "<group>"; };
 		F64F065D20FF10D20039D14A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F64F065F20FF10DA0039D14A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +52,11 @@
 		F64F067420FF10DA0039D14A /* myDreamCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myDreamCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64F067820FF10DA0039D14A /* ramp_upUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ramp_upUITests.swift; sourceTree = "<group>"; };
 		F64F067A20FF10DA0039D14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F672290B21035A3500C2126A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		F672290D2104233F00C2126A /* myInventoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInventoryCollectionView.swift; sourceTree = "<group>"; };
+		F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = columnFlowLayout.swift; sourceTree = "<group>"; };
+		F6C6BE4A2104B49000606B51 /* IInventoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IInventoryCell.swift; sourceTree = "<group>"; };
+		F6C6BE4C2104C39D00606B51 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +87,7 @@
 		F64F064A20FF10D10039D14A = {
 			isa = PBXGroup;
 			children = (
-				F64F065520FF10D20039D14A /* DreamCar */,
+				F64F065520FF10D20039D14A /* myDreamCar */,
 				F64F066C20FF10DA0039D14A /* my Dream Car Tests */,
 				F64F067720FF10DA0039D14A /* my Dream Car UITests */,
 				F64F065420FF10D20039D14A /* Products */,
@@ -100,20 +104,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F64F065520FF10D20039D14A /* DreamCar */ = {
+		F64F065520FF10D20039D14A /* myDreamCar */ = {
 			isa = PBXGroup;
 			children = (
+				F6C6BE492104AEA400606B51 /* View */,
+				F672290B21035A3500C2126A /* art.scnassets */,
 				F64F065620FF10D20039D14A /* AppDelegate.swift */,
-				F64F065820FF10D20039D14A /* art.scnassets */,
 				F64F065A20FF10D20039D14A /* placeCarVC.swift */,
 				F64F065C20FF10D20039D14A /* Main.storyboard */,
-				F6254A272102A55C00D124B9 /* Empty.xib */,
-				F6254A292102A59100D124B9 /* View.xib */,
 				F64F065F20FF10DA0039D14A /* Assets.xcassets */,
 				F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */,
 				F64F066420FF10DA0039D14A /* Info.plist */,
 			);
-			path = DreamCar;
+			path = myDreamCar;
 			sourceTree = "<group>";
 		};
 		F64F066C20FF10DA0039D14A /* my Dream Car Tests */ = {
@@ -132,6 +135,17 @@
 				F64F067A20FF10DA0039D14A /* Info.plist */,
 			);
 			path = "my Dream Car UITests";
+			sourceTree = "<group>";
+		};
+		F6C6BE492104AEA400606B51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6C6BE4C2104C39D00606B51 /* AboutVC.swift */,
+				F672290D2104233F00C2126A /* myInventoryCollectionView.swift */,
+				F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */,
+				F6C6BE4A2104B49000606B51 /* IInventoryCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,11 +252,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6254A282102A55C00D124B9 /* Empty.xib in Resources */,
-				F64F065920FF10D20039D14A /* art.scnassets in Resources */,
 				F64F066320FF10DA0039D14A /* LaunchScreen.storyboard in Resources */,
+				F672290C21035A3500C2126A /* art.scnassets in Resources */,
 				F64F066020FF10DA0039D14A /* Assets.xcassets in Resources */,
-				F6254A2A2102A59100D124B9 /* View.xib in Resources */,
 				F64F065E20FF10D20039D14A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6C6BE4D2104C39D00606B51 /* AboutVC.swift in Sources */,
+				F672290E2104233F00C2126A /* myInventoryCollectionView.swift in Sources */,
+				F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */,
+				F6C6BE4B2104B49000606B51 /* IInventoryCell.swift in Sources */,
 				F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */,
 				F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */,
 			);
@@ -446,8 +462,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QZJ2GF69ZP;
-				INFOPLIST_FILE = "ramp-up/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				INFOPLIST_FILE = "$(SRCROOT)/myDreamCar/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,8 +481,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QZJ2GF69ZP;
-				INFOPLIST_FILE = "ramp-up/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				INFOPLIST_FILE = "$(SRCROOT)/myDreamCar/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
