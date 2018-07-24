@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  ramp-up
+//  placeCar View  Controller.swift
+//  My Dream Car
 //
 //  Created by David on 7/18/18.
 //  Copyright © 2018 DigitalSuccess-Systems. All rights reserved.
@@ -68,22 +68,24 @@ class placeCarVC: UIViewController, ARSCNViewDelegate {
         let results = sceneView.hitTest(touch.location(in: sceneView), types: [.featurePoint])
         guard let hitFeature = results.last else {return}
         let hitTransform = SCNMatrix4(hitFeature.worldTransform)
-        let hitPosition = SCNVector3Make(hitTransform.m41, hitTransform.m42, hitTransform.m43)
-        placeObjectInScene(position: hitPosition)
-    }
+       /*
+        let hitPosition = SCNVector3Make(hitTransform.m41, hitTransform.m42, hitTransform.m43) placeObjectInScene(position: hitPosition)
+ */
+ }
     
     
     func onObjectSelected(obj: String) {
         selectedObject = "car"
     }
-    
+    /*
     func placeObjectInScene(position: SCNVector3) {
          if let objName = selectedObject {
             let obj = SCNScene(named: "art.scnassets/Nissan_370Z_2013_ActualSize.copy.scn")
         let node = obj?.rootNode.childNode(withName: "car", recursively: true)!
             node?.position = position
             }
-    }
+ */
+ 
     
     
     
@@ -98,7 +100,6 @@ class placeCarVC: UIViewController, ARSCNViewDelegate {
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+        // Reset tracking and/or remove existing anchors if consistent tracking is re
     }
 }

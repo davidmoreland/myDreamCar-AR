@@ -11,9 +11,10 @@ import SceneKit
 
 
 
-class MyInventoryCollectionView: UICollectionViewController {
+class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
     
    
+    var selectedCell: UICollectionViewCell!
     
    // var SceneView: SCNView!
     var flowLayout: UICollectionViewLayout!
@@ -52,8 +53,33 @@ class MyInventoryCollectionView: UICollectionViewController {
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        //Add touch
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyInventoryCollectionView.cellTapped))
+        self.view.isUserInteractionEnabled = true
+        tapGestureRecognizer.delegate = self
+    
+        self.view?.addGestureRecognizer(tapGestureRecognizer)
+        
     }
-
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return true
+    }
+ 
+    @objc func cellTapped() {
+        
+        let previewAssetVC = AssetPreviewVC(size: CGSize(width: 400, height: 650 ))
+        
+        previewAssetVC.modalPresentationStyle = .popover
+        previewAssetVC.popoverPresentationController?.delegate = self
+        previewAssetVC.popoverPresentationController?.sourceView = self.view
+        present(previewAssetVC, animated: true, completion: nil)
+    
+    }
     /*
     // MARK: - Navigation
 

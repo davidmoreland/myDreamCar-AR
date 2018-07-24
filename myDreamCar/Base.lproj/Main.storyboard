@@ -72,19 +72,13 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVJ-pr-rja">
                                             <rect key="frame" x="-8" y="0.0" width="240" height="185"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <gestureRecognizers/>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="fHh-iu-buU" appends="YES" id="xhd-6i-HS9"/>
+                                            </connections>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LABLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tT-16-aAK">
-                                            <rect key="frame" x="7" y="11" width="206" height="28"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </view>
-                                <connections>
-                                    <outlet property="title" destination="6tT-16-aAK" id="sJO-ql-SU5"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -95,8 +89,24 @@
                     <tabBarItem key="tabBarItem" title="Inventory" id="ax0-yJ-FrX"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3df-4H-Fk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="fHh-iu-buU"/>
             </objects>
             <point key="canvasLocation" x="1856.8" y="-119.1904047976012"/>
+        </scene>
+        <!--Asset PreviewVC-->
+        <scene sceneID="ema-mo-cTc">
+            <objects>
+                <viewController id="4Zl-gi-8sK" customClass="AssetPreviewVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CbR-Rx-oTi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SyY-SN-Sha"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="boq-XO-PSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2682" y="-139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zv1-U1-l78">
@@ -104,6 +114,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="XdG-kC-l2l" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vMQ-0d-glq">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

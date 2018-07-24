@@ -10,13 +10,14 @@ import UIKit
 import ARKit
 import SceneKit
 
-class InventoryCell: UICollectionViewCell {
-   
-   
+class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
+    
+    
     
     var cellImageView: UIImageView!
     var cellTitle: UILabel!
 
+    
     func setImageViewAttributes(cell: UICollectionViewCell)->UIImageView
     {
         let iv = UIImageView()
@@ -79,7 +80,18 @@ class InventoryCell: UICollectionViewCell {
         return ct
     }
 
+    
+    
+}
+func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    return .none
+}
 
+func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    return true
+}
+    
+     
 /*
 func assembleComponents(cell: UICollectionViewCell) -> UIView
 {
@@ -91,5 +103,5 @@ func assembleComponents(cell: UICollectionViewCell) -> UIView
     return mv
 }
 */
-}
+
 
