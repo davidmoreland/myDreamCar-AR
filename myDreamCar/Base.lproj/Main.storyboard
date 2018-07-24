@@ -82,6 +82,9 @@
                                         </label>
                                     </subviews>
                                 </view>
+                                <connections>
+                                    <outlet property="title" destination="6tT-16-aAK" id="sJO-ql-SU5"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

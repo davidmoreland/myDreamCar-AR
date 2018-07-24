@@ -13,7 +13,7 @@ import SceneKit
 
 class MyInventoryCollectionView: UICollectionViewController {
     
-
+   
     
    // var SceneView: SCNView!
     var flowLayout: UICollectionViewLayout!
@@ -21,8 +21,12 @@ class MyInventoryCollectionView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // test
-     //   print("Image Array: \(self.image)")
+        // build mainView
+    /*
+ 1. create view
+ 2. add components
+ 3. add subview to view
+ */
         
         flowLayout = ColumnFlowLayout()
         
@@ -45,7 +49,6 @@ class MyInventoryCollectionView: UICollectionViewController {
         // Register cell classes
         self.collectionView!.register(InventoryCell.self, forCellWithReuseIdentifier: "InventoryCell")
         
-
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -74,7 +77,7 @@ class MyInventoryCollectionView: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
+        
       //  print ("ImageArray: \(self.image)")
         return 25
     }
@@ -85,12 +88,20 @@ class MyInventoryCollectionView: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InventoryCell", for: indexPath) as! InventoryCell
     
         // Configure the cell
-        // cell.backgroundColor = UIColor.cyan
         cell.setAttributes(cell: cell)
+      
         
-        print("IndexPath.row: \(String(describing: UIImage.init(named: "Rufwood.jpg")))")
-       // cell.imageView.image = self.image
-        
+        // test
+        if( indexPath.row == 0) {
+            
+            let image = UIImage.init(named: "Nissan_370z_perspective")
+            let cellImageView = UIImageView()
+            cell.cellImageView = cellImageView
+            if( cell.cellImageView != nil)
+            {
+                cell.cellImageView.image = image
+            }
+        }
         return cell
     }
 
@@ -103,6 +114,10 @@ class MyInventoryCollectionView: UICollectionViewController {
         
         return true
     }
+   
+    
+    
+    
     
     /*
     // Uncomment this method to specify if the specified item should be selected
