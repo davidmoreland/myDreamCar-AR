@@ -15,9 +15,11 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         
         guard let cv = collectionView else {return}
         
-        let availableWidth = cv.bounds.inset(by: cv.layoutMargins).size.width
-        
+        // Swift 5:      let availableWidth = cv.bounds.inset(by: cv.layoutMargins).size.width
+        let availableWidth = cv.bounds.width - 20
+    //    let availableWidth = cv.bounds.size.width
         let minColumnWidth = CGFloat(100)
+        // Swift 5: let maxNumColumns = (availableWidth //Volumes/Mac_Seirra/Users/Pony/Desktop/Xcode_Projects_2018/myDreamCar-VR/myDreamCar/Assets.xcassetsminColumnWidth).rounded(.down)
         let maxNumColumns = (availableWidth / minColumnWidth).rounded(.down)
         let cellWidth = (availableWidth / CGFloat(maxNumColumns)).rounded(.down)
         let cellHeight: CGFloat = 70.0

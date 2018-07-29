@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		552FA833210C5F8D00B89535 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552FA832210C5F8D00B89535 /* Assets.swift */; };
 		F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065620FF10D20039D14A /* AppDelegate.swift */; };
 		F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065A20FF10D20039D14A /* placeCarVC.swift */; };
 		F64F065E20FF10D20039D14A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F065C20FF10D20039D14A /* Main.storyboard */; };
@@ -15,12 +16,12 @@
 		F64F066E20FF10DA0039D14A /* ramp_upTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F066D20FF10DA0039D14A /* ramp_upTests.swift */; };
 		F64F067920FF10DA0039D14A /* ramp_upUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F067820FF10DA0039D14A /* ramp_upUITests.swift */; };
 		F672290C21035A3500C2126A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F672290B21035A3500C2126A /* art.scnassets */; };
-		F672290E2104233F00C2126A /* myInventoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672290D2104233F00C2126A /* myInventoryCollectionView.swift */; };
+		F672290E2104233F00C2126A /* MyInventoryCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672290D2104233F00C2126A /* MyInventoryCV.swift */; };
 		F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */; };
 		F6C6BE4D2104C39D00606B51 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BE4C2104C39D00606B51 /* AboutVC.swift */; };
 		F6DBB6562106BD8A00D619D5 /* inventoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB6542106BD8A00D619D5 /* inventoryModel.xcdatamodeld */; };
 		F6DBB6592106C72C00D619D5 /* AssetPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB6582106C72C00D619D5 /* AssetPreviewVC.swift */; };
-		F6DBB65B2106D6E600D619D5 /* IInventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB65A2106D6E600D619D5 /* IInventoryCell.swift */; };
+		F6DBB65B2106D6E600D619D5 /* InventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB65A2106D6E600D619D5 /* InventoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		552FA832210C5F8D00B89535 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		F64F065320FF10D20039D14A /* myDreamCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDreamCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64F065620FF10D20039D14A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F64F065A20FF10D20039D14A /* placeCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeCarVC.swift; sourceTree = "<group>"; };
@@ -55,12 +57,12 @@
 		F64F067820FF10DA0039D14A /* ramp_upUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ramp_upUITests.swift; sourceTree = "<group>"; };
 		F64F067A20FF10DA0039D14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F672290B21035A3500C2126A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		F672290D2104233F00C2126A /* myInventoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInventoryCollectionView.swift; sourceTree = "<group>"; };
+		F672290D2104233F00C2126A /* MyInventoryCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInventoryCV.swift; sourceTree = "<group>"; };
 		F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = columnFlowLayout.swift; sourceTree = "<group>"; };
 		F6C6BE4C2104C39D00606B51 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		F6DBB6552106BD8A00D619D5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F6DBB6582106C72C00D619D5 /* AssetPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPreviewVC.swift; sourceTree = "<group>"; };
-		F6DBB65A2106D6E600D619D5 /* IInventoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IInventoryCell.swift; sourceTree = "<group>"; };
+		F6DBB65A2106D6E600D619D5 /* InventoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +147,10 @@
 		F6C6BE492104AEA400606B51 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F6DBB65A2106D6E600D619D5 /* IInventoryCell.swift */,
+				552FA832210C5F8D00B89535 /* Assets.swift */,
+				F6DBB65A2106D6E600D619D5 /* InventoryCell.swift */,
 				F6C6BE4C2104C39D00606B51 /* AboutVC.swift */,
-				F672290D2104233F00C2126A /* myInventoryCollectionView.swift */,
+				F672290D2104233F00C2126A /* MyInventoryCV.swift */,
 				F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */,
 				F6DBB6582106C72C00D619D5 /* AssetPreviewVC.swift */,
 			);
@@ -295,12 +298,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6C6BE4D2104C39D00606B51 /* AboutVC.swift in Sources */,
-				F672290E2104233F00C2126A /* myInventoryCollectionView.swift in Sources */,
+				F672290E2104233F00C2126A /* MyInventoryCV.swift in Sources */,
 				F6DBB6592106C72C00D619D5 /* AssetPreviewVC.swift in Sources */,
 				F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */,
 				F6DBB6562106BD8A00D619D5 /* inventoryModel.xcdatamodeld in Sources */,
 				F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */,
-				F6DBB65B2106D6E600D619D5 /* IInventoryCell.swift in Sources */,
+				552FA833210C5F8D00B89535 /* Assets.swift in Sources */,
+				F6DBB65B2106D6E600D619D5 /* InventoryCell.swift in Sources */,
 				F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
