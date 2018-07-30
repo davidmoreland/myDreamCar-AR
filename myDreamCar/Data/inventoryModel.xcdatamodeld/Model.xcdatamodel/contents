@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Asset" representedClassName="Asset" syncable="YES" codeGenerationType="class">
-        <attribute name="engine" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hasCellImage" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="specs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numOfTriangles" optional="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="asset2category" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="category2asset" inverseEntity="Category" syncable="YES"/>
+        <relationship name="asset2manufacturer" maxCount="1" deletionRule="Nullify" destinationEntity="Manufacturer" inverseName="manufacturer2asset" inverseEntity="Manufacturer" syncable="YES"/>
+        <relationship name="asset2reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reviews" inverseName="reviews2asset" inverseEntity="Reviews" syncable="YES"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="category2asset" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="asset2category" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="category2manufacturer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Manufacturer" inverseName="manufacturer2category" inverseEntity="Manufacturer" syncable="YES"/>
+        <relationship name="category2reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reviews" inverseName="reviews2category" inverseEntity="Reviews" syncable="YES"/>
     </entity>
     <entity name="Manufacturer" representedClassName="Manufacturer" syncable="YES" codeGenerationType="class">
         <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attribute" optional="YES" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,19 +28,27 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="webSite" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="manufacturer2asset" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="asset2manufacturer" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="manufacturer2category" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="category2manufacturer" inverseEntity="Category" syncable="YES"/>
     </entity>
     <entity name="Reviews" representedClassName="Reviews" syncable="YES" codeGenerationType="class">
         <attribute name="dateReviewed" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reviewText" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="car2Reviews" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reviews" inverseName="car2Reviews" inverseEntity="Reviews" syncable="YES"/>
-        <relationship name="reviews2Car" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset" syncable="YES"/>
+        <relationship name="reviews2asset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset" inverseName="asset2reviews" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="reviews2category" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="category2reviews" inverseEntity="Category" syncable="YES"/>
+    </entity>
+    <entity name="Vehicle" representedClassName="Vehicle" parentEntity="Asset" syncable="YES" codeGenerationType="class">
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+        <attribute name="engine" optional="YES" syncable="YES"/>
+        <attribute name="specs" optional="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Asset" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="Reviews" positionX="-252" positionY="216" width="128" height="135"/>
-        <element name="Category" positionX="169" positionY="18" width="128" height="60"/>
-        <element name="Manufacturer" positionX="187" positionY="216" width="128" height="180"/>
+        <element name="Asset" positionX="-69455" positionY="-4264" width="128" height="178"/>
+        <element name="Reviews" positionX="-69858" positionY="-4050" width="128" height="133"/>
+        <element name="Category" positionX="-70047" positionY="-4477" width="128" height="103"/>
+        <element name="Manufacturer" positionX="-69833" positionY="-4300" width="128" height="223"/>
+        <element name="Vehicle" positionX="-69455" positionY="-4059" width="128" height="88"/>
     </elements>
 </model>

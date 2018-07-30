@@ -10,6 +10,7 @@
 		552FA833210C5F8D00B89535 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552FA832210C5F8D00B89535 /* Assets.swift */; };
 		5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEB210EA1D5004815B2 /* TranslationControl.swift */; };
 		5545ADEF210EA380004815B2 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEE210EA380004815B2 /* Assembler.swift */; };
+		55EAF7C3210EF81700972D48 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EAF7C2210EF81700972D48 /* TestData.swift */; };
 		F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065620FF10D20039D14A /* AppDelegate.swift */; };
 		F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065A20FF10D20039D14A /* placeCarVC.swift */; };
 		F64F065E20FF10D20039D14A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F065C20FF10D20039D14A /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		552FA832210C5F8D00B89535 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		5545ADEB210EA1D5004815B2 /* TranslationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationControl.swift; sourceTree = "<group>"; };
 		5545ADEE210EA380004815B2 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		55EAF7C2210EF81700972D48 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		F64F065320FF10D20039D14A /* myDreamCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDreamCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64F065620FF10D20039D14A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F64F065A20FF10D20039D14A /* placeCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeCarVC.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F6DBB6542106BD8A00D619D5 /* inventoryModel.xcdatamodeld */,
+				55EAF7C2210EF81700972D48 /* TestData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				F6C6BE4D2104C39D00606B51 /* AboutVC.swift in Sources */,
 				F672290E2104233F00C2126A /* MyInventoryCV.swift in Sources */,
 				F6DBB6592106C72C00D619D5 /* AssetPreviewVC.swift in Sources */,
+				55EAF7C3210EF81700972D48 /* TestData.swift in Sources */,
 				F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */,
 				F6DBB6562106BD8A00D619D5 /* inventoryModel.xcdatamodeld in Sources */,
 				F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */,
