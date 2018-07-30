@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		552FA833210C5F8D00B89535 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552FA832210C5F8D00B89535 /* Assets.swift */; };
+		5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEB210EA1D5004815B2 /* TranslationControl.swift */; };
+		5545ADEF210EA380004815B2 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEE210EA380004815B2 /* Assembler.swift */; };
 		F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065620FF10D20039D14A /* AppDelegate.swift */; };
 		F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065A20FF10D20039D14A /* placeCarVC.swift */; };
 		F64F065E20FF10D20039D14A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F065C20FF10D20039D14A /* Main.storyboard */; };
 		F64F066020FF10DA0039D14A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64F065F20FF10DA0039D14A /* Assets.xcassets */; };
 		F64F066320FF10DA0039D14A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */; };
-		F64F066E20FF10DA0039D14A /* ramp_upTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F066D20FF10DA0039D14A /* ramp_upTests.swift */; };
-		F64F067920FF10DA0039D14A /* ramp_upUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F067820FF10DA0039D14A /* ramp_upUITests.swift */; };
+		F64F066E20FF10DA0039D14A /* myDreamCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F066D20FF10DA0039D14A /* myDreamCarTests.swift */; };
+		F64F067920FF10DA0039D14A /* myDreamCarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F067820FF10DA0039D14A /* myDreamCarUITests.swift */; };
 		F672290C21035A3500C2126A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F672290B21035A3500C2126A /* art.scnassets */; };
 		F672290E2104233F00C2126A /* MyInventoryCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672290D2104233F00C2126A /* MyInventoryCV.swift */; };
 		F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		552FA832210C5F8D00B89535 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		5545ADEB210EA1D5004815B2 /* TranslationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationControl.swift; sourceTree = "<group>"; };
+		5545ADEE210EA380004815B2 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		F64F065320FF10D20039D14A /* myDreamCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDreamCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64F065620FF10D20039D14A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F64F065A20FF10D20039D14A /* placeCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeCarVC.swift; sourceTree = "<group>"; };
@@ -51,10 +55,10 @@
 		F64F066220FF10DA0039D14A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F64F066420FF10DA0039D14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F64F066920FF10DA0039D14A /* myDreamCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myDreamCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F64F066D20FF10DA0039D14A /* ramp_upTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ramp_upTests.swift; sourceTree = "<group>"; };
+		F64F066D20FF10DA0039D14A /* myDreamCarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myDreamCarTests.swift; sourceTree = "<group>"; };
 		F64F066F20FF10DA0039D14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F64F067420FF10DA0039D14A /* myDreamCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myDreamCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F64F067820FF10DA0039D14A /* ramp_upUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ramp_upUITests.swift; sourceTree = "<group>"; };
+		F64F067820FF10DA0039D14A /* myDreamCarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myDreamCarUITests.swift; sourceTree = "<group>"; };
 		F64F067A20FF10DA0039D14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F672290B21035A3500C2126A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		F672290D2104233F00C2126A /* MyInventoryCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInventoryCV.swift; sourceTree = "<group>"; };
@@ -90,10 +94,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5545ADED210EA34E004815B2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5545ADEB210EA1D5004815B2 /* TranslationControl.swift */,
+				5545ADEE210EA380004815B2 /* Assembler.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F64F064A20FF10D10039D14A = {
 			isa = PBXGroup;
 			children = (
-				F6DBB6572106BDB800D619D5 /* Data */,
 				F64F065520FF10D20039D14A /* myDreamCar */,
 				F64F066C20FF10DA0039D14A /* my Dream Car Tests */,
 				F64F067720FF10DA0039D14A /* my Dream Car UITests */,
@@ -114,6 +126,8 @@
 		F64F065520FF10D20039D14A /* myDreamCar */ = {
 			isa = PBXGroup;
 			children = (
+				F6DBB6572106BDB800D619D5 /* Data */,
+				5545ADED210EA34E004815B2 /* Helpers */,
 				F6C6BE492104AEA400606B51 /* View */,
 				F672290B21035A3500C2126A /* art.scnassets */,
 				F64F065620FF10D20039D14A /* AppDelegate.swift */,
@@ -129,7 +143,7 @@
 		F64F066C20FF10DA0039D14A /* my Dream Car Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F64F066D20FF10DA0039D14A /* ramp_upTests.swift */,
+				F64F066D20FF10DA0039D14A /* myDreamCarTests.swift */,
 				F64F066F20FF10DA0039D14A /* Info.plist */,
 			);
 			path = "my Dream Car Tests";
@@ -138,7 +152,7 @@
 		F64F067720FF10DA0039D14A /* my Dream Car UITests */ = {
 			isa = PBXGroup;
 			children = (
-				F64F067820FF10DA0039D14A /* ramp_upUITests.swift */,
+				F64F067820FF10DA0039D14A /* myDreamCarUITests.swift */,
 				F64F067A20FF10DA0039D14A /* Info.plist */,
 			);
 			path = "my Dream Car UITests";
@@ -304,7 +318,9 @@
 				F6DBB6562106BD8A00D619D5 /* inventoryModel.xcdatamodeld in Sources */,
 				F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */,
 				552FA833210C5F8D00B89535 /* Assets.swift in Sources */,
+				5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */,
 				F6DBB65B2106D6E600D619D5 /* InventoryCell.swift in Sources */,
+				5545ADEF210EA380004815B2 /* Assembler.swift in Sources */,
 				F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,7 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F64F066E20FF10DA0039D14A /* ramp_upTests.swift in Sources */,
+				F64F066E20FF10DA0039D14A /* myDreamCarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F64F067920FF10DA0039D14A /* ramp_upUITests.swift in Sources */,
+				F64F067920FF10DA0039D14A /* myDreamCarUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QZJ2GF69ZP;
 				INFOPLIST_FILE = "$(SRCROOT)/myDreamCar/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,7 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QZJ2GF69ZP;
 				INFOPLIST_FILE = "$(SRCROOT)/myDreamCar/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

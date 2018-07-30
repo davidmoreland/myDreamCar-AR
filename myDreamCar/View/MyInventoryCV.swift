@@ -8,15 +8,15 @@
 
 import UIKit
 import SceneKit
-
+import CoreData
 
 
 class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
     
    
     var selectedCell: UICollectionViewCell!
-    
-   // var SceneView: SCNView!
+    var selectedAssetName: String!
+   
     var flowLayout: UICollectionViewLayout!
 
     override func viewDidLoad() {
@@ -43,7 +43,6 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         view.addSubview(collectionView!)
         view.addSubview(collectionViewBackGroundImageView)
         
-        
         // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = false
 
@@ -62,6 +61,8 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         self.view?.addGestureRecognizer(tapGestureRecognizer)
         
     }
+    
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
@@ -72,11 +73,16 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
  
     @objc func cellTapped() {
         
-        let previewAssetVC = AssetPreviewVC(size: CGSize(width: 800, height: 800 ))
+        let previewAssetVC = AssetPreviewVC(size: CGSize(width: 1400, height: 800 ))
         
         previewAssetVC.modalPresentationStyle = .popover
         previewAssetVC.popoverPresentationController?.delegate = self
         previewAssetVC.popoverPresentationController?.sourceView = self.view
+        previewAssetVC.selectedAssetName = self.selectedAssetName
+        
+        //set popoverReferce to Main View
+      //  previewAssetVC.selectedObject =
+        
         present(previewAssetVC, animated: true, completion: nil)
     
     }
@@ -112,10 +118,13 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     // MARK: Delegate Methods
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InventoryCell", for: indexPath) as! InventoryCell
-    
+        var selectedCellIndex = indexPath.row
         // Configure the cell
-        cell.setAttributes(cell: cell)
+    //test
+        var data: NSManagedObject! 
+        cell.setAttributes(forCell: cell, withDataSet: data)
       
+        //retrieve Asset From Index
         
         // test
         if( indexPath.row == 0) {
@@ -126,6 +135,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
             if( cell.cellImageView != nil)
             {
                 cell.cellImageView.image = image
+                
             }
         }
         return cell

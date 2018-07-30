@@ -9,6 +9,7 @@
 import UIKit
 import ARKit
 import SceneKit
+import CoreData
 
 class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
     
@@ -19,7 +20,7 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
     
     
     
-    func setImageViewAttributes(cell: UICollectionViewCell)->UIImageView
+    func setImageViewAttributes(cell: UICollectionViewCell, withDataSet: NSManagedObject)->UIImageView
     {
         let iv = UIImageView()
         // cell size
@@ -42,9 +43,9 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
  
 
         
-    func setAttributes(cell: UICollectionViewCell) {
+    func setAttributes(cell: UICollectionViewCell, dataSet: NSManagedObject) {
     
-      let imageView = setImageViewAttributes(cell: cell)
+        let imageView = setImageViewAttributes(cell: cell, withDataSet: dataSet)
         print("ImageView Frame Width: \(imageView.frame.width)")
         let cellTitle = buildCellTitle(cell: cell)
     
@@ -62,7 +63,8 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
         let titleYposition = CGFloat( (cell.frame.height) * 0.80)
         print("TitleXposition: \(titleXposition)")
         print("TitleYposition: \(titleYposition)")
-       
+        
+        
         // position Title in Cell
         
         // size title
@@ -74,6 +76,10 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
        // ct.image = UIImage.init(named: "graphPaper.jpg")
         ct.backgroundColor = UIColor.orange
         ct.backgroundColor?.withAlphaComponent(0.10)
+        
+        // retrieve title text
+      //  if(cell.)
+        
     ct.text = "Title"
         // Set Cell title
         self.cellTitle = ct

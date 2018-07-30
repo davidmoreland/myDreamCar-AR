@@ -13,7 +13,8 @@ import ARKit
 class placeCarVC: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    var selectedObject: String?
+    var selectedObject: SKNode!
+    var assetPreviewVC: AssetPreviewVC!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class placeCarVC: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
-        // Creatan an empty scene
+        // Creat an an empty scene
         let scene = SCNScene(named: "art.scnassets/MainScene.scn")!
         
         // Set the scene to the view
@@ -74,8 +75,8 @@ class placeCarVC: UIViewController, ARSCNViewDelegate {
  }
     
     
-    func onObjectSelected(obj: String) {
-        selectedObject = "car"
+    func onObjectSelected(obj: SKNode) {
+        self.selectedObject = obj
     }
     /*
     func placeObjectInScene(position: SCNVector3) {

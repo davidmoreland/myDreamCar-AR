@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Asset" representedClassName="Asset" syncable="YES" codeGenerationType="class">
+        <attribute name="engine" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasCellImage" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="specs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Manufacturer" representedClassName="Manufacturer" syncable="YES" codeGenerationType="class">
+        <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="webSite" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Reviews" representedClassName="Reviews" syncable="YES" codeGenerationType="class">
+        <attribute name="dateReviewed" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modelURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reviewText" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="car2Reviews" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reviews" inverseName="car2Reviews" inverseEntity="Reviews" syncable="YES"/>
+        <relationship name="reviews2Car" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Asset" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Reviews" positionX="-252" positionY="216" width="128" height="135"/>
+        <element name="Category" positionX="169" positionY="18" width="128" height="60"/>
+        <element name="Manufacturer" positionX="187" positionY="216" width="128" height="180"/>
+    </elements>
+</model>
