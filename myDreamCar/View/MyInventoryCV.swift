@@ -147,36 +147,15 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     // MARK: Delegate Methods
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InventoryCell", for: indexPath) as! InventoryCell
-        var selectedCellIndex = indexPath.row
+        
         // Configure the cell
-    //test
-      let  data = assets[indexPath.row]
-        
-        cell.setAttributesFor(cell: cell, withDataSet: data)
-      
-        //retrieve Asset From Index
-        
-        
-        /*
-        // test
-        if( indexPath.row == 0) {
-            
-            let image = UIImage.init(named: "Nissan_370z_perspective")
-            let cellImageView = UIImageView()
-            
-             cell.cellImageView.image = image
-            
-            cell.cellImageView = cellImageView
-            cell.title?.text = "370z"
-        }
-        else {
-            cell.cellImageView.image  = UIImage(named: "emptyCellImage.jpg")
-        }
- */
-        
+        cell.setAttributesFor(cell: cell, withDataSet: assets[indexPath.row])
         return cell
     }
 
+    
+    
+    
     // MARK: UICollectionViewDelegate
 
     

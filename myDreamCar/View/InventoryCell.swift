@@ -23,11 +23,10 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
     var title: UILabel?
     
  //   testing dataSet
-    var dataSet: NSManagedObject! = NSManagedObject()
+    var dataSet: Asset?
     
     
-    
-    func setImageViewAttributesFor(cell: UICollectionViewCell, withDataSet: Asset)->UIImageView
+    func setImageViewAttributesFor(cell: UICollectionViewCell, with: Asset) -> UIImageView
     {
         let iv = UIImageView()
         // cell size
@@ -42,14 +41,11 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
         iv.backgroundColor = UIColor.brown
         iv.backgroundColor?.withAlphaComponent(0.4)
       //test
-        if(self.cellIndex == 0) {
+        
          iv.image = UIImage.init(named: "Nissan_370z_perspective")
-            //test
-       //     print("Image Named: \(dataSet[atIndex].imageName)")
-        }
-        else {
-           iv.image = UIImage.init(named: "emptyCell")
-        }
+    
+         //  iv.image = UIImage.init(named: "emptyCell")
+        
         return iv
     }
     
@@ -59,8 +55,8 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
     func setAttributesFor(cell: UICollectionViewCell, withDataSet: Asset) {
     self.cellIndex += self.cellIndex
         
-        let imageView = setImageViewAttributesFor(cell: cell, withDataSet: withDataSet)
-        let cellTitle = setTitleAttributesFor(cell: cell, withDataSet: withDataSet)
+        let imageView = setImageViewAttributesFor(cell: cell, with: dataSet!)
+        let cellTitle = setTitleAttributesFor(cell: cell, withDataSet: dataSet!)
         print("ImageView Frame Width: \(imageView.frame.width)")
         
         cell.addSubview(imageView)
@@ -72,8 +68,9 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
     func setTitleAttributesFor(cell: UICollectionViewCell, withDataSet: Asset)-> UILabel {
         let ct: UILabel = UILabel()
         // title size
-        let titleXposition = CGFloat(cell.frame.width)
-        let titleYposition = CGFloat( (cell.frame.height) * 0.80)
+        let titleXposition = CGFloat(cell.frame.width/2)
+        let titleYposition = CGFloat( -(cell.frame.height)/2)
+       // let titleYposition = CGFloat(5.00)
         print("TitleXposition: \(titleXposition)")
         print("TitleYposition: \(titleYposition)")
         
@@ -81,26 +78,19 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
         // position Title in Cell
         
         // size title
-        ct.bounds = CGRect(x: 0.0, y: 0.0, width: titleXposition, height: titleYposition * 0.20)
+        ct.bounds = CGRect(x: cell.frame.width/2, y: cell.frame.height/2, width: cell.frame.width, height: 20.00)
         ct.contentMode = .center
       //  ct.clipsToBounds = true
         ct.layer.cornerRadius = 05
         // cell image
        // ct.image = UIImage.init(named: "graphPaper.jpg")
         ct.backgroundColor = UIColor.orange
-        ct.backgroundColor?.withAlphaComponent(0.10)
+        ct.backgroundColor?.withAlphaComponent(0.050)
         
         // retrieve title text
-      //  if(cell.)
-        
- //   ct.text = assets[cellIndex].title
-        
-      
- 
+        ct.text = dataSet?.name
         return ct
-    
     }
-
     func add(subview: UIView, toCell: UICollectionViewCell) -> UICollectionViewCell {
       addSubview(subview)  //toCell.insertSubview(cellTitle, toView: subview)
         return toCell
