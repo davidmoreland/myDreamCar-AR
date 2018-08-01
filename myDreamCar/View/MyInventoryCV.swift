@@ -13,7 +13,11 @@ import CoreData
 
 class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
     
-   
+  //  var context: NSManagedObjectContext?
+    var assets:[Asset] = []
+    var dataExists: Bool?
+    var context = appDelegate.persistentContainer.viewContext
+    
     var selectedCell: UICollectionViewCell!
     var selectedAssetName: String!
    
@@ -22,6 +26,13 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     override func viewDidLoad() {
         super.viewDidLoad()
 
+     
+        
+        // TEST - Create DUMMY DATA in MOC
+     let testDataManager: TestData = TestData()
+        testDataManager.createDummyData(context: DataManager.getMainManagedContext())
+        //print("MOC data: \(assets[0])")
+        
         // build mainView
     /*
  1. create view
@@ -62,6 +73,24 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         
     }
     
+     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      
+      //  let dataManager: DataManager  = DataManager()
+
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Asset>(entityName: "Asset")
+        
+        do {
+             self.assets = try context.fetch(fetchRequest)
+            print("CV: Successfully fetched data.")
+            print("# of Assets: \(assets.count)")
+            
+        } catch {
+            debugPrint("CV Could not Fetch: \(error.localizedDescription)")
+               }
+    }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
@@ -109,35 +138,42 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-      //  print ("ImageArray: \(self.image)")
-        return 12
+        print("CV: Num Items: \(assets.count)")
+       // return assets.count
+        return assets.count
     }
 
     
     // MARK: Delegate Methods
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InventoryCell", for: indexPath) as! InventoryCell
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InventoryCell", for: indexPath) as! InventoryCell
         var selectedCellIndex = indexPath.row
         // Configure the cell
     //test
-        var data: NSManagedObject! 
-        cell.setAttributes(forCell: cell, withDataSet: data)
+      let  data = assets[indexPath.row]
+        
+        cell.setAttributesFor(cell: cell, withDataSet: data)
       
         //retrieve Asset From Index
         
+        
+        /*
         // test
         if( indexPath.row == 0) {
             
             let image = UIImage.init(named: "Nissan_370z_perspective")
             let cellImageView = UIImageView()
+            
+             cell.cellImageView.image = image
+            
             cell.cellImageView = cellImageView
-            if( cell.cellImageView != nil)
-            {
-                cell.cellImageView.image = image
-                
-            }
+            cell.title?.text = "370z"
         }
+        else {
+            cell.cellImageView.image  = UIImage(named: "emptyCellImage.jpg")
+        }
+ */
+        
         return cell
     }
 
@@ -150,7 +186,8 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         
         return true
     }
-   
+
+
  /*
     @IBAction func onRampBtnPressed(_ sender: UIButton) {
         let rampPickerVC = RampPickerVC(size: CGSize(width: 400, height: 550))
@@ -188,3 +225,4 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
  
 
 }
+

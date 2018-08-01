@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XdG-kC-l2l">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad12_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +14,7 @@
             <objects>
                 <viewController id="aja-mK-w3k" customClass="AboutVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PgW-vi-lB1" customClass="AboutVC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="CBb-3l-oqw"/>
@@ -34,7 +33,7 @@
             <objects>
                 <viewController id="yol-Iu-WAK" userLabel="carPlacementVC" customClass="placeCarVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zAr-2A-nSh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </arscnView>
                     <tabBarItem key="tabBarItem" title="Viewer" id="r7Q-tM-90d"/>
@@ -52,7 +51,7 @@
             <objects>
                 <collectionViewController id="0jX-4E-Ndo" userLabel="myInventory" customClass="MyInventoryCollectionView" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2cx-G1-u1z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="i00-ie-uXd"/>
@@ -64,7 +63,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="InventoryCell" reuseIdentifier="InventoryCell" id="BQc-Ns-7Vv" customClass="InventoryCell" customModule="myDreamCar" customModuleProvider="target">
-                                <rect key="frame" x="75" y="8" width="225" height="185"/>
+                                <rect key="frame" x="8" y="8" width="225" height="185"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="225" height="185"/>
@@ -97,12 +96,57 @@
             </objects>
             <point key="canvasLocation" x="1856.8" y="-119.1904047976012"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="6iz-HV-wCt">
+            <objects>
+                <viewController id="MDj-ue-epX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m8V-pZ-hkf">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ref-lW-s47">
+                                <rect key="frame" x="147" y="838" width="1072" height="130"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8MG-Aa-Yvm">
+                                        <rect key="frame" x="-2" y="0.0" width="1076" height="31"/>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="u5x-pu-VqF">
+                                        <rect key="frame" x="-2" y="50" width="1076" height="31"/>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jhg-zM-uyn">
+                                        <rect key="frame" x="-2" y="100" width="1076" height="31"/>
+                                    </slider>
+                                </subviews>
+                            </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-4g-UQF">
+                                <rect key="frame" x="1206" y="370" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vC-J7-tYX">
+                                <rect key="frame" x="0.0" y="-20" width="1366" height="1024"/>
+                            </sceneKitView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yz5-zw-QYZ" firstAttribute="trailing" secondItem="2vC-J7-tYX" secondAttribute="trailing" id="TfV-p5-nOl"/>
+                            <constraint firstItem="2vC-J7-tYX" firstAttribute="top" secondItem="m8V-pZ-hkf" secondAttribute="top" id="X2X-AV-47v"/>
+                            <constraint firstItem="2vC-J7-tYX" firstAttribute="leading" secondItem="yz5-zw-QYZ" secondAttribute="leading" id="kpa-Hf-DdI"/>
+                            <constraint firstItem="Ref-lW-s47" firstAttribute="centerX" secondItem="m8V-pZ-hkf" secondAttribute="centerX" id="rJg-nT-ZNX"/>
+                            <constraint firstItem="yz5-zw-QYZ" firstAttribute="bottom" secondItem="2vC-J7-tYX" secondAttribute="bottom" id="whD-rT-cMR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yz5-zw-QYZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJK-mp-RsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2111.8594436310395" y="159.9609375"/>
+        </scene>
         <!--Asset PreviewVC-->
         <scene sceneID="ema-mo-cTc">
             <objects>
                 <viewController id="4Zl-gi-8sK" customClass="AssetPreviewVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CbR-Rx-oTi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SyY-SN-Sha"/>

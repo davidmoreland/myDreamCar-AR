@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-/*  Test Data
+/*   ATest Data
 
  Entity:
  1. Manufacturer
@@ -32,7 +32,28 @@ import CoreData
  Asset2Review
  
  */
+class TestData: DataManager
+{
 
+    
+    func createDummyData(context: NSManagedObjectContext) {
+        let  assetInfo = AssetInfo(name: "Nissan", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 75.00)
+      
+      //  Asset.init(entity: Asset, insertInto: context)
+        let context = DataManager.getMainManagedContext()
+        
+          let asset = Asset(context: context )
+        asset.name = assetInfo.name
+        asset.fileType = assetInfo.fileType
+        asset.type = assetInfo.type
+        asset.numOfTriangles = assetInfo.numOfTriangles
+       // asset.price = assetInfo.price
+        asset.note = assetInfo.note
+        
 
+    }
+    
 
+    
+}
 

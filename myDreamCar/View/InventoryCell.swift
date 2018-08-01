@@ -13,14 +13,21 @@ import CoreData
 
 class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
     
+  //  var cellIndex: Int = 0
+   // init(cellImageView: UIImageView,)
+   // var title: UILabel?
+    //  Testing
+    var cellIndex = 0
+    var cellImageView: UIImageView = UIImageView()
+    let emptyCellImage: UIImage = (#imageLiteral(resourceName: "emptyCellImage.jpg"))
+    var title: UILabel?
+    
+ //   testing dataSet
+    var dataSet: NSManagedObject! = NSManagedObject()
     
     
-    var cellImageView: UIImageView!
-    var cellTitle: UILabel!
     
-    
-    
-    func setImageViewAttributes(cell: UICollectionViewCell, withDataSet: NSManagedObject)->UIImageView
+    func setImageViewAttributesFor(cell: UICollectionViewCell, withDataSet: Asset)->UIImageView
     {
         let iv = UIImageView()
         // cell size
@@ -31,32 +38,38 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
     // cell image
         
         // place holders presently
-        iv.image = UIImage.init(named: "Nissan_370z_perspective")
+        
         iv.backgroundColor = UIColor.brown
         iv.backgroundColor?.withAlphaComponent(0.4)
-        
-        // set cell properties
-        self.cellImageView = iv
+      //test
+        if(self.cellIndex == 0) {
+         iv.image = UIImage.init(named: "Nissan_370z_perspective")
+            //test
+       //     print("Image Named: \(dataSet[atIndex].imageName)")
+        }
+        else {
+           iv.image = UIImage.init(named: "emptyCell")
+        }
         return iv
     }
     
  
 
         
-    func setAttributes(cell: UICollectionViewCell, dataSet: NSManagedObject) {
-    
-        let imageView = setImageViewAttributes(cell: cell, withDataSet: dataSet)
+    func setAttributesFor(cell: UICollectionViewCell, withDataSet: Asset) {
+    self.cellIndex += self.cellIndex
+        
+        let imageView = setImageViewAttributesFor(cell: cell, withDataSet: withDataSet)
+        let cellTitle = setTitleAttributesFor(cell: cell, withDataSet: withDataSet)
         print("ImageView Frame Width: \(imageView.frame.width)")
-        let cellTitle = buildCellTitle(cell: cell)
-    
+        
         cell.addSubview(imageView)
-        cell.insertSubview(cellTitle, belowSubview: imageView)
-        cell.bringSubview(toFront: cellTitle)
+        cell.addSubview(cellTitle)
 }
 
     
     
-    func buildCellTitle(cell: UICollectionViewCell)-> UILabel {
+    func setTitleAttributesFor(cell: UICollectionViewCell, withDataSet: Asset)-> UILabel {
         let ct: UILabel = UILabel()
         // title size
         let titleXposition = CGFloat(cell.frame.width)
@@ -80,23 +93,32 @@ class InventoryCell: UICollectionViewCell, UIPopoverPresentationControllerDelega
         // retrieve title text
       //  if(cell.)
         
-    ct.text = "Title"
-        // Set Cell title
-        self.cellTitle = ct
+ //   ct.text = assets[cellIndex].title
+        
+      
+ 
         return ct
+    
     }
 
+    func add(subview: UIView, toCell: UICollectionViewCell) -> UICollectionViewCell {
+      addSubview(subview)  //toCell.insertSubview(cellTitle, toView: subview)
+        return toCell
+    }
     
     
-}
-func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-    return .none
-}
+    
+    
 
-func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    return .none
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
     return true
+    }
+
 }
-    
      
 /*
 func assembleComponents(cell: UICollectionViewCell) -> UIView

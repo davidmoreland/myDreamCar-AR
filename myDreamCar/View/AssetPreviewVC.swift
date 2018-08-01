@@ -128,6 +128,8 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
         
         if hitResults .count > 0 {
            // test scene
+            let selectedNode = hitResults[0].node
+        
            displaySelectedAsset(inScene: selectedScene, name: selectedNodeName)
           //  placeCarVC.selectedObject = selectedNode
             

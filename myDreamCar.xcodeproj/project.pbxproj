@@ -11,6 +11,8 @@
 		5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEB210EA1D5004815B2 /* TranslationControl.swift */; };
 		5545ADEF210EA380004815B2 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEE210EA380004815B2 /* Assembler.swift */; };
 		55EAF7C3210EF81700972D48 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EAF7C2210EF81700972D48 /* TestData.swift */; };
+		55EAF7C5210F788800972D48 /* emptyCellImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 55EAF7C4210F788800972D48 /* emptyCellImage.jpg */; };
+		55EAF7C9210FAD4900972D48 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EAF7C8210FAD4900972D48 /* DataManager.swift */; };
 		F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065620FF10D20039D14A /* AppDelegate.swift */; };
 		F64F065B20FF10D20039D14A /* placeCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065A20FF10D20039D14A /* placeCarVC.swift */; };
 		F64F065E20FF10D20039D14A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F065C20FF10D20039D14A /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		5545ADEB210EA1D5004815B2 /* TranslationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationControl.swift; sourceTree = "<group>"; };
 		5545ADEE210EA380004815B2 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		55EAF7C2210EF81700972D48 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		55EAF7C4210F788800972D48 /* emptyCellImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = emptyCellImage.jpg; sourceTree = "<group>"; };
+		55EAF7C8210FAD4900972D48 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F64F065320FF10D20039D14A /* myDreamCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDreamCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64F065620FF10D20039D14A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F64F065A20FF10D20039D14A /* placeCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeCarVC.swift; sourceTree = "<group>"; };
@@ -128,14 +132,15 @@
 		F64F065520FF10D20039D14A /* myDreamCar */ = {
 			isa = PBXGroup;
 			children = (
+				F64F065620FF10D20039D14A /* AppDelegate.swift */,
 				F6DBB6572106BDB800D619D5 /* Data */,
 				5545ADED210EA34E004815B2 /* Helpers */,
 				F6C6BE492104AEA400606B51 /* View */,
 				F672290B21035A3500C2126A /* art.scnassets */,
-				F64F065620FF10D20039D14A /* AppDelegate.swift */,
 				F64F065A20FF10D20039D14A /* placeCarVC.swift */,
 				F64F065C20FF10D20039D14A /* Main.storyboard */,
 				F64F065F20FF10DA0039D14A /* Assets.xcassets */,
+				55EAF7C4210F788800972D48 /* emptyCellImage.jpg */,
 				F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */,
 				F64F066420FF10DA0039D14A /* Info.plist */,
 			);
@@ -178,6 +183,7 @@
 			children = (
 				F6DBB6542106BD8A00D619D5 /* inventoryModel.xcdatamodeld */,
 				55EAF7C2210EF81700972D48 /* TestData.swift */,
+				55EAF7C8210FAD4900972D48 /* DataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 				F64F066320FF10DA0039D14A /* LaunchScreen.storyboard in Resources */,
 				F672290C21035A3500C2126A /* art.scnassets in Resources */,
 				F64F066020FF10DA0039D14A /* Assets.xcassets in Resources */,
+				55EAF7C5210F788800972D48 /* emptyCellImage.jpg in Resources */,
 				F64F065E20FF10D20039D14A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +332,7 @@
 				5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */,
 				F6DBB65B2106D6E600D619D5 /* InventoryCell.swift in Sources */,
 				5545ADEF210EA380004815B2 /* Assembler.swift in Sources */,
+				55EAF7C9210FAD4900972D48 /* DataManager.swift in Sources */,
 				F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
