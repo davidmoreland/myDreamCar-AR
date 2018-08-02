@@ -35,25 +35,99 @@ import CoreData
 class TestData: DataManager
 {
 
-    
+
     func createDummyData(context: NSManagedObjectContext) {
-        let  assetInfo = AssetInfo(name: "Nissan", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 75.00)
+        var  assetInfo = AssetInfo(name: "Nissan", imageName: "Nissan_370z_perspective.jpg", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 75.00)
       
-      //  Asset.init(entity: Asset, insertInto: context)
+      
         let context = DataManager.getMainManagedContext()
         
-          let asset = Asset(context: context )
+        var asset = Asset(context: context )
         asset.name = assetInfo.name
+        asset.imageName = assetInfo.imageName
         asset.fileType = assetInfo.fileType
         asset.type = assetInfo.type
         asset.numOfTriangles = assetInfo.numOfTriangles
        // asset.price = assetInfo.price
         asset.note = assetInfo.note
         
-
+        NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
+        
+        save1(context: context)
+        
+        
+          assetInfo = AssetInfo(name: "Chev", imageName: "", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 0.00)
+        
+        asset.name = assetInfo.name
+        asset.imageName = assetInfo.imageName
+        asset.fileType = assetInfo.fileType
+        asset.type = assetInfo.type
+        asset.numOfTriangles = assetInfo.numOfTriangles
+        // asset.price = assetInfo.price
+        asset.note = assetInfo.note
+       
+        NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
+        
+        save1(context: context)
+        
+        
+         assetInfo = AssetInfo(name: "Ford", imageName: "", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 0.00)
+        
+        asset.name = assetInfo.name
+        asset.imageName = assetInfo.imageName
+        asset.fileType = assetInfo.fileType
+        asset.type = assetInfo.type
+        asset.numOfTriangles = assetInfo.numOfTriangles
+        // asset.price = assetInfo.price
+        asset.note = assetInfo.note
+       
+        NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
+        
+        save1(context: context)
+        
+        
+         assetInfo = AssetInfo(name: "Nissan", imageName: "", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 150.00)
+        
+        asset.name = assetInfo.name
+        asset.imageName = assetInfo.imageName
+        asset.fileType = assetInfo.fileType
+        asset.type = assetInfo.type
+        asset.numOfTriangles = assetInfo.numOfTriangles
+        // asset.price = assetInfo.price
+        asset.note = assetInfo.note
+        
+        NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
+        
+        save1(context: context)
+        
+        assetInfo = AssetInfo(name: "Nissan", imageName: "Nissan_370z_perspective.jpg", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 75.00)
+        
+        asset.name = assetInfo.name
+        asset.imageName = assetInfo.imageName
+        asset.fileType = assetInfo.fileType
+        asset.type = assetInfo.type
+        asset.numOfTriangles = assetInfo.numOfTriangles
+        // asset.price = assetInfo.price
+        asset.note = assetInfo.note
+        
+        NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
+        
+        save1(context: context)
+        
+          assetInfo = AssetInfo(name: "Nissan", imageName: "Nissan_370z_perspective.jpg", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 75.00)
+        
+        asset.name = assetInfo.name
+        asset.imageName = assetInfo.imageName
+        asset.fileType = assetInfo.fileType
+        asset.type = assetInfo.type
+        asset.numOfTriangles = assetInfo.numOfTriangles
+        // asset.price = assetInfo.price
+        asset.note = assetInfo.note
+        
+        NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
+        
+        save1(context: context)
     }
-    
-
-    
 }
+
 

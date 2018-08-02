@@ -14,7 +14,7 @@ import CoreData
 class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
     
   //  var context: NSManagedObjectContext?
-    var assets:[Asset] = []
+    var assets:[Asset]?
     var dataExists: Bool?
     var context = appDelegate.persistentContainer.viewContext
     
@@ -23,22 +23,15 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
    
     var flowLayout: UICollectionViewLayout!
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     
-        
         // TEST - Create DUMMY DATA in MOC
      let testDataManager: TestData = TestData()
         testDataManager.createDummyData(context: DataManager.getMainManagedContext())
-        //print("MOC data: \(assets[0])")
-        
-        // build mainView
-    /*
- 1. create view
- 2. add components
- 3. add subview to view
- */
+
         
         flowLayout = ColumnFlowLayout()
         
@@ -76,7 +69,12 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
      override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
       
-      //  let dataManager: DataManager  = DataManager()
+        // build mainView
+        /*
+         1. create view
+         2. add components
+         3. add subview to view
+         */
 
         let context = appDelegate.persistentContainer.viewContext
         
@@ -85,8 +83,9 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         do {
              self.assets = try context.fetch(fetchRequest)
             print("CV: Successfully fetched data.")
-            print("# of Assets: \(assets.count)")
-            
+            print("# of Assets: \(String(describing: assets?.count))")
+            print("+++++++++++++++++++++++")
+            print("CV: Retrieved Asset: \(assets![0])")
         } catch {
             debugPrint("CV Could not Fetch: \(error.localizedDescription)")
                }
@@ -110,11 +109,19 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         previewAssetVC.selectedAssetName = self.selectedAssetName
         
         //set popoverReferce to Main View
-      //  previewAssetVC.selectedObject =
+      // previewAssetVC.selectedObject =
         
-        present(previewAssetVC, animated: true, completion: nil)
+     //   present(previewAssetVC, animated: true, completion: nil)
     
     }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        
+        
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -125,6 +132,8 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     }
     */
 
+    
+    
     // MARK: UICollectionViewDataSource
     
   //  var image: UIImage = UIImage.init(named: "test.png")!
@@ -138,18 +147,18 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("CV: Num Items: \(assets.count)")
+        print("CV: Num Items: \(String(describing: assets?.count))")
        // return assets.count
-        return assets.count
+        return assets!.count
     }
 
     
     // MARK: Delegate Methods
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InventoryCell", for: indexPath) as! InventoryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InventoryCell", for: indexPath) as! InventoryCell
         
         // Configure the cell
-        cell.setAttributesFor(cell: cell, withDataSet: assets[indexPath.row])
+        cell.setAttributesWith(dataSet: assets![indexPath.row])
         return cell
     }
 
@@ -161,7 +170,6 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        
         
         return true
     }
@@ -197,10 +205,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     }
 */
     
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-        
-        
-    }
+   
  
 
 }

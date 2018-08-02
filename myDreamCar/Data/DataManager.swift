@@ -15,16 +15,18 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 struct AssetInfo {
     var name: String?
+    var imageName: String?
     var fileType: String?
     var type: String?
     var price: Decimal = 0.00
     var numOfTriangles: Int16
     var note: String?
     
-    init(name: String, fileType: String, type: String?, numOfTriangles: Int16, note: String, price: Decimal) {
+    init(name: String, imageName: String, fileType: String, type: String?, numOfTriangles: Int16, note: String, price: Decimal) {
         //  var priceFormatter: NumberFormatter = NumberFormatter()
         
         self.name = name
+        self.imageName = imageName
         self.fileType = fileType
         self.type = type
         self.price = price
@@ -90,7 +92,7 @@ func setUpFRCwPredicate(entityName :String, predKey: NSPredicate )->NSFetchedRes
 
 
 func addAssetTo(context: NSManagedObjectContext) {
-    var asset = AssetInfo(name: "Nissan", fileType: "dae", type: "vehicle", numOfTriangles: 1200, note: ""      , price: 75.00 )
+    var asset = AssetInfo(name: "Nissan",imageName: "Nissan_370z_perspective.jpg", fileType: "dae", type: "vehicle", numOfTriangles: 1200, note: ""      , price: 75.00 )
     let cdAsset = Asset(context: context)
     cdAsset.name = asset.name
     cdAsset.fileType = asset.fileType
@@ -137,7 +139,15 @@ func save(context: NSManagedObjectContext, completion: (_ finished: Bool) ->()) 
         completion(false)
     }
 }
-    
+    func save1(context: NSManagedObjectContext) {
+        do {
+            try context.save()
+            print("Data Saved: \(context)")
+            
+        } catch {
+            print("Data NOT saved: ")
+        }
+    }
     
 class func getMainManagedContext()-> NSManagedObjectContext
 {
