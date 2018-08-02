@@ -13,15 +13,13 @@ import CoreData
 
 class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
     
-  //  var context: NSManagedObjectContext?
-    var assets:[Asset]?
+   var assets:[Asset]?
     var dataExists: Bool?
     var context = appDelegate.persistentContainer.viewContext
-    
-    var selectedCell: UICollectionViewCell!
+    var selectedCell: InventoryCell!
     var selectedAssetName: String!
-   
     var flowLayout: UICollectionViewLayout!
+    var selectedAsset: Asset!
 
     
     
@@ -32,7 +30,6 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
      let testDataManager: TestData = TestData()
         testDataManager.createDummyData(context: DataManager.getMainManagedContext())
 
-        
         flowLayout = ColumnFlowLayout()
         
         collectionView = UICollectionView(frame: (view.bounds), collectionViewLayout: flowLayout)
@@ -58,12 +55,11 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         collectionView?.delegate = self
         
         //Add touch
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyInventoryCollectionView.cellTapped))
-        self.view.isUserInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
+    self.view.isUserInteractionEnabled = true
         tapGestureRecognizer.delegate = self
     
         self.view?.addGestureRecognizer(tapGestureRecognizer)
-        
     }
     
      override func viewWillAppear(_ animated: Bool) {
@@ -92,14 +88,27 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
+        return .popover
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return true
+        return true  // 1st
+    }
+    
+    func handleTapGestureRecognizer(gestureRecognizer: UITapGestureRecognizer){
+        let touchPoint = gestureRecognizer.location(in: self.view)
+        
+        if let indexPath = self.collectionView?.indexPathForItem(at: touchPoint) {
+            self.selectedCell = self.collectionView?.cellForItem(at: indexPath) as! InventoryCell!
+            print("Cell Item #: \(indexPath.item)")
+            print("Cell Title: \(self.selectedCell.cellTitle)")
+        }
     }
  
-    @objc func cellTapped() {
+    @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
+        // 2nd
+        
+      //  self.selectedAssetName = selectedAsset.name
         
         let previewAssetVC = AssetPreviewVC(size: CGSize(width: 1400, height: 800 ))
         
@@ -109,15 +118,27 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         previewAssetVC.selectedAssetName = self.selectedAssetName
         
         //set popoverReferce to Main View
-      // previewAssetVC.selectedObject =
+       previewAssetVC.selectedAsset = selectedAsset
         
-     //   present(previewAssetVC, animated: true, completion: nil)
+        present(previewAssetVC, animated: true, completion: nil)
     
     }
+ 
     
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Cell Tapped: \(indexPath.item)")
+    }
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         
+        //test
+        print("Cell Tapped: \(indexPath.item)")
+        let previewAssetVC = AssetPreviewVC(size: CGSize(width: 1400, height: 800 ))
+        
+        previewAssetVC.modalPresentationStyle = .popover
+        previewAssetVC.popoverPresentationController?.delegate = self
+        previewAssetVC.popoverPresentationController?.sourceView = self.view
+        previewAssetVC.selectedAssetName = self.selectedAssetName
         
     }
     
@@ -135,9 +156,6 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     
     
     // MARK: UICollectionViewDataSource
-    
-  //  var image: UIImage = UIImage.init(named: "test.png")!
-    
     
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -175,37 +193,36 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     }
 
 
- /*
-    @IBAction func onRampBtnPressed(_ sender: UIButton) {
-        let rampPickerVC = RampPickerVC(size: CGSize(width: 400, height: 550))
-        rampPickerVC.rampPlacerVC = self
-        rampPickerVC.modalPresentationStyle = .popover
-        rampPickerVC.popoverPresentationController?.delegate = self
-        present(rampPickerVC, animated: true, completion: nil)
-        rampPickerVC.popoverPresentationController?.sourceView = sender
-        rampPickerVC.popoverPresentationController?.sourceRect = sender.bounds
-    }
-    */
-    
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
+ 
     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         return false
     }
-*/
+
+    /*
+     @IBAction func onRampBtnPressed(_ sender: UIButton) {
+     let rampPickerVC = RampPickerVC(size: CGSize(width: 400, height: 550))
+     rampPickerVC.rampPlacerVC = self
+     rampPickerVC.modalPresentationStyle = .popover
+     rampPickerVC.popoverPresentationController?.delegate = self
+     present(rampPickerVC, animated: true, completion: nil)
+     rampPickerVC.popoverPresentationController?.sourceView = sender
+     rampPickerVC.popoverPresentationController?.sourceRect = sender.bounds
+     }
+     */
     
-   
+    /*
+     // Uncomment this method to specify if the specified item should be selected
+     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+     return true
+     }
+     */
+    
+    /*
+     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+     return false
+     }
+     */
  
 
 }

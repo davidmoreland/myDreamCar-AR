@@ -31,7 +31,7 @@
         <!--carPlacementVC-->
         <scene sceneID="b7J-6b-kQN">
             <objects>
-                <viewController id="yol-Iu-WAK" userLabel="carPlacementVC" customClass="placeCarVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yol-Iu-WAK" userLabel="carPlacementVC" customClass="PlaceCarVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zAr-2A-nSh">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -39,7 +39,7 @@
                     <tabBarItem key="tabBarItem" title="Viewer" id="r7Q-tM-90d"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="sceneView" destination="zAr-2A-nSh" id="3Gg-dG-XAb"/>
+                        <outlet property="sceneView" destination="zAr-2A-nSh" id="vdA-0h-jtw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ee-wG-3my" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -104,19 +104,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ref-lW-s47">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ref-lW-s47">
                                 <rect key="frame" x="147" y="838" width="1072" height="130"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8MG-Aa-Yvm">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8MG-Aa-Yvm">
                                         <rect key="frame" x="-2" y="0.0" width="1076" height="31"/>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="u5x-pu-VqF">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="u5x-pu-VqF">
                                         <rect key="frame" x="-2" y="50" width="1076" height="31"/>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jhg-zM-uyn">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jhg-zM-uyn">
                                         <rect key="frame" x="-2" y="100" width="1076" height="31"/>
                                     </slider>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="8MG-Aa-Yvm" firstAttribute="leading" secondItem="u5x-pu-VqF" secondAttribute="leading" id="22T-rf-aKk"/>
+                                    <constraint firstItem="u5x-pu-VqF" firstAttribute="leading" secondItem="Jhg-zM-uyn" secondAttribute="leading" id="4EQ-w8-mJu"/>
+                                    <constraint firstItem="8MG-Aa-Yvm" firstAttribute="leading" secondItem="Ref-lW-s47" secondAttribute="leading" id="Zzg-wu-0hi"/>
+                                </constraints>
                             </stackView>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-4g-UQF">
                                 <rect key="frame" x="1206" y="370" width="118" height="30"/>
@@ -128,8 +133,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Ref-lW-s47" firstAttribute="leading" secondItem="yz5-zw-QYZ" secondAttribute="leading" constant="147" id="2Nv-3G-2hO"/>
                             <constraint firstItem="yz5-zw-QYZ" firstAttribute="trailing" secondItem="2vC-J7-tYX" secondAttribute="trailing" id="TfV-p5-nOl"/>
                             <constraint firstItem="2vC-J7-tYX" firstAttribute="top" secondItem="m8V-pZ-hkf" secondAttribute="top" id="X2X-AV-47v"/>
+                            <constraint firstItem="yz5-zw-QYZ" firstAttribute="bottom" secondItem="Ref-lW-s47" secondAttribute="bottom" constant="56" id="iRe-Ba-Ue4"/>
                             <constraint firstItem="2vC-J7-tYX" firstAttribute="leading" secondItem="yz5-zw-QYZ" secondAttribute="leading" id="kpa-Hf-DdI"/>
                             <constraint firstItem="Ref-lW-s47" firstAttribute="centerX" secondItem="m8V-pZ-hkf" secondAttribute="centerX" id="rJg-nT-ZNX"/>
                             <constraint firstItem="yz5-zw-QYZ" firstAttribute="bottom" secondItem="2vC-J7-tYX" secondAttribute="bottom" id="whD-rT-cMR"/>

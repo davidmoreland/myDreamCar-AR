@@ -8,10 +8,12 @@
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numOfTriangles" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sceneName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="asset2category" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="category2asset" inverseEntity="Category" syncable="YES"/>
         <relationship name="asset2manufacturer" maxCount="1" deletionRule="Nullify" destinationEntity="Manufacturer" inverseName="manufacturer2asset" inverseEntity="Manufacturer" syncable="YES"/>
         <relationship name="asset2reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reviews" inverseName="reviews2asset" inverseEntity="Reviews" syncable="YES"/>
+        <relationship name="asset2scene" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Scene" inverseName="scene2asset" inverseEntity="Scene" syncable="YES"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,16 +43,24 @@
         <relationship name="reviews2asset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset" inverseName="asset2reviews" inverseEntity="Asset" syncable="YES"/>
         <relationship name="reviews2category" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="category2reviews" inverseEntity="Category" syncable="YES"/>
     </entity>
+    <entity name="Scene" representedClassName="Scene" syncable="YES" codeGenerationType="class">
+        <attribute name="createdBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="file_size" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="scene2asset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset" inverseName="asset2scene" inverseEntity="Asset" syncable="YES"/>
+    </entity>
     <entity name="Vehicle" representedClassName="Vehicle" parentEntity="Asset" syncable="YES" codeGenerationType="class">
         <attribute name="engine" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="specs" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="typeName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Asset" positionX="-69455" positionY="-4264" width="128" height="210"/>
+        <element name="Asset" positionX="-69455" positionY="-4264" width="128" height="240"/>
         <element name="Category" positionX="-70047" positionY="-4477" width="128" height="103"/>
         <element name="Manufacturer" positionX="-69833" positionY="-4300" width="128" height="223"/>
         <element name="Reviews" positionX="-69858" positionY="-4050" width="128" height="133"/>
         <element name="Vehicle" positionX="-69455" positionY="-4059" width="128" height="88"/>
+        <element name="Scene" positionX="-69849" positionY="-4329" width="128" height="120"/>
     </elements>
 </model>

@@ -8,6 +8,7 @@
 
 import UIKit
 import SceneKit
+import CoreData
 
 class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
 
@@ -17,10 +18,11 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     var selectedScene: SCNScene!
     var selectedNodeName: String!
     var selectedAssetName: String!
+    var selectedAsset: Asset!
     
-    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AssetPreviewVC.dismissVC))
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
 
-    weak var placeCarVC: placeCarVC!
+    weak var placeCarVC: PlaceCarVC!
 
     
     init(size: CGSize) {
@@ -50,8 +52,14 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
         
 // test
         
-        selectedScene = SCNScene(named: "art.scnassets/Nissan370Z2013ActualSize.scn")
-   
+        //selectedScene = SCNScene(named: "art.scnassets/Nissan370Z2013ActualSize.scn")
+     //   guard let  selectedAssetName: String = self.selectedAsset.name else {return}
+        //    guard let selectedScene = SCNScene(named:self.selectedAsset.sceneName!) else {return}
+       
+        guard let selectedScene = SCNScene(named:"art.scnassets/Nissan370Z2013ActualSize.scn") else {return}
+        
+        guard let selectedSceneName: String = (selectedScene) as? String else {return}
+        guard let selectedAssetNodeName: String = selectedSceneName else {return}
       // selectedNodeName = "370z_2013_Coupe"
      selectedNodeName = "pivot"
         // pivot doesn't show anything
@@ -129,7 +137,8 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
         if hitResults .count > 0 {
            // test scene
             let selectedNode = hitResults[0].node
-        
+            print("Node Name: \(selectedNode.name!)")
+            
            displaySelectedAsset(inScene: selectedScene, name: selectedNodeName)
           //  placeCarVC.selectedObject = selectedNode
             

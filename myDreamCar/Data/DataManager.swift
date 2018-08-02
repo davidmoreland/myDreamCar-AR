@@ -22,6 +22,7 @@ struct AssetInfo {
     var numOfTriangles: Int16
     var note: String?
     
+    
     init(name: String, imageName: String, fileType: String, type: String?, numOfTriangles: Int16, note: String, price: Decimal) {
         //  var priceFormatter: NumberFormatter = NumberFormatter()
         
@@ -37,6 +38,11 @@ struct AssetInfo {
     
 }
 
+struct SceneInfo {
+    var name: String?
+    var location: String?
+    var file_size: UInt32
+}
 
 
 class DataManager:NSObject, NSFetchedResultsControllerDelegate    {

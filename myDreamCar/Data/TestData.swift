@@ -50,6 +50,7 @@ class TestData: DataManager
         asset.numOfTriangles = assetInfo.numOfTriangles
        // asset.price = assetInfo.price
         asset.note = assetInfo.note
+      //  asset.sceneName = assetInfo.sceneName
         
         NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
         
@@ -65,7 +66,7 @@ class TestData: DataManager
         asset.numOfTriangles = assetInfo.numOfTriangles
         // asset.price = assetInfo.price
         asset.note = assetInfo.note
-       
+        
         NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
         
         save1(context: context)
