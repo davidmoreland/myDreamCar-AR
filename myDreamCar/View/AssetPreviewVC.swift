@@ -16,6 +16,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     var size: CGSize!
     var selectedObject: SCNNode!
     var selectedScene: SCNScene!
+    var selectedSceneName: String!
     var selectedNodeName: String!
     var selectedAssetName: String!
     var selectedAsset: Asset!
@@ -46,36 +47,33 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
         
         view.insertSubview(sceneView, at: 0)
         preferredContentSize = size
+        view.layer.borderWidth = 5.00
         view.layer.borderColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
-        view.layer.borderWidth = 3.0
         
         
-// test
-        
-        //selectedScene = SCNScene(named: "art.scnassets/Nissan370Z2013ActualSize.scn")
-     //   guard let  selectedAssetName: String = self.selectedAsset.name else {return}
-        //    guard let selectedScene = SCNScene(named:self.selectedAsset.sceneName!) else {return}
        
-        guard let selectedScene = SCNScene(named:"art.scnassets/Nissan370Z2013ActualSize.scn") else {return}
+// test
+       let selectedSceneName = "art.scnassets/370z_2013.scn"
         
-        guard let selectedSceneName: String = (selectedScene) as? String else {return}
-        guard let selectedAssetNodeName: String = selectedSceneName else {return}
-      // selectedNodeName = "370z_2013_Coupe"
-     selectedNodeName = "pivot"
-        // pivot doesn't show anything
-        //  selectedNodeName = "pivot"
+    selectedScene = SCNScene(named: selectedSceneName)!
+        sceneView.scene = selectedScene
+        //testing
+        let assetObject = AssetManager.getCar()
         
-        displaySelectedAsset(inScene: selectedScene, name: selectedNodeName)
+     //  Ramp.startRotation(node: car)
+    selectedScene.rootNode.addChildNode(assetObject)
         
-    
+
+        
         // let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AssetPreviewVC.dismissVC))
  
- self.view.isUserInteractionEnabled = true
-        tapGestureRecognizer.delegate = self
+            self.view.isUserInteractionEnabled = true
+    //    tapGestureRecognizer.delegate = self
         
-        self.view?.addGestureRecognizer(tapGestureRecognizer)
+       self.view?.addGestureRecognizer(tapGestureRecognizer)
     }
     
+   
     @objc func dismissVC() {
         
         
@@ -91,39 +89,31 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     }
     */
     
-    func displaySelectedAsset(inScene: SCNScene, name: String) {
-      // let sence = inScene
-        
-        let scene = SCNScene(named: "art.scnassets/MainScene.scn")!
-        sceneView.scene = scene
-        
+    func displaySelectedAssetIn(scene: SCNScene?, nodeName: String) -> SCNNode {
         //Camera
+        
+    //    let scene = SCNScene(named: "MainScene.scn")
+        
         let camera = SCNCamera()
         camera.usesOrthographicProjection = true
-        scene.rootNode.camera = camera
+        scene?.rootNode.camera = camera
         
-        let parentScene = SCNScene(named:"art.scnassets/Nissan370Z2013ActualSize.scn")
-       
-        let parentNode = parentScene?.rootNode.childNode(withName: name, recursively: true)!
-  
+       //let parentScene = scene
+       let parentObj = SCNScene(named:"art.scnassets/Nissan370Z2013ActualSize_Grey.scn")
         
-      //  selectedObject = SCNScene(named: "art.scnassets/Nissan370Z2013ActualSize.scn")
-        
-      //  let obj = SCNScene(named: "art.scnassets/Nissan370Z2013ActualSize.scn")
-        
- 
+let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true)
         //Car - refactor into object retrieval class
-        parentNode?.scale = SCNVector3Make(0.0200, 0.0200, 0.0200)
+        objNode?.scale = SCNVector3Make(0.0200, 0.0200, 0.0200)
       //  parentNode?.position = SCNVector3Make(0, -1, 1) // centered X, off bottom Y
-        parentNode?.position = SCNVector3Make(0, -0.5, -2)
-        scene.rootNode.addChildNode(parentNode!)
+        objNode?.position = SCNVector3Make(0, -0.5, -2)
+      scene?.rootNode.addChildNode(objNode!)
         
        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.1 * Double.pi), z: 0, duration: 1.0))
         
-      //  let pivotNode = parentNode?.childNode(withName: "pivot", recursively: true)
+    
+        objNode?.runAction(rotate)
         
-        parentNode?.runAction(rotate)
-        
+        return objNode!
     }
     
     //Add touch
@@ -132,19 +122,21 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     //
         let touchPoint = gestureRecognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(touchPoint, options: [ : ])
-        displaySelectedAsset(inScene: selectedScene, name: selectedNodeName)
+      //  displaySelectedAssetIn(scene: selectedScene, name: selectedNodeName)
         
         if hitResults .count > 0 {
            // test scene
             let selectedNode = hitResults[0].node
             print("Node Name: \(selectedNode.name!)")
             
-           displaySelectedAsset(inScene: selectedScene, name: selectedNodeName)
+         //   displaySelectedAssetIn(scene: selectedScene, nodeName: selectedNodeName)
           //  placeCarVC.selectedObject = selectedNode
             
             
         }
 
     }
+    
+    
     
 }

@@ -10,6 +10,9 @@
 		552FA833210C5F8D00B89535 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552FA832210C5F8D00B89535 /* Assets.swift */; };
 		5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEB210EA1D5004815B2 /* TranslationControl.swift */; };
 		5545ADEF210EA380004815B2 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEE210EA380004815B2 /* Assembler.swift */; };
+		55B9F30F2113EC9100BAFCBC /* Ramp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9F30E2113EC8F00BAFCBC /* Ramp.swift */; };
+		55B9F3112113ED4E00BAFCBC /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9F3102113ED4E00BAFCBC /* AssetManager.swift */; };
+		55B9F3132113FCAE00BAFCBC /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F3122113FCAD00BAFCBC /* bg.jpg */; };
 		55EAF7C3210EF81700972D48 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EAF7C2210EF81700972D48 /* TestData.swift */; };
 		55EAF7C5210F788800972D48 /* emptyCellImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 55EAF7C4210F788800972D48 /* emptyCellImage.jpg */; };
 		55EAF7C9210FAD4900972D48 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EAF7C8210FAD4900972D48 /* DataManager.swift */; };
@@ -50,6 +53,9 @@
 		552FA832210C5F8D00B89535 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		5545ADEB210EA1D5004815B2 /* TranslationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationControl.swift; sourceTree = "<group>"; };
 		5545ADEE210EA380004815B2 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		55B9F30E2113EC8F00BAFCBC /* Ramp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ramp.swift; sourceTree = "<group>"; };
+		55B9F3102113ED4E00BAFCBC /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
+		55B9F3122113FCAD00BAFCBC /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		55EAF7C2210EF81700972D48 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		55EAF7C4210F788800972D48 /* emptyCellImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = emptyCellImage.jpg; sourceTree = "<group>"; };
 		55EAF7C8210FAD4900972D48 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -116,6 +122,7 @@
 				F64F066C20FF10DA0039D14A /* my Dream Car Tests */,
 				F64F067720FF10DA0039D14A /* my Dream Car UITests */,
 				F64F065420FF10D20039D14A /* Products */,
+				55B9F30E2113EC8F00BAFCBC /* Ramp.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,9 +147,11 @@
 				F64F065A20FF10D20039D14A /* PlaceCarVC.swift */,
 				F64F065C20FF10D20039D14A /* Main.storyboard */,
 				F64F065F20FF10DA0039D14A /* Assets.xcassets */,
+				55B9F3122113FCAD00BAFCBC /* bg.jpg */,
 				55EAF7C4210F788800972D48 /* emptyCellImage.jpg */,
 				F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */,
 				F64F066420FF10DA0039D14A /* Info.plist */,
+				55B9F3102113ED4E00BAFCBC /* AssetManager.swift */,
 			);
 			path = myDreamCar;
 			sourceTree = "<group>";
@@ -296,6 +305,7 @@
 				F672290C21035A3500C2126A /* art.scnassets in Resources */,
 				F64F066020FF10DA0039D14A /* Assets.xcassets in Resources */,
 				55EAF7C5210F788800972D48 /* emptyCellImage.jpg in Resources */,
+				55B9F3132113FCAE00BAFCBC /* bg.jpg in Resources */,
 				F64F065E20FF10D20039D14A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +336,7 @@
 				F6DBB6592106C72C00D619D5 /* AssetPreviewVC.swift in Sources */,
 				55EAF7C3210EF81700972D48 /* TestData.swift in Sources */,
 				F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */,
+				55B9F30F2113EC9100BAFCBC /* Ramp.swift in Sources */,
 				F6DBB6562106BD8A00D619D5 /* inventoryModel.xcdatamodeld in Sources */,
 				F64F065B20FF10D20039D14A /* PlaceCarVC.swift in Sources */,
 				552FA833210C5F8D00B89535 /* Assets.swift in Sources */,
@@ -333,6 +344,7 @@
 				F6DBB65B2106D6E600D619D5 /* InventoryCell.swift in Sources */,
 				5545ADEF210EA380004815B2 /* Assembler.swift in Sources */,
 				55EAF7C9210FAD4900972D48 /* DataManager.swift in Sources */,
+				55B9F3112113ED4E00BAFCBC /* AssetManager.swift in Sources */,
 				F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

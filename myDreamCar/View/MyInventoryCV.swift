@@ -116,7 +116,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         previewAssetVC.popoverPresentationController?.delegate = self
         previewAssetVC.popoverPresentationController?.sourceView = self.view
         previewAssetVC.selectedAssetName = self.selectedAssetName
-        
+        previewAssetVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
         //set popoverReferce to Main View
        previewAssetVC.selectedAsset = selectedAsset
         
@@ -139,7 +139,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         previewAssetVC.popoverPresentationController?.delegate = self
         previewAssetVC.popoverPresentationController?.sourceView = self.view
         previewAssetVC.selectedAssetName = self.selectedAssetName
-        
+        previewAssetVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
     }
     
     
