@@ -110,7 +110,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         
       //  self.selectedAssetName = selectedAsset.name
         
-        let previewAssetVC = AssetPreviewVC(size: CGSize(width: 1400, height: 800 ))
+        let previewAssetVC = AssetPreviewVC(size: CGSize(width: 1400, height: 1000 ))
         
         previewAssetVC.modalPresentationStyle = .popover
         previewAssetVC.popoverPresentationController?.delegate = self
@@ -129,11 +129,12 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell Tapped: \(indexPath.item)")
     }
+    /*
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         
         //test
         print("Cell Tapped: \(indexPath.item)")
-        let previewAssetVC = AssetPreviewVC(size: CGSize(width: 1400, height: 800 ))
+        let previewAssetVC = AssetPreviewVC(size: CGSize(width: 1400, height: 600 ))
         
         previewAssetVC.modalPresentationStyle = .popover
         previewAssetVC.popoverPresentationController?.delegate = self
@@ -141,7 +142,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         previewAssetVC.selectedAssetName = self.selectedAssetName
         previewAssetVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
     }
-    
+    */
     
     /*
     // MARK: - Navigation

@@ -9,10 +9,20 @@
 import UIKit
 import SceneKit
 import CoreData
+import ARKit
 
 class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
 
-    var sceneView: SCNView!
+    init(size: CGSize) {
+        super.init(nibName: nil, bundle: nil)
+        self.size = size
+         view.frame = CGRect(origin: CGPoint.zero, size: size)
+    }
+    
+    //@IBOutlet var view: UIView!
+    @IBOutlet weak var sceneView: SCNView!
+   // var sceneView: SCNView!
+    var controlsView: UIView!
     var size: CGSize!
     var selectedObject: SCNNode!
     var selectedScene: SCNScene!
@@ -20,16 +30,29 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     var selectedNodeName: String!
     var selectedAssetName: String!
     var selectedAsset: Asset!
+  
     
+    
+    @IBAction func position_X_Slider(_ sender: UISlider) {
+    }
+    
+    let control_Y_Slider: UISlider! = UISlider()
+    @IBAction func position_Y_Slider(_ sender: UISlider) {
+    }
+    
+    
+    @IBAction func position_Z_Slider(_ sender: UISlider) {
+    }
+ // End Preview Positional Sliders
+   
+    //MARK Gesture Recognizers
     let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
 
     weak var placeCarVC: PlaceCarVC!
 
     
-    init(size: CGSize) {
-        super.init(nibName: nil, bundle: nil)
-    self.size = size
-    }
+    
+    
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,15 +65,61 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        view.frame = CGRect(origin: CGPoint.zero, size: size)
-        sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height))
+  //      view.frame = CGRect(origin: CGPoint.zero, size: size)
+        sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height - 250))
+        // control view
+        controlsView = UIView()
+        controlsView.backgroundColor = UIColor.blue
+        controlsView.frame = CGRect(x: 0, y: size.height - 250.00, width: size.width, height: 250.00)
         
+        
+        //control_X_Slider = UISlider()
+        // MARK: Preview Posional Sliders
+        let control_X_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 50.00, width: size.width - 200.00, height: 20.00))
+        
+        let control_Y_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 125.00, width: size.width - 200.00, height: 20.00))
+        
+        let control_Z_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 200.00, width: size.width - 200.00, height: 20.00))
+        
+        
+        control_X_Slider.backgroundColor = UIColor.green
+        control_X_Slider.tintColor = UIColor.white
+        control_X_Slider.minimumValue = -50.00
+        control_X_Slider.maximumValue = 50.00
+        control_X_Slider.value = 0.00
+        control_X_Slider.center = CGPoint(x: size.width/2, y: 25.00)
+        control_X_Slider.isContinuous = true
+        
+        control_Y_Slider.backgroundColor = UIColor.yellow
+        control_Y_Slider.tintColor = UIColor.white
+        control_Y_Slider.minimumValue = -50.00
+        control_Y_Slider.maximumValue = 50.00
+        control_Y_Slider.value = 0.00
+        control_Y_Slider.center = CGPoint(x: size.width/2, y: 100.00)
+        control_Y_Slider.isContinuous = true
+        
+        control_Z_Slider.backgroundColor = UIColor.cyan
+        control_Z_Slider.tintColor = UIColor.white
+        control_Z_Slider.minimumValue = -50.00
+        control_Z_Slider.maximumValue = 50.00
+        control_Z_Slider.value = 0.00
+        control_Z_Slider.center = CGPoint(x: size.width/2, y: 175.00)
+        control_Z_Slider.isContinuous = true
+        // control View
+        controlsView.addSubview(control_X_Slider)
+        controlsView.addSubview(control_Y_Slider)
+        controlsView.addSubview(control_Z_Slider)
+        
+        view.addSubview(controlsView)
+        controlsView.bringSubview(toFront: control_X_Slider)
+        controlsView.bringSubview(toFront: control_Y_Slider)
+        controlsView.bringSubview(toFront: control_Z_Slider)
+        
+// Asset Preview View
         view.insertSubview(sceneView, at: 0)
         preferredContentSize = size
         view.layer.borderWidth = 5.00
         view.layer.borderColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
-        
-        
        
 // test
        let selectedSceneName = "art.scnassets/370z_2013.scn"
@@ -63,17 +132,18 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
      //  Ramp.startRotation(node: car)
     selectedScene.rootNode.addChildNode(assetObject)
         
-
-        
-        // let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AssetPreviewVC.dismissVC))
- 
-            self.view.isUserInteractionEnabled = true
-    //    tapGestureRecognizer.delegate = self
-        
-       self.view?.addGestureRecognizer(tapGestureRecognizer)
+        setupTapGestureRecon(view: self.view)
+      
     }
     
-   
+    func setupTapGestureRecon(view: UIView) {
+        // let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AssetPreviewVC.dismissVC))
+        //    tapGestureRecognizer.delegate = self
+        
+        self.view.isUserInteractionEnabled = true
+         view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     @objc func dismissVC() {
         
         
