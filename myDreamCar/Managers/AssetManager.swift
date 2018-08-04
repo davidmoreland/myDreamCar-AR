@@ -20,10 +20,15 @@ class func getCar() -> SCNNode {
     if (obj != nil) {
         print("Scene is loaded: , \(String(describing: obj)) as Any")
         
-        
+        // Initial Position
+        //To Do: update values from DB so item displays same each time.
         if(node != nil) {
-            node?.scale = SCNVector3Make(0.0090, 0.0090, 0.0090)
+         //   node?.scale = SCNVector3Make(0.0090, 0.0090, 0.0090)
+          //  node?.position = SCNVector3Make(0.0, 0.5, 0)
+            node?.scale = SCNVector3Make(0.0020, 0.0020, 0.0020)
             node?.position = SCNVector3Make(0.0, 0.5, 0)
+                
+            }
         }
             
         else {
@@ -31,13 +36,7 @@ class func getCar() -> SCNNode {
             obj? = SCNScene(named: "art.scnassets/MainScene.scn")!
             obj?.rootNode.childNode(withName: "empty", recursively: true)
         }
-    }
-    else {
-        print("Scene is empty: \(String(describing: obj)) as Any")
-    }
-    
-    
-    return node!
+        return node!
 }
 
 

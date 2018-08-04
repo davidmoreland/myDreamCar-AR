@@ -195,7 +195,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
         view.layer.borderWidth = 5.00
         view.layer.borderColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
        
-// test
+// DISPLAY 3D - Object
        let selectedSceneName = "art.scnassets/370z_2013.scn"
         
     selectedScene = SCNScene(named: selectedSceneName)!
