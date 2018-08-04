@@ -10,6 +10,7 @@
 		552FA833210C5F8D00B89535 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552FA832210C5F8D00B89535 /* Assets.swift */; };
 		5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEB210EA1D5004815B2 /* TranslationControl.swift */; };
 		5545ADEF210EA380004815B2 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEE210EA380004815B2 /* Assembler.swift */; };
+		5567FEEE2115011300D4C512 /* orange-lamborghini.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5567FEED2115011200D4C512 /* orange-lamborghini.jpg */; };
 		559B308D21143F1000C1D787 /* ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559B308C21143F1000C1D787 /* ViewLayout.swift */; };
 		55B9F30F2113EC9100BAFCBC /* Ramp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9F30E2113EC8F00BAFCBC /* Ramp.swift */; };
 		55B9F3112113ED4E00BAFCBC /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9F3102113ED4E00BAFCBC /* AssetManager.swift */; };
@@ -56,6 +57,7 @@
 		552FA832210C5F8D00B89535 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		5545ADEB210EA1D5004815B2 /* TranslationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationControl.swift; sourceTree = "<group>"; };
 		5545ADEE210EA380004815B2 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		5567FEED2115011200D4C512 /* orange-lamborghini.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "orange-lamborghini.jpg"; sourceTree = "<group>"; };
 		559B308C21143F1000C1D787 /* ViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLayout.swift; sourceTree = "<group>"; };
 		55B9F30E2113EC8F00BAFCBC /* Ramp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ramp.swift; sourceTree = "<group>"; };
 		55B9F3102113ED4E00BAFCBC /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
@@ -152,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				F64F065620FF10D20039D14A /* AppDelegate.swift */,
-				55B9F3142114073600BAFCBC /* Controls */,
 				F64F065520FF10D20039D14A /* myDreamCar */,
 				F64F066C20FF10DA0039D14A /* my Dream Car Tests */,
 				F64F067720FF10DA0039D14A /* my Dream Car UITests */,
@@ -174,6 +175,7 @@
 		F64F065520FF10D20039D14A /* myDreamCar */ = {
 			isa = PBXGroup;
 			children = (
+				55B9F3142114073600BAFCBC /* Controls */,
 				559B308B21143C6200C1D787 /* Layout */,
 				F6DBB6572106BDB800D619D5 /* Data */,
 				5545ADED210EA34E004815B2 /* Managers */,
@@ -182,6 +184,7 @@
 				F64F065A20FF10D20039D14A /* PlaceCarVC.swift */,
 				F64F065C20FF10D20039D14A /* Main.storyboard */,
 				F64F065F20FF10DA0039D14A /* Assets.xcassets */,
+				5567FEED2115011200D4C512 /* orange-lamborghini.jpg */,
 				55B9F3122113FCAD00BAFCBC /* bg.jpg */,
 				55EAF7C4210F788800972D48 /* emptyCellImage.jpg */,
 				F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */,
@@ -334,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5567FEEE2115011300D4C512 /* orange-lamborghini.jpg in Resources */,
 				F64F066320FF10DA0039D14A /* LaunchScreen.storyboard in Resources */,
 				F672290C21035A3500C2126A /* art.scnassets in Resources */,
 				F64F066020FF10DA0039D14A /* Assets.xcassets in Resources */,

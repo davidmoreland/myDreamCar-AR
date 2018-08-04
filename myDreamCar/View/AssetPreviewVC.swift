@@ -21,7 +21,6 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     
     //@IBOutlet var view: UIView!
     @IBOutlet weak var sceneView: SCNView!
-   // var sceneView: SCNView!
     var controlsView: UIView!
     var size: CGSize!
     var selectedObject: SCNNode!
@@ -32,17 +31,14 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     var selectedAsset: Asset!
   
     
+    var positionNegXlabel: UILabel!
+    var positionNegYlabel: UILabel!
+    var positionNegZlabel: UILabel!
+    var positionPosXlabel: UILabel!
+    var positionPosYlabel: UILabel!
+    var positionPosZlabel: UILabel!
     
-    @IBAction func position_X_Slider(_ sender: UISlider) {
-    }
-    
-    let control_Y_Slider: UISlider! = UISlider()
-    @IBAction func position_Y_Slider(_ sender: UISlider) {
-    }
-    
-    
-    @IBAction func position_Z_Slider(_ sender: UISlider) {
-    }
+
  // End Preview Positional Sliders
    
     //MARK Gesture Recognizers
@@ -66,54 +62,132 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
     
   //      view.frame = CGRect(origin: CGPoint.zero, size: size)
-        sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height - 250))
+        sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height))
         // control view
         controlsView = UIView()
-        controlsView.backgroundColor = UIColor.blue
+        controlsView.backgroundColor = UIColor.black
+        controlsView.backgroundColor?.withAlphaComponent(0.10)
         controlsView.frame = CGRect(x: 0, y: size.height - 250.00, width: size.width, height: 250.00)
         
         
         //control_X_Slider = UISlider()
         // MARK: Preview Posional Sliders
-        let control_X_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 50.00, width: size.width - 200.00, height: 20.00))
         
-        let control_Y_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 125.00, width: size.width - 200.00, height: 20.00))
+        let sliderLength = size.width - 400
+        let sliderValueBoxWidth: CGFloat = 80.0
+        let sliderValueBoxHeight: CGFloat = 60.0
         
-        let control_Z_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 200.00, width: size.width - 200.00, height: 20.00))
+        let control_X_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 50.00, width: sliderLength, height: 10.00))
+        control_X_Slider.addTarget(self, action: #selector(position_X_action(sender:)), for: UIControlEvents.valueChanged)
+        
+        let control_Y_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 125.00, width: sliderLength, height: 10.00))
+        control_Y_Slider.addTarget(self, action: #selector(position_Y_action(sender:)), for: UIControlEvents.valueChanged)
+        
+        let control_Z_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 200.00, width: sliderLength, height: 10.00))
+        control_Z_Slider.addTarget(self, action: #selector(position_Z_action(sender:)), for: UIControlEvents.valueChanged)
         
         
-        control_X_Slider.backgroundColor = UIColor.green
+        control_X_Slider.backgroundColor = UIColor.orange
         control_X_Slider.tintColor = UIColor.white
-        control_X_Slider.minimumValue = -50.00
-        control_X_Slider.maximumValue = 50.00
+        control_X_Slider.minimumValue = -100.00
+        control_X_Slider.maximumValue = 100.00
         control_X_Slider.value = 0.00
-        control_X_Slider.center = CGPoint(x: size.width/2, y: 25.00)
+        control_X_Slider.center = CGPoint(x: size.width/2, y: 50.00)
         control_X_Slider.isContinuous = true
         
-        control_Y_Slider.backgroundColor = UIColor.yellow
+        control_Y_Slider.backgroundColor = UIColor.blue
         control_Y_Slider.tintColor = UIColor.white
-        control_Y_Slider.minimumValue = -50.00
-        control_Y_Slider.maximumValue = 50.00
+        control_Y_Slider.minimumValue = -100.00
+        control_Y_Slider.maximumValue = 100.00
         control_Y_Slider.value = 0.00
-        control_Y_Slider.center = CGPoint(x: size.width/2, y: 100.00)
+        control_Y_Slider.center = CGPoint(x: size.width/2, y: 125.00)
         control_Y_Slider.isContinuous = true
         
-        control_Z_Slider.backgroundColor = UIColor.cyan
+        control_Z_Slider.backgroundColor = UIColor.yellow
         control_Z_Slider.tintColor = UIColor.white
-        control_Z_Slider.minimumValue = -50.00
-        control_Z_Slider.maximumValue = 50.00
+        control_Z_Slider.minimumValue = -100.00
+        control_Z_Slider.maximumValue = 100.00
         control_Z_Slider.value = 0.00
-        control_Z_Slider.center = CGPoint(x: size.width/2, y: 175.00)
+        control_Z_Slider.center = CGPoint(x: size.width/2, y: 200.00)
         control_Z_Slider.isContinuous = true
         // control View
         controlsView.addSubview(control_X_Slider)
         controlsView.addSubview(control_Y_Slider)
         controlsView.addSubview(control_Z_Slider)
-        
         view.addSubview(controlsView)
         controlsView.bringSubview(toFront: control_X_Slider)
         controlsView.bringSubview(toFront: control_Y_Slider)
         controlsView.bringSubview(toFront: control_Z_Slider)
+        
+        
+        // Labels
+        // X Label
+        positionNegXlabel = UILabel()
+        positionNegXlabel.frame = CGRect(x: (size.width/2 - sliderLength/2) - 150, y: 0, width: sliderValueBoxWidth, height: sliderValueBoxHeight)
+        positionNegXlabel.backgroundColor = UIColor.clear
+        positionNegXlabel.textColor = UIColor.white
+        positionNegXlabel.textAlignment = NSTextAlignment.center
+        positionNegXlabel.text = "0"
+        positionNegXlabel.numberOfLines = 1
+        positionNegXlabel.font = UIFont(name: "Courier", size: 32)
+        // Y Label
+        positionNegYlabel = UILabel()
+        positionNegYlabel.frame = CGRect(x: (size.width/2 - sliderLength/2) - 150, y: 75, width: sliderValueBoxWidth, height: sliderValueBoxHeight)
+        positionNegYlabel.backgroundColor = UIColor.clear
+        positionNegYlabel.textColor = UIColor.white
+        positionNegYlabel.textAlignment = NSTextAlignment.center
+        positionNegYlabel.text = "0"
+        positionNegYlabel.numberOfLines = 1
+        positionNegYlabel.font = UIFont(name: "Courier", size: 32)
+        // Z Label
+        positionNegZlabel = UILabel()
+        positionNegZlabel.frame = CGRect(x: (size.width/2 - sliderLength/2) - 150, y: 150, width: sliderValueBoxWidth, height: sliderValueBoxHeight)
+        positionNegZlabel.backgroundColor = UIColor.clear
+        positionNegZlabel.textColor = UIColor.white
+        positionNegZlabel.textAlignment = NSTextAlignment.center
+        positionNegZlabel.text = "0"
+        positionNegZlabel.numberOfLines = 1
+        positionNegZlabel.font = UIFont(name: "Courier", size: 32)
+        
+        
+        // X Label
+        positionPosXlabel = UILabel()
+        positionPosXlabel.frame = CGRect(x: (size.width/2 + sliderLength/2) + 00, y: 0, width: sliderValueBoxWidth, height: sliderValueBoxHeight)
+        positionPosXlabel.backgroundColor = UIColor.clear
+        positionPosXlabel.textColor = UIColor.white
+        positionPosXlabel.textAlignment = NSTextAlignment.center
+        positionPosXlabel.text = "0"
+        positionPosXlabel.numberOfLines = 1
+        positionPosXlabel.font = UIFont(name: "Courier", size: 32)
+        // Y Label
+        positionPosYlabel = UILabel()
+        positionPosYlabel.frame = CGRect(x: (size.width/2 + sliderLength/2) + 0, y: 75, width: sliderValueBoxWidth, height: sliderValueBoxHeight)
+        positionPosYlabel.backgroundColor = UIColor.clear
+        positionPosYlabel.textColor = UIColor.white
+        positionPosYlabel.textAlignment = NSTextAlignment.center
+        positionPosYlabel.text = "0"
+        positionPosYlabel.numberOfLines = 1
+        positionPosYlabel.font = UIFont(name: "Courier", size: 32)
+        // Z Label
+        positionPosZlabel = UILabel()
+        positionPosZlabel.frame = CGRect(x: (size.width/2 + sliderLength/2) + 0, y: 150, width: sliderValueBoxWidth, height: sliderValueBoxHeight)
+        positionPosZlabel.backgroundColor = UIColor.clear
+        positionPosZlabel.textColor = UIColor.white
+        positionPosZlabel.textAlignment = NSTextAlignment.center
+        positionPosZlabel.text = "0"
+        positionPosZlabel.numberOfLines = 1
+        positionPosZlabel.font = UIFont(name: "Courier", size: 32)
+        
+        
+        self.controlsView.addSubview(positionNegXlabel)
+        self.controlsView.addSubview(positionNegYlabel)
+        self.controlsView.addSubview(positionNegZlabel)
+        
+        self.controlsView.addSubview(positionPosXlabel)
+        self.controlsView.addSubview(positionPosYlabel)
+        self.controlsView.addSubview(positionPosZlabel)
+        
+        
         
 // Asset Preview View
         view.insertSubview(sceneView, at: 0)
@@ -135,7 +209,52 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
         setupTapGestureRecon(view: self.view)
       
     }
+    @objc func position_X_action(sender: UISlider) {
+        if(sender.value < 0){
+            positionNegXlabel.textColor = UIColor.green
+            positionPosXlabel.textColor = UIColor.white
+            positionNegXlabel.font = UIFont(name: "Copperplate-Bold", size: 34)
+            positionPosXlabel.font = UIFont(name: "Courier", size: 30)
+            positionNegXlabel.text = String(Int(sender.value))
+        } else {
+            positionPosXlabel.textColor = UIColor.green
+            positionNegXlabel.textColor = UIColor.white
+            positionPosXlabel.font = UIFont(name: "Copperplate-Bold", size: 34)
+            positionNegXlabel.font = UIFont(name: "Courier", size: 30)
+            positionPosXlabel.text = String(Int(sender.value))
+              }
+    }
     
+    @objc func position_Y_action(sender: UISlider) {
+        if(sender.value < 0){
+            positionNegYlabel.textColor = UIColor.green
+            positionPosYlabel.textColor = UIColor.white
+            positionNegYlabel.font = UIFont(name: "Copperplate-Bold", size: 34)
+            positionPosYlabel.font = UIFont(name: "Courier", size: 30)
+             positionNegYlabel.text = String(Int(sender.value))
+        } else {
+            positionPosYlabel.textColor = UIColor.green
+            positionNegYlabel.textColor = UIColor.white
+            positionPosYlabel.font = UIFont(name: "Copperplate-Bold", size: 34)
+            positionNegYlabel.font = UIFont(name: "Courier", size: 30)
+            positionPosYlabel.text = String(Int(sender.value))
+          }
+    }
+    @objc func position_Z_action(sender: UISlider) {
+        if(sender.value < 0){
+            positionNegZlabel.textColor = UIColor.green
+            positionPosZlabel.textColor = UIColor.white
+            positionNegZlabel.font = UIFont(name: "Copperplate-Bold", size: 34)
+            positionPosZlabel.font = UIFont(name: "Courier", size: 30)
+            positionNegZlabel.text = String(Int(sender.value))
+         } else {
+            positionPosZlabel.textColor = UIColor.green
+            positionNegZlabel.textColor = UIColor.white
+            positionPosZlabel.font = UIFont(name: "Copperplate-Bold", size: 34)
+            positionNegZlabel.font = UIFont(name: "Courier", size: 30)
+            positionPosZlabel.text = String(Int(sender.value))
+        }
+    }
     func setupTapGestureRecon(view: UIView) {
         // let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AssetPreviewVC.dismissVC))
         //    tapGestureRecognizer.delegate = self
@@ -198,6 +317,9 @@ let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true
            // test scene
             let selectedNode = hitResults[0].node
             print("Node Name: \(selectedNode.name!)")
+            //TO DO:  1. Save Node 'slider' settings
+            //      2. Pass Node to PlacerVC
+            //      3. Dismiss PopupVC
             
          //   displaySelectedAssetIn(scene: selectedScene, nodeName: selectedNodeName)
           //  placeCarVC.selectedObject = selectedNode
@@ -207,6 +329,6 @@ let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true
 
     }
     
-    
+  
     
 }
