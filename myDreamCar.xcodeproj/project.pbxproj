@@ -193,7 +193,6 @@
 				5545ADED210EA34E004815B2 /* Managers */,
 				F6C6BE492104AEA400606B51 /* View */,
 				F672290B21035A3500C2126A /* art.scnassets */,
-				F64F065A20FF10D20039D14A /* PlaceCarVC.swift */,
 				F64F065C20FF10D20039D14A /* Main.storyboard */,
 				F64F065F20FF10DA0039D14A /* Assets.xcassets */,
 				5567FEED2115011200D4C512 /* orange-lamborghini.jpg */,
@@ -230,6 +229,7 @@
 				552FA832210C5F8D00B89535 /* Assets.swift */,
 				F6C6BE4C2104C39D00606B51 /* AboutVC.swift */,
 				F672290D2104233F00C2126A /* MyInventoryCV.swift */,
+				F64F065A20FF10D20039D14A /* PlaceCarVC.swift */,
 				F6DBB6582106C72C00D619D5 /* AssetPreviewVC.swift */,
 			);
 			path = View;

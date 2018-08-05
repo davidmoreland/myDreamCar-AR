@@ -7,3 +7,17 @@
 //
 
 import Foundation
+import SceneKit
+
+/*
+func setCameraPositionFor(camera: SCNCamera, inSceneView: SCNScenev) -> SCNCamera {
+    
+   //camera.
+    
+    return camera
+}
+
+func setCameraAspectViewFor(camera: SCNCamera) {
+    
+}
+*/

@@ -11,7 +11,8 @@ import SceneKit
 
 class TranslationControl: UIViewController {
 
-    var x: SCNFloat = 0.0 { willSet {print("X-Value: \(newValue)")} }
+    var x: SCNFloat = 0.0 { willSet {print("X-Value: \(newValue)")
+        updatePosition(x: newValue)} }
     var y: SCNFloat = 0.0 { willSet {print("Y-Value: \(newValue)")} }
     var z: SCNFloat = 0.0 { willSet {print("Z-Value: \(newValue)")} }
     

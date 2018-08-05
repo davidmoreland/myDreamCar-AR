@@ -11,7 +11,7 @@ import SceneKit
 class AssetManager {
     
 
-class func getCar() -> SCNNode {
+class func getAsset() -> SCNNode {
     
     var obj = SCNScene(named: "art.scnassets/370z_2013.scn")
   //  var obj = SCNScene(named:"art.scnassets/MainScence.scn")
@@ -25,10 +25,11 @@ class func getCar() -> SCNNode {
         //To Do: update values from DB so item displays same each time.
         if(node != nil) {
          //   node?.scale = SCNVector3Make(0.0090, 0.0090, 0.0090)
-          //  node?.position = SCNVector3Make(0.0, 0.5, 0)
-            node?.scale = SCNVector3Make(0.0020, 0.0020, 0.0020)
-            node?.position = SCNVector3Make(1.0, 1.0, -1.0)
-                
+         
+    //  node?.position = SCNVector3Make(0.0, 0.5, 0)
+         node?.scale = SCNVector3Make(0.020, 0.020, 0.020)
+    //  node?.position = SCNVector3Make(0.0, 0.0, 0.0)
+             node?.position = SCNVector3Make(0.0, 0.5, -3.0)
             }
         }
             

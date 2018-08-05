@@ -19,9 +19,11 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
          view.frame = CGRect(origin: CGPoint.zero, size: size)
     }
     
-
+   let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
+    
     //@IBOutlet var view: UIView!
     @IBOutlet weak var sceneView: SCNView!
+    
     var controlsView: UIView!
     var size: CGSize!
     var selectedObject: SCNNode!
@@ -30,6 +32,8 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     var selectedNodeName: String!
     var selectedAssetName: String!
     var selectedAsset: Asset!
+    var selctedNode: SCNNode!
+    
     //Control Sliders
  // let control_X_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 50.00, width: sliderLength, height: 10.00))
     
@@ -45,7 +49,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
  // End Preview Positional Sliders
    
     //MARK Gesture Recognizers
-    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+ //   let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
 
     weak var placeCarVC: PlaceCarVC!
 
@@ -205,21 +209,29 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         view.layer.borderColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
        
 // DISPLAY 3D - Object
-       let selectedSceneName = "art.scnassets/370z_2013.scn"
+    
+        //let selectedSceneName = "art.scnassets/370z_2013.scn"
+        let selectedSceneName = "art.scnassets/MainScene.scn"
         
     selectedScene = SCNScene(named: selectedSceneName)!
-    let nodeName = "pivot"
+   // let nodeName = "pivot"
         sceneView.scene = selectedScene
         //testing
       // getCar WORKS
-        //  let assetObject = AssetManager.getCar()
-        let assetObject: SCNNode = displaySelectedAssetIn(scene: selectedScene, nodeName: nodeName)
+          let assetObject = AssetManager.getAsset()
+        
+        // Display Asset WORKS 8.4.18
+       // let assetObject: SCNNode = displaySelectedAssetIn(scene: selectedScene, nodeName: nodeName)
      //  Ramp.startRotation(node: car)
     selectedScene.rootNode.addChildNode(assetObject)
         
-        setupTapGestureRecon(view: self.view)
+     //  setupTapGestureRecon(view: self.view)
       
-    }
+    }  // end viewDidLoad
+  
+    
+    
+    
     
     
     @objc func position_X_action(sender: UISlider) {
@@ -269,20 +281,38 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             positionPosZlabel.text = String(Int(sender.value))
         }
     }
+    /*
     func setupTapGestureRecon(view: UIView) {
-        // let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AssetPreviewVC.dismissVC))
-        //    tapGestureRecognizer.delegate = self
-        
+         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+            tapGestureRecognizer.delegate = self
         self.view.isUserInteractionEnabled = true
          view.addGestureRecognizer(tapGestureRecognizer)
+        self.dismiss(animated: true, completion: nil)
+    }
+    */
+    
+//Add touch
+
+    @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
+ 
+ //       SceneManager.sceneHitDetectionFor(sceneView: self.sceneView, gestureRecongnizer: )
+        let touchPoint = gestureRecognizer.location(in: sceneView)
+        let hitResults = sceneView.hitTest(touchPoint, options: [ : ])
+        //  displaySelectedAssetIn(scene: selectedScene, name: selectedNodeName)
+ 
+        if hitResults .count > 0 {
+            // test scene
+            let selectedNode = hitResults[0].node
+            print("Node Name: \(selectedNode.name!)")
+            // pass reference to main screen
+            placeCarVC.assetPreviewVC = self
     }
     
-    @objc func dismissVC() {
-        
-        
     }
 
-    /*
+}  //end Class
+
+/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -291,7 +321,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         // Pass the selected object to the new view controller.
     }
     */
-    
+    /*
     func displaySelectedAssetIn(scene: SCNScene?, nodeName: String) -> SCNNode {
         //Camera
         
@@ -302,13 +332,13 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         scene?.rootNode.camera = camera
         
        //let parentScene = scene
-       let parentObj = SCNScene(named:"art.scnassets/Nissan370Z2013ActualSize_Grey.scn")
-        
+      // let parentObj = SCNScene(named:"art.scnassets/370z_2013.scn")
+
 let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true)
         //Car - refactor into object retrieval class
         objNode?.scale = SCNVector3Make(0.0200, 0.0200, 0.0200)
       //  parentNode?.position = SCNVector3Make(0, -1, 1) // centered X, off bottom Y
-        objNode?.position = SCNVector3Make(0, -0.5, -5)
+        objNode?.position = SCNVector3Make(0, -0.5, -15.00)
       scene?.rootNode.addChildNode(objNode!)
         
        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.1 * Double.pi), z: 0, duration: 1.0))
@@ -318,31 +348,11 @@ let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true
         
         return objNode!
     }
+    */
     
-    //Add touch
 
-    @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
-    //
-        let touchPoint = gestureRecognizer.location(in: sceneView)
-        let hitResults = sceneView.hitTest(touchPoint, options: [ : ])
-      //  displaySelectedAssetIn(scene: selectedScene, name: selectedNodeName)
         
-        if hitResults .count > 0 {
-           // test scene
-            let selectedNode = hitResults[0].node
-            print("Node Name: \(selectedNode.name!)")
-            //TO DO:  1. Save Node 'slider' settings
-            //      2. Pass Node to PlacerVC
-            //      3. Dismiss PopupVC
-            
-         //   displaySelectedAssetIn(scene: selectedScene, nodeName: selectedNodeName)
-          //  placeCarVC.selectedObject = selectedNode
-            
-            
-        }
 
-    }
-    
   
     
-}
+

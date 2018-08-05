@@ -55,8 +55,11 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         collectionView?.delegate = self
         
         //Add touch
+     //  let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
-    self.view.isUserInteractionEnabled = true
+        
+        
+        self.view.isUserInteractionEnabled = true
         tapGestureRecognizer.delegate = self
     
         self.view?.addGestureRecognizer(tapGestureRecognizer)
@@ -95,19 +98,25 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         return true  // 1st
     }
     
-    func handleTapGestureRecognizer(gestureRecognizer: UITapGestureRecognizer){
+  @objc  func handleTapGestureRecognizer(_ gestureRecognizer: UITapGestureRecognizer){
         let touchPoint = gestureRecognizer.location(in: self.view)
         
         if let indexPath = self.collectionView?.indexPathForItem(at: touchPoint) {
             self.selectedCell = self.collectionView?.cellForItem(at: indexPath) as! InventoryCell!
             print("Cell Item #: \(indexPath.item)")
             print("Cell Title: \(self.selectedCell.cellTitle)")
+            
         }
     }
  
     @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
         // 2nd
+        let touchPoint = gestureRecognizer.location(in: self.view)
         
+        if let indexPath = self.collectionView?.indexPathForItem(at: touchPoint) {
+            self.selectedCell = self.collectionView?.cellForItem(at: indexPath) as! InventoryCell!
+            print("Cell Item #: \(indexPath.item)")
+            print("Cell Title: \(self.selectedCell.cellTitle)")
       //  self.selectedAssetName = selectedAsset.name
         
         let previewAssetVC = AssetPreviewVC(size: CGSize(width: 1400, height: 1000 ))
@@ -123,7 +132,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         present(previewAssetVC, animated: true, completion: nil)
     
     }
- 
+}
     
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
