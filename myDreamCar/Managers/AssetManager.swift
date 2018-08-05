@@ -14,8 +14,9 @@ class AssetManager {
 class func getCar() -> SCNNode {
     
     var obj = SCNScene(named: "art.scnassets/370z_2013.scn")
+  //  var obj = SCNScene(named:"art.scnassets/MainScence.scn")
     
-    let node = obj?.rootNode.childNode(withName: "obj_pivot", recursively: true)!
+    var node = obj?.rootNode.childNode(withName: "obj_pivot", recursively: false)!
     
     if (obj != nil) {
         print("Scene is loaded: , \(String(describing: obj)) as Any")
@@ -26,7 +27,7 @@ class func getCar() -> SCNNode {
          //   node?.scale = SCNVector3Make(0.0090, 0.0090, 0.0090)
           //  node?.position = SCNVector3Make(0.0, 0.5, 0)
             node?.scale = SCNVector3Make(0.0020, 0.0020, 0.0020)
-            node?.position = SCNVector3Make(0.0, 0.5, 0)
+            node?.position = SCNVector3Make(1.0, 1.0, -1.0)
                 
             }
         }
@@ -35,6 +36,7 @@ class func getCar() -> SCNNode {
             print("Node is empty: ")
             obj? = SCNScene(named: "art.scnassets/MainScene.scn")!
             obj?.rootNode.childNode(withName: "empty", recursively: true)
+        node = SCNNode()
         }
         return node!
 }

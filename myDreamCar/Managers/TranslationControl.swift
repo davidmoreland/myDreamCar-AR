@@ -11,6 +11,11 @@ import SceneKit
 
 class TranslationControl: UIViewController {
 
+    var x: SCNFloat = 0.0 { willSet {print("X-Value: \(newValue)")} }
+    var y: SCNFloat = 0.0 { willSet {print("Y-Value: \(newValue)")} }
+    var z: SCNFloat = 0.0 { willSet {print("Z-Value: \(newValue)")} }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,9 +32,24 @@ class TranslationControl: UIViewController {
     }
     
     
-    func updateNodePositionalValuesFor(x: CGFloat, y: CGFloat, z: CGFloat) {
+    class func update3Dposition(x: Float, y: Float, z: Float ) -> SCNVector3 {
+    // x = 0.5, y = 1.9, z = -2.0
+        let nodePosition = SCNVector3Make(x, y, z)
+        print("Update X: \(x)")
+        print("Update Y: \(y)")
+        print("Update Z: \(z)")
+        
+        return nodePosition
+    }
     
-    
+     func updatePosition(x: Float) -> SCNVector3
+    {
+        let nodePosition = SCNVector3Make(x, self.y, self.z)
+        print("Update X: \(x)")
+        print("Update Y: \(y)")
+        print("Update Z: \(z)")
+        
+        return nodePosition
     }
     
     

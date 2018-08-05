@@ -11,7 +11,7 @@ import SceneKit
 import CoreData
 import ARKit
 
-class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
+class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDelegate{
 
     init(size: CGSize) {
         super.init(nibName: nil, bundle: nil)
@@ -19,6 +19,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
          view.frame = CGRect(origin: CGPoint.zero, size: size)
     }
     
+
     //@IBOutlet var view: UIView!
     @IBOutlet weak var sceneView: SCNView!
     var controlsView: UIView!
@@ -29,8 +30,10 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     var selectedNodeName: String!
     var selectedAssetName: String!
     var selectedAsset: Asset!
-  
+    //Control Sliders
+ // let control_X_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 50.00, width: sliderLength, height: 10.00))
     
+  //  let control_Y_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 125.00, width: sliderLength, height: 10.00))
     var positionNegXlabel: UILabel!
     var positionNegYlabel: UILabel!
     var positionNegZlabel: UILabel!
@@ -38,7 +41,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     var positionPosYlabel: UILabel!
     var positionPosZlabel: UILabel!
     
-
+    
  // End Preview Positional Sliders
    
     //MARK Gesture Recognizers
@@ -57,12 +60,18 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
     
     }
     
+    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+        print("Rendering AssetPreview: ")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
   //      view.frame = CGRect(origin: CGPoint.zero, size: size)
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height))
+        
+            self.sceneView.delegate = self
+        
         // control view
         controlsView = UIView()
         controlsView.backgroundColor = UIColor.black
@@ -78,10 +87,10 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
         let sliderValueBoxHeight: CGFloat = 60.0
         
         let control_X_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 50.00, width: sliderLength, height: 10.00))
-        control_X_Slider.addTarget(self, action: #selector(position_X_action(sender:)), for: UIControlEvents.valueChanged)
+     control_X_Slider.addTarget(self, action: #selector(position_X_action(sender:)), for: UIControlEvents.valueChanged)
         
         let control_Y_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 125.00, width: sliderLength, height: 10.00))
-        control_Y_Slider.addTarget(self, action: #selector(position_Y_action(sender:)), for: UIControlEvents.valueChanged)
+     control_Y_Slider.addTarget(self, action: #selector(position_Y_action(sender:)), for: UIControlEvents.valueChanged)
         
         let control_Z_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 200.00, width: sliderLength, height: 10.00))
         control_Z_Slider.addTarget(self, action: #selector(position_Z_action(sender:)), for: UIControlEvents.valueChanged)
@@ -199,16 +208,20 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
        let selectedSceneName = "art.scnassets/370z_2013.scn"
         
     selectedScene = SCNScene(named: selectedSceneName)!
+    let nodeName = "pivot"
         sceneView.scene = selectedScene
         //testing
-        let assetObject = AssetManager.getCar()
-        
+      // getCar WORKS
+        //  let assetObject = AssetManager.getCar()
+        let assetObject: SCNNode = displaySelectedAssetIn(scene: selectedScene, nodeName: nodeName)
      //  Ramp.startRotation(node: car)
     selectedScene.rootNode.addChildNode(assetObject)
         
         setupTapGestureRecon(view: self.view)
       
     }
+    
+    
     @objc func position_X_action(sender: UISlider) {
         if(sender.value < 0){
             positionNegXlabel.textColor = UIColor.green
@@ -223,6 +236,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate {
             positionNegXlabel.font = UIFont(name: "Courier", size: 30)
             positionPosXlabel.text = String(Int(sender.value))
               }
+     //   TranslationControl().updatePosition(x: (sender.value))
     }
     
     @objc func position_Y_action(sender: UISlider) {
@@ -294,7 +308,7 @@ let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true
         //Car - refactor into object retrieval class
         objNode?.scale = SCNVector3Make(0.0200, 0.0200, 0.0200)
       //  parentNode?.position = SCNVector3Make(0, -1, 1) // centered X, off bottom Y
-        objNode?.position = SCNVector3Make(0, -0.5, -2)
+        objNode?.position = SCNVector3Make(0, -0.5, -5)
       scene?.rootNode.addChildNode(objNode!)
         
        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.1 * Double.pi), z: 0, duration: 1.0))
