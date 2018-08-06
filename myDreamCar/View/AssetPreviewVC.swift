@@ -17,6 +17,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         super.init(nibName: nil, bundle: nil)
         self.size = size
          view.frame = CGRect(origin: CGPoint.zero, size: size)
+        
     }
     
    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
@@ -49,14 +50,8 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
  // End Preview Positional Sliders
    
     //MARK Gesture Recognizers
- //   let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-
-    weak var placeCarVC: PlaceCarVC!
-
-    
-    
-    
-    
+ 
+    weak var placeAssetVC: PlaceAssetVC!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -73,7 +68,8 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     
   //      view.frame = CGRect(origin: CGPoint.zero, size: size)
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height))
-        
+      //  self.placeAssetVC = (storyboard?.instantiateInitialViewController())! as! PlaceAssetVC
+         
             self.sceneView.delegate = self
         
         // control view
@@ -225,7 +221,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
      //  Ramp.startRotation(node: car)
     selectedScene.rootNode.addChildNode(assetObject)
         
-     //  setupTapGestureRecon(view: self.view)
+      setupTapGestureRecon(view: self.view)
       
     }  // end viewDidLoad
   
@@ -281,7 +277,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             positionPosZlabel.text = String(Int(sender.value))
         }
     }
-    /*
+    
     func setupTapGestureRecon(view: UIView) {
          let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
             tapGestureRecognizer.delegate = self
@@ -289,38 +285,74 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
          view.addGestureRecognizer(tapGestureRecognizer)
         self.dismiss(animated: true, completion: nil)
     }
+    /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        placeAssetVC = PlaceAssetVC()
+        placeAssetVC.assetPreviewVC = self
+        placeAssetVC.selectedAsset = selectedAsset
+        placeAssetVC.selectedNode = self.selctedNode.parent
+        //test
+        print("PA_VC: \(placeAssetVC)")
+        
+    }
     */
+    
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+
+    placeAssetVC = PlaceAssetVC()
+      
+        dismiss(animated: true, completion: nil)
+        
+    }
     
 //Add touch
 
     @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
  
- //       SceneManager.sceneHitDetectionFor(sceneView: self.sceneView, gestureRecongnizer: )
         let touchPoint = gestureRecognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(touchPoint, options: [ : ])
-        //  displaySelectedAssetIn(scene: selectedScene, name: selectedNodeName)
- 
+      
         if hitResults .count > 0 {
             // test scene
             let selectedNode = hitResults[0].node
+            print("Parent Node: \(String(describing: selectedNode.parent?.name!))")
             print("Node Name: \(selectedNode.name!)")
             // pass reference to main screen
-            placeCarVC.assetPreviewVC = self
-    }
+            // node is NIL
+           //let placeAssetVC = PlaceAssetVC()
+            //self.parent?.addChildViewController(placeAssetVC)
+          //  placeAssetVC.sceneView = ARSCNView()
+         //   placeAssetVC.assetPreviewVC = self
+        //   placeAssetVC.selectedAsset = selectedAsset
+        //    placeAssetVC.selectedNode = selectedNode.parent
+            
+             //    dismiss(animated: true, completion: nil)
+          //  present(placeAssetVC, animated: true, completion: nil)
     
+        performSegue(withIdentifier: "showPlaceAsset", sender: self)
+      //      prepare(for: "showPlaceAsset", sender: self)
+        }
+        
     }
-
-}  //end Class
-
-/*
+  
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
+        segue.destination.addChildViewController(placeAssetVC)
+        placeAssetVC.assetPreviewVC = self
+        placeAssetVC.selectedAsset = selectedAsset
+        placeAssetVC.selectedNode = self.selctedNode.parent
+        //test
+        print("PA_VC: \(placeAssetVC)")
         // Pass the selected object to the new view controller.
     }
-    */
+}  //end Class
+
+
+
+
     /*
     func displaySelectedAssetIn(scene: SCNScene?, nodeName: String) -> SCNNode {
         //Camera

@@ -11,7 +11,7 @@ import SceneKit
 
 class SceneManager {
     
-    
+    /*
     class func sceneHitDetectionFor(sceneView: SCNView, gestureRecongnizer: UIGestureRecognizer)-> SCNNode {
         var tappedNodeName: String!
         var parentNodeName: String!
@@ -20,11 +20,10 @@ class SceneManager {
         let touchLocation = gestureRecongnizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(touchLocation, options: [:])
         
-        if hitResults.count > 0 {
-            let node = hitResults[0].node
+      //  if hitResults.count > 0 {
+         //   let node = hitResults[0].node
             // test
-           // guard let tappedNodeName = node.name! else {return}
-            
+        
             print("node Tapped: \(node.name!)")
             print("Parent: \(node.parent?.name!)")
             
@@ -33,4 +32,5 @@ class SceneManager {
         else
         { return SCNNode()}
     }
-}
+*/
+ }

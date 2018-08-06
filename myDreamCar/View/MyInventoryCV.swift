@@ -20,6 +20,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     var selectedAssetName: String!
     var flowLayout: UICollectionViewLayout!
     var selectedAsset: Asset!
+    var assetPreviewVC: UIViewController!
 
     
     
@@ -128,7 +129,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         previewAssetVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
         //set popoverReferce to Main View
        previewAssetVC.selectedAsset = selectedAsset
-        
+    //    previewAssetVC.placeAssetVC = PlaceAssetVC()
         present(previewAssetVC, animated: true, completion: nil)
     
     }

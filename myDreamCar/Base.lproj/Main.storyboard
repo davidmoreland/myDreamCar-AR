@@ -27,12 +27,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3L4-2Z-6Fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="-1630"/>
+            <point key="canvasLocation" x="1152" y="592"/>
         </scene>
-        <!--carPlacementVC-->
+        <!--PlaceAssetVC-->
         <scene sceneID="b7J-6b-kQN">
             <objects>
-                <viewController id="yol-Iu-WAK" userLabel="carPlacementVC" customClass="PlaceCarVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yol-Iu-WAK" userLabel="PlaceAssetVC" customClass="PlaceAssetVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zAr-2A-nSh">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -40,12 +40,12 @@
                     <tabBarItem key="tabBarItem" title="Viewer" id="r7Q-tM-90d"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="sceneView" destination="zAr-2A-nSh" id="vdA-0h-jtw"/>
+                        <outlet property="sceneView" destination="zAr-2A-nSh" id="t7Z-DF-VFT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ee-wG-3my" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="-840"/>
+            <point key="canvasLocation" x="2470" y="-486"/>
         </scene>
         <!--myInventory-->
         <scene sceneID="ekj-Np-s9W">
@@ -71,7 +71,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVJ-pr-rja">
-                                            <rect key="frame" x="-8" y="0.0" width="240" height="185"/>
+                                            <rect key="frame" x="-8" y="0.0" width="480" height="633"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <gestureRecognizers/>
                                             <connections>
@@ -95,7 +95,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3df-4H-Fk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="fHh-iu-buU"/>
             </objects>
-            <point key="canvasLocation" x="1856.8" y="-119.1904047976012"/>
+            <point key="canvasLocation" x="1584" y="-1276"/>
         </scene>
         <!--Asset PreviewVC-->
         <scene sceneID="6iz-HV-wCt">
@@ -152,26 +152,12 @@
                     <connections>
                         <outlet property="sceneView" destination="2vC-J7-tYX" id="wJJ-Dm-1Sb"/>
                         <outlet property="view" destination="m8V-pZ-hkf" id="eZr-1o-F5U"/>
+                        <segue destination="yol-Iu-WAK" kind="show" identifier="showPlaceAsset" id="GoZ-3j-Kga"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJK-mp-RsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2080.6734992679353" y="373.828125"/>
-        </scene>
-        <!--Asset PreviewVC-->
-        <scene sceneID="ema-mo-cTc">
-            <objects>
-                <viewController id="4Zl-gi-8sK" customClass="AssetPreviewVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CbR-Rx-oTi">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="SyY-SN-Sha"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="boq-XO-PSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2682" y="-139"/>
+            <point key="canvasLocation" x="1791" y="57"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zv1-U1-l78">
@@ -196,4 +182,7 @@
             <point key="canvasLocation" x="924" y="-233.43328335832086"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="GoZ-3j-Kga"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -25,7 +25,7 @@
 		55EAF7C5210F788800972D48 /* emptyCellImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 55EAF7C4210F788800972D48 /* emptyCellImage.jpg */; };
 		55EAF7C9210FAD4900972D48 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EAF7C8210FAD4900972D48 /* DataManager.swift */; };
 		F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065620FF10D20039D14A /* AppDelegate.swift */; };
-		F64F065B20FF10D20039D14A /* PlaceCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065A20FF10D20039D14A /* PlaceCarVC.swift */; };
+		F64F065B20FF10D20039D14A /* PlaceAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F065A20FF10D20039D14A /* PlaceAssetVC.swift */; };
 		F64F065E20FF10D20039D14A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F065C20FF10D20039D14A /* Main.storyboard */; };
 		F64F066020FF10DA0039D14A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64F065F20FF10DA0039D14A /* Assets.xcassets */; };
 		F64F066320FF10DA0039D14A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */; };
@@ -77,7 +77,7 @@
 		55EAF7C8210FAD4900972D48 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F64F065320FF10D20039D14A /* myDreamCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDreamCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64F065620FF10D20039D14A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F64F065A20FF10D20039D14A /* PlaceCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCarVC.swift; sourceTree = "<group>"; };
+		F64F065A20FF10D20039D14A /* PlaceAssetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAssetVC.swift; sourceTree = "<group>"; };
 		F64F065D20FF10D20039D14A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F64F065F20FF10DA0039D14A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F64F066220FF10DA0039D14A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				552FA832210C5F8D00B89535 /* Assets.swift */,
 				F6C6BE4C2104C39D00606B51 /* AboutVC.swift */,
 				F672290D2104233F00C2126A /* MyInventoryCV.swift */,
-				F64F065A20FF10D20039D14A /* PlaceCarVC.swift */,
+				F64F065A20FF10D20039D14A /* PlaceAssetVC.swift */,
 				F6DBB6582106C72C00D619D5 /* AssetPreviewVC.swift */,
 			);
 			path = View;
@@ -392,7 +392,7 @@
 				F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */,
 				55B9F30F2113EC9100BAFCBC /* Ramp.swift in Sources */,
 				F6DBB6562106BD8A00D619D5 /* inventoryModel.xcdatamodeld in Sources */,
-				F64F065B20FF10D20039D14A /* PlaceCarVC.swift in Sources */,
+				F64F065B20FF10D20039D14A /* PlaceAssetVC.swift in Sources */,
 				552FA833210C5F8D00B89535 /* Assets.swift in Sources */,
 				5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */,
 				F6DBB65B2106D6E600D619D5 /* InventoryCell.swift in Sources */,
