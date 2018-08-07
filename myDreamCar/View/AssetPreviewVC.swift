@@ -11,6 +11,8 @@ import SceneKit
 import CoreData
 import ARKit
 
+var delegate: PlaceAssetVC?
+
 class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDelegate{
 
     init(size: CGSize) {
@@ -19,7 +21,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
          view.frame = CGRect(origin: CGPoint.zero, size: size)
         
     }
-    
+
    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
     
     //@IBOutlet var view: UIView!
@@ -285,25 +287,32 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
          view.addGestureRecognizer(tapGestureRecognizer)
         self.dismiss(animated: true, completion: nil)
     }
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        placeAssetVC = PlaceAssetVC()
-        placeAssetVC.assetPreviewVC = self
-        placeAssetVC.selectedAsset = selectedAsset
-        placeAssetVC.selectedNode = self.selctedNode.parent
-        //test
-        print("PA_VC: \(placeAssetVC)")
-        
-    }
-    */
-    
+
     override func performSegue(withIdentifier identifier: String, sender: Any?) {
 
-    placeAssetVC = PlaceAssetVC()
+   // placeAssetVC = PlaceAssetVC()
       
-        dismiss(animated: true, completion: nil)
+     //  dismiss(animated: true, completion: nil)
+     //   let placeAssetVC = PlaceAssetVC()
+        //placeAssetVC.delegate = self
+        print("PerformSegue, PlaceAssetVC: \(placeAssetVC)")
+        show(placeAssetVC, sender: self)
+        self.dismiss(animated: true, completion: nil)
         
+      }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        if segue.identifier == "showCameraScreen"
+        {    print("PlaceAsset 'prepareForSegue': ")
+            let destinationVC = segue.destination as! PlaceAssetVC
+            
+            //test
+            print("PA_VC: \(destinationVC)")
+            // Pass the selected object to the new view controller.
+        }
     }
+
     
 //Add touch
 
@@ -317,37 +326,19 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             let selectedNode = hitResults[0].node
             print("Parent Node: \(String(describing: selectedNode.parent?.name!))")
             print("Node Name: \(selectedNode.name!)")
-            // pass reference to main screen
-            // node is NIL
-           //let placeAssetVC = PlaceAssetVC()
-            //self.parent?.addChildViewController(placeAssetVC)
-          //  placeAssetVC.sceneView = ARSCNView()
-         //   placeAssetVC.assetPreviewVC = self
-        //   placeAssetVC.selectedAsset = selectedAsset
-        //    placeAssetVC.selectedNode = selectedNode.parent
-            
-             //    dismiss(animated: true, completion: nil)
-          //  present(placeAssetVC, animated: true, completion: nil)
-    
-        performSegue(withIdentifier: "showPlaceAsset", sender: self)
-      //      prepare(for: "showPlaceAsset", sender: self)
-        }
+        delegate?.selectedAsset = self.selectedAsset
+            delegate?.selectedAssetName = self.selectedAssetName
+ 
+        performSegue(withIdentifier: "showCameraScreen", sender: self)
+           self.dismiss(animated: true, completion: nil)
+              }
         
     }
   
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        segue.destination.addChildViewController(placeAssetVC)
-        placeAssetVC.assetPreviewVC = self
-        placeAssetVC.selectedAsset = selectedAsset
-        placeAssetVC.selectedNode = self.selctedNode.parent
-        //test
-        print("PA_VC: \(placeAssetVC)")
-        // Pass the selected object to the new view controller.
-    }
+   
 }  //end Class
 
 

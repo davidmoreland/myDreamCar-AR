@@ -194,11 +194,11 @@
 				F6C6BE492104AEA400606B51 /* View */,
 				F672290B21035A3500C2126A /* art.scnassets */,
 				F64F065C20FF10D20039D14A /* Main.storyboard */,
+				F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */,
 				F64F065F20FF10DA0039D14A /* Assets.xcassets */,
 				5567FEED2115011200D4C512 /* orange-lamborghini.jpg */,
 				55B9F3122113FCAD00BAFCBC /* bg.jpg */,
 				55EAF7C4210F788800972D48 /* emptyCellImage.jpg */,
-				F64F066120FF10DA0039D14A /* LaunchScreen.storyboard */,
 				F64F066420FF10DA0039D14A /* Info.plist */,
 			);
 			path = myDreamCar;

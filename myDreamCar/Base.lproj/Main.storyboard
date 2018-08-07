@@ -10,6 +10,63 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--PlaceAssetVC-->
+        <scene sceneID="mAC-I0-sQk">
+            <objects>
+                <viewController id="fnQ-dW-fpZ" userLabel="PlaceAssetVC" customClass="PlaceAssetVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Aio-RQ-cfu">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MVu-H4-Z2f">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpW-Uc-O72">
+                                        <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="fnQ-dW-fpZ" id="mUu-Jm-cO2"/>
+                                        </connections>
+                                    </arscnView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="C0P-mu-HuV" firstAttribute="trailing" secondItem="HpW-Uc-O72" secondAttribute="trailing" id="UT7-9C-jMa"/>
+                                    <constraint firstItem="C0P-mu-HuV" firstAttribute="bottom" secondItem="HpW-Uc-O72" secondAttribute="bottom" id="ZPZ-VE-Lcf"/>
+                                    <constraint firstItem="HpW-Uc-O72" firstAttribute="leading" secondItem="C0P-mu-HuV" secondAttribute="leading" id="ZgF-1B-JQp"/>
+                                    <constraint firstItem="HpW-Uc-O72" firstAttribute="top" secondItem="C0P-mu-HuV" secondAttribute="top" id="u81-N0-Qwd"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="C0P-mu-HuV"/>
+                            </view>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQp-FE-X00">
+                                <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fnQ-dW-fpZ" id="Nsa-VG-PSm"/>
+                                </connections>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w7m-E2-4fX" firstAttribute="trailing" secondItem="uQp-FE-X00" secondAttribute="trailing" id="35S-wU-rSH"/>
+                            <constraint firstItem="uQp-FE-X00" firstAttribute="top" secondItem="w7m-E2-4fX" secondAttribute="top" id="8jy-Bf-Scd"/>
+                            <constraint firstItem="uQp-FE-X00" firstAttribute="leading" secondItem="w7m-E2-4fX" secondAttribute="leading" id="CXE-0V-TyM"/>
+                            <constraint firstItem="w7m-E2-4fX" firstAttribute="bottom" secondItem="uQp-FE-X00" secondAttribute="bottom" id="F86-Ub-Edf"/>
+                            <constraint firstItem="uQp-FE-X00" firstAttribute="leading" secondItem="w7m-E2-4fX" secondAttribute="leading" id="Vuv-iI-q7c"/>
+                            <constraint firstItem="uQp-FE-X00" firstAttribute="trailing" secondItem="w7m-E2-4fX" secondAttribute="trailing" id="mCC-yQ-3Td"/>
+                            <constraint firstItem="uQp-FE-X00" firstAttribute="top" secondItem="w7m-E2-4fX" secondAttribute="top" id="uyg-uw-xby"/>
+                            <constraint firstItem="uQp-FE-X00" firstAttribute="bottom" secondItem="w7m-E2-4fX" secondAttribute="bottom" id="yBY-9e-0dK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="w7m-E2-4fX"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="ucU-sf-YMC" userLabel="World"/>
+                    <connections>
+                        <outlet property="sceneView" destination="uQp-FE-X00" id="h3D-k5-QQI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IPv-0T-Ys0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="43" y="-1628"/>
+        </scene>
         <!--About-->
         <scene sceneID="3ex-7a-nJB">
             <objects>
@@ -27,25 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3L4-2Z-6Fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="592"/>
-        </scene>
-        <!--PlaceAssetVC-->
-        <scene sceneID="b7J-6b-kQN">
-            <objects>
-                <viewController id="yol-Iu-WAK" userLabel="PlaceAssetVC" customClass="PlaceAssetVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zAr-2A-nSh">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
-                    <tabBarItem key="tabBarItem" title="Viewer" id="r7Q-tM-90d"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="sceneView" destination="zAr-2A-nSh" id="t7Z-DF-VFT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5ee-wG-3my" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2470" y="-486"/>
+            <point key="canvasLocation" x="2188" y="-1700"/>
         </scene>
         <!--myInventory-->
         <scene sceneID="ekj-Np-s9W">
@@ -93,38 +132,44 @@
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3df-4H-Fk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="fHh-iu-buU"/>
+                <tapGestureRecognizer id="fHh-iu-buU">
+                    <connections>
+                        <segue destination="MDj-ue-epX" kind="popoverPresentation" identifier="openAssetPreviewScreen" popoverAnchorView="2cx-G1-u1z" id="s6V-pF-zrE">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1584" y="-1276"/>
+            <point key="canvasLocation" x="1051" y="-1675"/>
         </scene>
         <!--Asset PreviewVC-->
         <scene sceneID="6iz-HV-wCt">
             <objects>
                 <viewController id="MDj-ue-epX" customClass="AssetPreviewVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m8V-pZ-hkf">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2vC-J7-tYX">
-                                <rect key="frame" x="147" y="-20" width="1072" height="808"/>
+                                <rect key="frame" x="147" y="-40" width="81" height="471"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ref-lW-s47">
-                                <rect key="frame" x="147" y="838" width="1072" height="130"/>
+                                <rect key="frame" x="147" y="481" width="81" height="130"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8MG-Aa-Yvm">
-                                        <rect key="frame" x="-2" y="0.0" width="1076" height="31"/>
+                                        <rect key="frame" x="-2" y="0.0" width="85" height="31"/>
                                         <connections>
                                             <action selector="position_X_Slider:" destination="MDj-ue-epX" eventType="valueChanged" id="xOb-ZZ-m5q"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="u5x-pu-VqF">
-                                        <rect key="frame" x="-2" y="50" width="1076" height="31"/>
+                                        <rect key="frame" x="-2" y="50" width="85" height="31"/>
                                         <connections>
                                             <action selector="position_Y_Slider:" destination="MDj-ue-epX" eventType="valueChanged" id="jDr-uO-lpp"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jhg-zM-uyn">
-                                        <rect key="frame" x="-2" y="100" width="1076" height="31"/>
+                                        <rect key="frame" x="-2" y="100" width="85" height="31"/>
                                         <connections>
                                             <action selector="position_Z_Slider:" destination="MDj-ue-epX" eventType="valueChanged" id="FUX-2J-9yV"/>
                                         </connections>
@@ -152,12 +197,12 @@
                     <connections>
                         <outlet property="sceneView" destination="2vC-J7-tYX" id="wJJ-Dm-1Sb"/>
                         <outlet property="view" destination="m8V-pZ-hkf" id="eZr-1o-F5U"/>
-                        <segue destination="yol-Iu-WAK" kind="show" identifier="showPlaceAsset" id="GoZ-3j-Kga"/>
+                        <segue destination="fnQ-dW-fpZ" kind="show" identifier="showCameraScreen" id="xZy-bA-lmh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJK-mp-RsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1791" y="57"/>
+            <point key="canvasLocation" x="98" y="-796"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zv1-U1-l78">
@@ -170,19 +215,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="yol-Iu-WAK" kind="relationship" relationship="viewControllers" id="fKw-rx-7Wp"/>
                         <segue destination="0jX-4E-Ndo" kind="relationship" relationship="viewControllers" id="emi-Xm-Nzm"/>
                         <segue destination="aja-mK-w3k" kind="relationship" relationship="viewControllers" id="UXf-pf-MyD"/>
+                        <segue destination="fnQ-dW-fpZ" kind="relationship" relationship="viewControllers" id="hUF-fg-A8q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ub-Hz-Yh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarItem title="Item" id="Dgo-qb-VMJ"/>
                 <tabBarItem title="Item" id="9fa-nG-ibz"/>
             </objects>
-            <point key="canvasLocation" x="924" y="-233.43328335832086"/>
+            <point key="canvasLocation" x="474" y="-2621"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GoZ-3j-Kga"/>
+        <segue reference="xZy-bA-lmh"/>
     </inferredMetricsTieBreakers>
 </document>
