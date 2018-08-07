@@ -98,7 +98,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return true  // 1st
     }
-    
+   /*
   @objc  func handleTapGestureRecognizer(_ gestureRecognizer: UITapGestureRecognizer){
         let touchPoint = gestureRecognizer.location(in: self.view)
         
@@ -109,7 +109,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
             
         }
     }
- 
+ */
     @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
         // 2nd
         let touchPoint = gestureRecognizer.location(in: self.view)
@@ -119,23 +119,36 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
             print("Cell Item #: \(indexPath.item)")
             print("Cell Title: \(self.selectedCell.cellTitle)")
       //  self.selectedAssetName = selectedAsset.name
+    
+        //  commented out to try segue
+        let assetPreviewVC = AssetPreviewVC(size: CGSize(width: 1400, height: 1000 ))
         
-        let previewAssetVC = AssetPreviewVC(size: CGSize(width: 1400, height: 1000 ))
-        
+        assetPreviewVC.modalPresentationStyle = .popover
+        assetPreviewVC.popoverPresentationController?.delegate = self
+        assetPreviewVC.popoverPresentationController?.sourceView = self.view
+        assetPreviewVC.selectedAssetName = self.selectedAssetName
+        assetPreviewVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
+        //set popoverReferce to Main View
+     assetPreviewVC.selectedAsset = selectedAsset
+    //    previewAssetVC.placeAssetVC = PlaceAssetVC()
+ present(assetPreviewVC, animated: true, completion: nil)
+    
+        //    performSegue(withIdentifier: "showAssetPreviewScreen", sender: self)
+    }
+}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAssetPreviewScreen" {
+           let previewAssetVC = segue.destination as! AssetPreviewVC
         previewAssetVC.modalPresentationStyle = .popover
-        previewAssetVC.popoverPresentationController?.delegate = self
+   //     previewAssetVC.popoverPresentationController?.delegate = self
         previewAssetVC.popoverPresentationController?.sourceView = self.view
         previewAssetVC.selectedAssetName = self.selectedAssetName
         previewAssetVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
         //set popoverReferce to Main View
-       previewAssetVC.selectedAsset = selectedAsset
-    //    previewAssetVC.placeAssetVC = PlaceAssetVC()
-        present(previewAssetVC, animated: true, completion: nil)
-    
+        previewAssetVC.selectedAsset = selectedAsset
+        }
     }
-}
-    
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell Tapped: \(indexPath.item)")
     }

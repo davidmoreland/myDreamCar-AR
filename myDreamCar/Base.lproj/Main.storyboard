@@ -134,7 +134,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3df-4H-Fk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="fHh-iu-buU">
                     <connections>
-                        <segue destination="MDj-ue-epX" kind="popoverPresentation" identifier="openAssetPreviewScreen" popoverAnchorView="2cx-G1-u1z" id="s6V-pF-zrE">
+                        <segue destination="MDj-ue-epX" kind="popoverPresentation" identifier="showAssetPreviewScreen" popoverAnchorView="2cx-G1-u1z" id="s6V-pF-zrE">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>

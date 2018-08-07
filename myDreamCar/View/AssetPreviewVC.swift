@@ -11,7 +11,7 @@ import SceneKit
 import CoreData
 import ARKit
 
-var delegate: PlaceAssetVC?
+//var delegate: PlaceAssetVC?
 
 class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDelegate{
 
@@ -294,13 +294,13 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
       
      //  dismiss(animated: true, completion: nil)
      //   let placeAssetVC = PlaceAssetVC()
-        //placeAssetVC.delegate = self
+   //     placeAssetVC.delegate = self
         print("PerformSegue, PlaceAssetVC: \(placeAssetVC)")
         show(placeAssetVC, sender: self)
         self.dismiss(animated: true, completion: nil)
         
       }
-    
+  /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         if segue.identifier == "showCameraScreen"
@@ -313,7 +313,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         }
     }
 
-    
+  */
 //Add touch
 
     @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
@@ -326,11 +326,21 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             let selectedNode = hitResults[0].node
             print("Parent Node: \(String(describing: selectedNode.parent?.name!))")
             print("Node Name: \(selectedNode.name!)")
-        delegate?.selectedAsset = self.selectedAsset
-            delegate?.selectedAssetName = self.selectedAssetName
+            
+            let placeAssetVC = PlaceAssetVC()
+            placeAssetVC.selectedAssetName = self.selectedAssetName
+            placeAssetVC.selectedAsset = self.selectedAsset
+            placeAssetVC.arSceneView = ARSCNView()
+            placeAssetVC.view = UIView()
+            
+            show(placeAssetVC, sender: self)
+        //delegate?.selectedAsset = self.selectedAsset
+       //     delegate?.selectedAssetName = self.selectedAssetName
  
-        performSegue(withIdentifier: "showCameraScreen", sender: self)
-           self.dismiss(animated: true, completion: nil)
+      //  performSegue(withIdentifier: "showCameraScreen", sender: self)
+    
+            self.removeFromParentViewController()
+            self.parent?.dismiss(animated: true, completion: nil)
               }
         
     }
