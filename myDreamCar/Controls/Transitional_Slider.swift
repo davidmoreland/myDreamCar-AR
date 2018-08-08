@@ -19,7 +19,10 @@ class Transitional_Slider: UISlider {
         
     }
     
-    
+    func setupAssetPositionalSliders()
+    {
+        
+    }
     
     /*
     // Only override draw() if you perform custom drawing.

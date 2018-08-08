@@ -22,8 +22,6 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     var selectedAsset: Asset!
     var assetPreviewVC: UIViewController!
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -130,13 +128,16 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         assetPreviewVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
         //set popoverReferce to Main View
      assetPreviewVC.selectedAsset = selectedAsset
-    //    previewAssetVC.placeAssetVC = PlaceAssetVC()
+    //    previewAssetVC.WorldViewVC = WorldViewVC()
  present(assetPreviewVC, animated: true, completion: nil)
-    
-        //    performSegue(withIdentifier: "showAssetPreviewScreen", sender: self)
+ 
+    //        performSegue(withIdentifier: "showAssetPreviewScreen", sender: self)
+ 
     }
+
+ 
 }
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAssetPreviewScreen" {
            let previewAssetVC = segue.destination as! AssetPreviewVC

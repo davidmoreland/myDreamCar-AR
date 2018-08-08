@@ -11,9 +11,11 @@ import SceneKit
 import CoreData
 import ARKit
 
-//var delegate: PlaceAssetVC?
+//var delegate: WorldViewVC?
 
 class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDelegate{
+    
+    
 
     init(size: CGSize) {
         super.init(nibName: nil, bundle: nil)
@@ -22,10 +24,17 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
     
+  //  @IBOutlet var view: UIView!
     //@IBOutlet var view: UIView!
     @IBOutlet weak var sceneView: SCNView!
+    
+    var delegate: AssetPreviewDelegate?
     
     var controlsView: UIView!
     var size: CGSize!
@@ -53,13 +62,8 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
    
     //MARK Gesture Recognizers
  
-    weak var placeAssetVC: PlaceAssetVC!
+  //  weak var WorldViewVC: WorldViewVC!
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        
-    
-    }
     
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         print("Rendering AssetPreview: ")
@@ -70,10 +74,11 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     
   //      view.frame = CGRect(origin: CGPoint.zero, size: size)
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height))
-      //  self.placeAssetVC = (storyboard?.instantiateInitialViewController())! as! PlaceAssetVC
+      //  self.WorldViewVC = (storyboard?.instantiateInitialViewController())! as! WorldViewVC
          
             self.sceneView.delegate = self
         
+      
         // control view
         controlsView = UIView()
         controlsView.backgroundColor = UIColor.black
@@ -287,33 +292,35 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
          view.addGestureRecognizer(tapGestureRecognizer)
         self.dismiss(animated: true, completion: nil)
     }
-
+/*
     override func performSegue(withIdentifier identifier: String, sender: Any?) {
 
-   // placeAssetVC = PlaceAssetVC()
+   // WorldViewVC = WorldViewVC()
       
      //  dismiss(animated: true, completion: nil)
-     //   let placeAssetVC = PlaceAssetVC()
-   //     placeAssetVC.delegate = self
-        print("PerformSegue, PlaceAssetVC: \(placeAssetVC)")
-        show(placeAssetVC, sender: self)
+     //   let WorldViewVC = WorldViewVC()
+   //     WorldViewVC.delegate = self
+        print("PerformSegue, WorldViewVC: \(WorldViewVC)")
+        show(WorldViewVC, sender: self)
         self.dismiss(animated: true, completion: nil)
         
       }
-  /*
+ */
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        if segue.identifier == "showCameraScreen"
-        {    print("PlaceAsset 'prepareForSegue': ")
-            let destinationVC = segue.destination as! PlaceAssetVC
-            
-            //test
+        
+        
+        if segue.identifier == "showWorldViewScreen"
+        {    print("AssetPreview-->WorldView 'prepareForSegue': ")
+        let destinationVC = segue.destination as! WorldViewVC
+            destinationVC.delegate = self
+        //test
             print("PA_VC: \(destinationVC)")
-            // Pass the selected object to the new view controller.
+        // Pass the selected object to the new view controller.
         }
     }
 
-  */
 //Add touch
 
     @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
@@ -326,23 +333,34 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             let selectedNode = hitResults[0].node
             print("Parent Node: \(String(describing: selectedNode.parent?.name!))")
             print("Node Name: \(selectedNode.name!)")
+       //     let cameraViewSize = CGSize(view.sizeToFit())
+        /*
+      // let WorldViewVC = WorldViewVC()
+            WorldViewVC.selectedAssetName = self.selectedAssetName
+            WorldViewVC.selectedAsset = self.selectedAsset
             
-            let placeAssetVC = PlaceAssetVC()
-            placeAssetVC.selectedAssetName = self.selectedAssetName
-            placeAssetVC.selectedAsset = self.selectedAsset
-            placeAssetVC.arSceneView = ARSCNView()
-            placeAssetVC.view = UIView()
+            delegate?.selected(asset: self.selectedAsset)
+            //WorldViewVC.arSceneView = ARSCNView()
             
-            show(placeAssetVC, sender: self)
-        //delegate?.selectedAsset = self.selectedAsset
-       //     delegate?.selectedAssetName = self.selectedAssetName
- 
-      //  performSegue(withIdentifier: "showCameraScreen", sender: self)
-    
+            //WorldViewVC.view = UIView()
             self.removeFromParentViewController()
             self.parent?.dismiss(animated: true, completion: nil)
+            
+            show(WorldViewVC, sender: self)
+        //delegate?.selectedAsset = self.selectedAsset
+       //     delegate?.selectedAssetName = self.selectedAssetName
+ */
+            
+            
+            // need a segue
+          //  var segue: UIStoryboardSegue?
+            var mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+            // Get the new view controller using segue.destination.
+          let vc = self.storyboard?.instantiateViewController(withIdentifier: "WorldViewVC") as? WorldViewVC
+            
+            
+            vc?.performSegue(withIdentifier: "showWorldViewScreen", sender: self)
               }
-        
     }
   
     // MARK: - Navigation
@@ -350,7 +368,6 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     // In a storyboard-based application, you will often want to do a little preparation before navigation
    
 }  //end Class
-
 
 
 
