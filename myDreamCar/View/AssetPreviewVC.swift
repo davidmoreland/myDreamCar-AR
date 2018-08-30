@@ -11,28 +11,28 @@ import SceneKit
 import CoreData
 import ARKit
 
-//var delegate: WorldViewVC?
+
 
 class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDelegate{
     
-    
-
     init(size: CGSize) {
         super.init(nibName: nil, bundle: nil)
         self.size = size
          view.frame = CGRect(origin: CGPoint.zero, size: size)
-        
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+        super.init(coder: aDecoder)
+        self.size = CGSize(width: 800, height: 400)
+        
+    //    view.frame = CGRect(origin: CGPoint.zero, size: size)
+     //   fatalError("init(coder:) has not been implemented")
+}
+
     
-   let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
+ //  let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
     
-  //  @IBOutlet var view: UIView!
-    //@IBOutlet var view: UIView!
-    @IBOutlet weak var sceneView: SCNView!
+    @IBOutlet var arSceneView: SCNView!
     
     var delegate: AssetPreviewDelegate?
     
@@ -45,6 +45,11 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     var selectedAssetName: String!
     var selectedAsset: Asset!
     var selctedNode: SCNNode!
+    let dataManager: DataManager = DataManager()
+    
+    var assets: [NSManagedObject]!
+    var unavailableAsset: Asset!
+    
     
     //Control Sliders
  // let control_X_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 50.00, width: sliderLength, height: 10.00))
@@ -72,11 +77,32 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Asset>(entityName: "Asset")
+        
+        do {
+            self.assets = try context.fetch(fetchRequest)
+            print("Successfully fetched data.")
+            print("# of Assets: \(assets.count)")
+          //  completion(true)
+            self.unavailableAsset = assets[0] as! Asset
+            
+        } catch {
+            debugPrint("Could not Fetch: \(error.localizedDescription)")
+          //  completion(false)
+            
+        }
+        
+        
+
+      //  self.unavailableAsset = dataManager.fetch(entityName: "AssetNotFound", completion:(true))
   //      view.frame = CGRect(origin: CGPoint.zero, size: size)
-        sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height))
+        arSceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height))
       //  self.WorldViewVC = (storyboard?.instantiateInitialViewController())! as! WorldViewVC
          
-            self.sceneView.delegate = self
+        self.arSceneView.delegate = self
         
       
         // control view
@@ -94,13 +120,13 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         let sliderValueBoxHeight: CGFloat = 60.0
         
         let control_X_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 50.00, width: sliderLength, height: 10.00))
-     control_X_Slider.addTarget(self, action: #selector(position_X_action(sender:)), for: UIControlEvents.valueChanged)
+        control_X_Slider.addTarget(self, action: #selector(position_X_action(sender:)), for: UIControl.Event.valueChanged)
         
         let control_Y_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 125.00, width: sliderLength, height: 10.00))
-     control_Y_Slider.addTarget(self, action: #selector(position_Y_action(sender:)), for: UIControlEvents.valueChanged)
+        control_Y_Slider.addTarget(self, action: #selector(position_Y_action(sender:)), for: UIControl.Event.valueChanged)
         
         let control_Z_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 200.00, width: sliderLength, height: 10.00))
-        control_Z_Slider.addTarget(self, action: #selector(position_Z_action(sender:)), for: UIControlEvents.valueChanged)
+        control_Z_Slider.addTarget(self, action: #selector(position_Z_action(sender:)), for: UIControl.Event.valueChanged)
         
         
         control_X_Slider.backgroundColor = UIColor.orange
@@ -131,9 +157,9 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         controlsView.addSubview(control_Y_Slider)
         controlsView.addSubview(control_Z_Slider)
         view.addSubview(controlsView)
-        controlsView.bringSubview(toFront: control_X_Slider)
-        controlsView.bringSubview(toFront: control_Y_Slider)
-        controlsView.bringSubview(toFront: control_Z_Slider)
+        controlsView.bringSubviewToFront(control_X_Slider)
+        controlsView.bringSubviewToFront(control_Y_Slider)
+        controlsView.bringSubviewToFront(control_Z_Slider)
         
         
         // Labels
@@ -206,7 +232,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         
         
 // Asset Preview View
-        view.insertSubview(sceneView, at: 0)
+        view.insertSubview(arSceneView, at: 0)
         preferredContentSize = size
         view.layer.borderWidth = 5.00
         view.layer.borderColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
@@ -218,7 +244,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         
     selectedScene = SCNScene(named: selectedSceneName)!
    // let nodeName = "pivot"
-        sceneView.scene = selectedScene
+        arSceneView.scene = selectedScene
         //testing
       // getCar WORKS
           let assetObject = AssetManager.getAsset()
@@ -296,28 +322,38 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     override func performSegue(withIdentifier identifier: String, sender: Any?) {
 
    // WorldViewVC = WorldViewVC()
-      
-     //  dismiss(animated: true, completion: nil)
-     //   let WorldViewVC = WorldViewVC()
-   //     WorldViewVC.delegate = self
-        print("PerformSegue, WorldViewVC: \(WorldViewVC)")
-        show(WorldViewVC, sender: self)
-        self.dismiss(animated: true, completion: nil)
+     // let destinationVC = segue.destination as! WorldViewVC
+      // self.parent?.dismiss(animated: true, completion: nil)
         
+        let worldViewVC : WorldViewVC = WorldViewVC()
+        worldViewVC.delegate = self
+       print("PerformSegue, WorldViewVC: \(worldViewVC)")
+        parent?.addChild(worldViewVC)
+        parent?.show(worldViewVC, sender: self)
+        dismiss(animated: true, completion: nil)
+        
+    //    show(worldViewVC, sender: self)
+      // dismiss(animated: true, completion: nil)
       }
  */
-    
+   
 
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
         if segue.identifier == "showWorldViewScreen"
-        {    print("AssetPreview-->WorldView 'prepareForSegue': ")
+        {
+        print("AssetPreview-->WorldView 'prepareForSegue': ")
         let destinationVC = segue.destination as! WorldViewVC
             destinationVC.delegate = self
         //test
             print("PA_VC: \(destinationVC)")
         // Pass the selected object to the new view controller.
+       // destinationVC.delegate?.selectedAsset = self.selectedAsset
+        destinationVC.delegate?.selectedNodeName = self.selectedNodeName
+          //  destinationVC.selected(asset: self.selectedAsset)
+            destinationVC.fetchScene(asset: self.selectedAsset ?? self.unavailableAsset)
         }
     }
 
@@ -325,8 +361,8 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
 
     @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
  
-        let touchPoint = gestureRecognizer.location(in: sceneView)
-        let hitResults = sceneView.hitTest(touchPoint, options: [ : ])
+        let touchPoint = gestureRecognizer.location(in: arSceneView)
+        let hitResults = arSceneView.hitTest(touchPoint, options: [ : ])
       
         if hitResults .count > 0 {
             // test scene
@@ -334,32 +370,35 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             print("Parent Node: \(String(describing: selectedNode.parent?.name!))")
             print("Node Name: \(selectedNode.name!)")
        //     let cameraViewSize = CGSize(view.sizeToFit())
-        /*
-      // let WorldViewVC = WorldViewVC()
-            WorldViewVC.selectedAssetName = self.selectedAssetName
-            WorldViewVC.selectedAsset = self.selectedAsset
             
-            delegate?.selected(asset: self.selectedAsset)
+      let tempAssetLocation = "art/scnassets"
+            let assetSufix = ".scn"
+            
+          //  self.selectedAssetPath = tempAssetLocation + selectedNodeName + assetSufix
+            
+            
+            // from stackOverFlow
+     //      let mainStoryboard : UIStoryboard  = UIStoryboard(name: "Main", bundle: nil)
+    //        let worldViewVC = mainStoryboard.instantiateViewController(withIdentifier: "WorldViewVC") as? WorldViewVC
+            
+            // Get the new view controller using segue.destination.
+           
+           //  let worldViewVC = mainStoryboard.instantiateViewController(withIdentifier: "WorldViewVC") as? WorldViewVC
+        //    let worldViewVC: WorldViewVC = WorldViewVC()
+            
+       //     worldViewVC.selectedAssetName = self.selectedAssetName
+       //     worldViewVC.selectedAsset = self.selectedAsset
+        //
+        //    self.delegate?.selected(asset: self.selectedAsset)
             //WorldViewVC.arSceneView = ARSCNView()
             
             //WorldViewVC.view = UIView()
-            self.removeFromParentViewController()
-            self.parent?.dismiss(animated: true, completion: nil)
+          //  self.removeFromParent()
             
-            show(WorldViewVC, sender: self)
-        //delegate?.selectedAsset = self.selectedAsset
-       //     delegate?.selectedAssetName = self.selectedAssetName
- */
-            
-            
-            // need a segue
-          //  var segue: UIStoryboardSegue?
-            var mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-            // Get the new view controller using segue.destination.
-          let vc = self.storyboard?.instantiateViewController(withIdentifier: "WorldViewVC") as? WorldViewVC
-            
-            
-            vc?.performSegue(withIdentifier: "showWorldViewScreen", sender: self)
+       //     show(worldViewVC, sender: self)
+      
+           performSegue(withIdentifier: "showWorldViewScreen", sender: self)
+        //    self.dismiss(animated: true, completion: nil)
               }
     }
   

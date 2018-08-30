@@ -1,47 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XdG-kC-l2l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XdG-kC-l2l">
     <device id="ipad12_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--WorldViewVC-->
-        <scene sceneID="mAC-I0-sQk">
-            <objects>
-                <viewController id="fnQ-dW-fpZ" userLabel="WorldViewVC" customClass="WorldViewVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Aio-RQ-cfu">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpW-Uc-O72">
-                                <rect key="frame" x="0.0" y="10" width="1366" height="1004"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="fnQ-dW-fpZ" id="mUu-Jm-cO2"/>
-                                </connections>
-                            </arscnView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="w7m-E2-4fX"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ucU-sf-YMC" userLabel="World"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IPv-0T-Ys0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="288" y="-1478"/>
-        </scene>
         <!--About-->
         <scene sceneID="3ex-7a-nJB">
             <objects>
                 <viewController id="aja-mK-w3k" customClass="AboutVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PgW-vi-lB1" customClass="AboutVC">
+                    <view key="view" contentMode="scaleToFill" id="PgW-vi-lB1" customClass="AboutVC" customModule="myDreamCar">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ABOUT ME !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaE-SU-5a4">
+                                <rect key="frame" x="206" y="346" width="169" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="CBb-3l-oqw"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" id="WXx-qS-IOP"/>
@@ -51,12 +36,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3L4-2Z-6Fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1265" y="-2303"/>
+            <point key="canvasLocation" x="1690.6295754026353" y="-1464.2578125"/>
         </scene>
-        <!--myInventory-->
+        <!--myInventoryVC-->
         <scene sceneID="ekj-Np-s9W">
             <objects>
-                <collectionViewController id="0jX-4E-Ndo" userLabel="myInventory" customClass="MyInventoryCollectionView" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="0jX-4E-Ndo" userLabel="myInventoryVC" customClass="MyInventoryCollectionView" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2cx-G1-u1z">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,27 +92,52 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1242" y="-1400"/>
+            <point key="canvasLocation" x="1032" y="-1464"/>
+        </scene>
+        <!--World View VC-->
+        <scene sceneID="fOw-t1-wjr">
+            <objects>
+                <viewController storyboardIdentifier="WorldViewVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tfC-op-Qyq" userLabel="World View VC" customClass="WorldViewVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S7W-he-ybx">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h6m-Fc-j2J">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="MSH-j4-c4z"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="HJf-5B-1hQ"/>
+                    <connections>
+                        <outlet property="arSceneView" destination="h6m-Fc-j2J" id="azP-Yf-xSE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X8v-ZA-ndT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="299" y="-1511"/>
         </scene>
         <!--Asset PreviewVC-->
         <scene sceneID="6iz-HV-wCt">
             <objects>
-                <viewController id="MDj-ue-epX" customClass="AssetPreviewVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AssetPreviewVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MDj-ue-epX" customClass="AssetPreviewVC" customModule="myDreamCar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m8V-pZ-hkf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ref-lW-s47">
-                                <rect key="frame" x="147" y="481" width="81" height="130"/>
+                                <rect key="frame" x="127" y="481" width="121" height="130"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8MG-Aa-Yvm">
-                                        <rect key="frame" x="-2" y="0.0" width="85" height="31"/>
+                                        <rect key="frame" x="-2" y="0.0" width="125" height="31"/>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="u5x-pu-VqF">
-                                        <rect key="frame" x="-2" y="50" width="85" height="31"/>
+                                        <rect key="frame" x="-2" y="50" width="125" height="31"/>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jhg-zM-uyn">
-                                        <rect key="frame" x="-2" y="100" width="85" height="31"/>
+                                        <rect key="frame" x="-2" y="100" width="125" height="31"/>
                                     </slider>
                                 </subviews>
                                 <constraints>
@@ -137,26 +147,25 @@
                                 </constraints>
                             </stackView>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4m-UD-X31">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="677"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ref-lW-s47" firstAttribute="leading" secondItem="yz5-zw-QYZ" secondAttribute="leading" constant="147" id="2Nv-3G-2hO"/>
                             <constraint firstItem="yz5-zw-QYZ" firstAttribute="bottom" secondItem="Ref-lW-s47" secondAttribute="bottom" constant="56" id="iRe-Ba-Ue4"/>
                             <constraint firstItem="Ref-lW-s47" firstAttribute="centerX" secondItem="m8V-pZ-hkf" secondAttribute="centerX" id="rJg-nT-ZNX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yz5-zw-QYZ"/>
                     </view>
                     <connections>
-                        <outlet property="view" destination="m8V-pZ-hkf" id="Jvp-Ya-P0f"/>
-                        <segue destination="fnQ-dW-fpZ" kind="show" identifier="showWorldViewScreen" id="Av0-M9-I17"/>
+                        <outlet property="arSceneView" destination="V4m-UD-X31" id="ZY0-2N-trh"/>
+                        <segue destination="tfC-op-Qyq" kind="show" identifier="showWorldViewScreen" id="iMa-gc-ObK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJK-mp-RsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="505.56368960468518" y="-700.1953125"/>
+            <point key="canvasLocation" x="-332" y="-702"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zv1-U1-l78">
@@ -171,17 +180,15 @@
                     <connections>
                         <segue destination="0jX-4E-Ndo" kind="relationship" relationship="viewControllers" id="emi-Xm-Nzm"/>
                         <segue destination="aja-mK-w3k" kind="relationship" relationship="viewControllers" id="UXf-pf-MyD"/>
-                        <segue destination="fnQ-dW-fpZ" kind="relationship" relationship="viewControllers" id="hUF-fg-A8q"/>
+                        <segue destination="tfC-op-Qyq" kind="relationship" relationship="viewControllers" id="0aJ-LM-Cnv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ub-Hz-Yh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarItem title="Item" id="Dgo-qb-VMJ"/>
-                <tabBarItem title="Item" id="9fa-nG-ibz"/>
             </objects>
-            <point key="canvasLocation" x="474" y="-2621"/>
+            <point key="canvasLocation" x="1341" y="-2404"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Av0-M9-I17"/>
+        <segue reference="iMa-gc-ObK"/>
     </inferredMetricsTieBreakers>
 </document>

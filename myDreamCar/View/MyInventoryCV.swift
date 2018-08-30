@@ -24,7 +24,10 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // from stackOverFlow
+    //    let mainStoryboard : UIStoryboard  = UIStoryboard(name: "Main", bundle: nil)
+     //   let assetPreviewVC = mainStoryboard.instantiateViewController(withIdentifier: "AssetPreviewVC") as? AssetPreviewVC
+        
         // TEST - Create DUMMY DATA in MOC
      let testDataManager: TestData = TestData()
         testDataManager.createDummyData(context: DataManager.getMainManagedContext())
@@ -84,6 +87,9 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
             print("# of Assets: \(String(describing: assets?.count))")
             print("+++++++++++++++++++++++")
             print("CV: Retrieved Asset: \(assets![0])")
+            
+            // load 'assetNotFound'
+            
         } catch {
             debugPrint("CV Could not Fetch: \(error.localizedDescription)")
                }
@@ -96,30 +102,20 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return true  // 1st
     }
-   /*
-  @objc  func handleTapGestureRecognizer(_ gestureRecognizer: UITapGestureRecognizer){
-        let touchPoint = gestureRecognizer.location(in: self.view)
-        
-        if let indexPath = self.collectionView?.indexPathForItem(at: touchPoint) {
-            self.selectedCell = self.collectionView?.cellForItem(at: indexPath) as! InventoryCell!
-            print("Cell Item #: \(indexPath.item)")
-            print("Cell Title: \(self.selectedCell.cellTitle)")
-            
-        }
-    }
- */
+  
+    
     @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
         // 2nd
         let touchPoint = gestureRecognizer.location(in: self.view)
         
         if let indexPath = self.collectionView?.indexPathForItem(at: touchPoint) {
-            self.selectedCell = self.collectionView?.cellForItem(at: indexPath) as! InventoryCell!
+            self.selectedCell = self.collectionView?.cellForItem(at: indexPath) as? InventoryCell
             print("Cell Item #: \(indexPath.item)")
-            print("Cell Title: \(self.selectedCell.cellTitle)")
+            print("Cell Title: \(String(describing: self.selectedCell.cellTitle))")
       //  self.selectedAssetName = selectedAsset.name
     
         //  commented out to try segue
-        let assetPreviewVC = AssetPreviewVC(size: CGSize(width: 1400, height: 1000 ))
+          /*  let assetPreviewVC = AssetPreviewVC(size: CGSize(width: 1400, height: 1000 ))
         
         assetPreviewVC.modalPresentationStyle = .popover
         assetPreviewVC.popoverPresentationController?.delegate = self
@@ -129,15 +125,15 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         //set popoverReferce to Main View
      assetPreviewVC.selectedAsset = selectedAsset
     //    previewAssetVC.WorldViewVC = WorldViewVC()
- present(assetPreviewVC, animated: true, completion: nil)
- 
-    //        performSegue(withIdentifier: "showAssetPreviewScreen", sender: self)
+// present(assetPreviewVC, animated: true, completion: nil)
+ */
+            performSegue(withIdentifier: "showAssetPreviewScreen", sender: self)
  
     }
 
  
 }
-        
+   /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAssetPreviewScreen" {
            let previewAssetVC = segue.destination as! AssetPreviewVC
@@ -153,6 +149,8 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell Tapped: \(indexPath.item)")
     }
+ */
+    
     /*
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         
