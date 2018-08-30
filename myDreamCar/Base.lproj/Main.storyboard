@@ -36,7 +36,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3L4-2Z-6Fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1690.6295754026353" y="-1464.2578125"/>
+            <point key="canvasLocation" x="1635" y="-1648"/>
         </scene>
         <!--myInventoryVC-->
         <scene sceneID="ekj-Np-s9W">
@@ -87,7 +87,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3df-4H-Fk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="fHh-iu-buU"/>
             </objects>
-            <point key="canvasLocation" x="1032" y="-1464"/>
+            <point key="canvasLocation" x="943" y="-1648"/>
         </scene>
         <!--World View VC-->
         <scene sceneID="fOw-t1-wjr">
@@ -101,8 +101,47 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </arscnView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="d9p-TX-jJB">
+                                <rect key="frame" x="20" y="684" width="75" height="315"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="143-ak-2cq" userLabel="Preview">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="AEG-6T-S3u"/>
+                                            <constraint firstAttribute="width" constant="75" id="FBM-3N-7t2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="KannadaSangamMN-Bold" family="Kannada Sangam MN" pointSize="22"/>
+                                        <size key="titleShadowOffset" width="-2" height="-1"/>
+                                        <state key="normal" title="Preview" backgroundImage="Rufwood">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL2-qR-sZn" userLabel="Place">
+                                        <rect key="frame" x="0.0" y="165" width="75" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="WN3-xF-cOy"/>
+                                            <constraint firstAttribute="height" constant="150" id="y0n-rn-JLB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="KannadaSangamMN" family="Kannada Sangam MN" pointSize="23"/>
+                                        <size key="titleShadowOffset" width="-2" height="-1"/>
+                                        <state key="normal" title="Place" backgroundImage="Rufwood">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="315" id="eBn-03-10z"/>
+                                    <constraint firstAttribute="width" constant="75" id="ubw-C9-NM1"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MSH-j4-c4z" firstAttribute="bottom" secondItem="d9p-TX-jJB" secondAttribute="bottom" constant="25" id="CgN-Or-XpZ"/>
+                            <constraint firstItem="d9p-TX-jJB" firstAttribute="leading" secondItem="MSH-j4-c4z" secondAttribute="leading" constant="20" id="gTp-8e-T6e"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MSH-j4-c4z"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="HJf-5B-1hQ"/>
@@ -112,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8v-ZA-ndT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="299" y="-1511"/>
+            <point key="canvasLocation" x="276" y="-1648"/>
         </scene>
         <!--Asset PreviewVC-->
         <scene sceneID="tQl-1J-n2f">
@@ -139,12 +178,12 @@
                     </view>
                     <connections>
                         <outlet property="arSceneView" destination="Td7-PE-Q5L" id="NVj-bE-RTF"/>
-                        <segue destination="tfC-op-Qyq" kind="show" identifier="showAssetPreviewScreen" id="hGa-Zp-qM0"/>
+                        <segue destination="tfC-op-Qyq" kind="presentation" modalPresentationStyle="fullScreen" id="Z0d-ZT-3uG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9CE-Xd-4Ze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-389" y="-727"/>
+            <point key="canvasLocation" x="915" y="-734"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zv1-U1-l78">
@@ -167,7 +206,10 @@
             <point key="canvasLocation" x="1341" y="-2404"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Rufwood" width="597" height="413"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hGa-Zp-qM0"/>
+        <segue reference="Z0d-ZT-3uG"/>
     </inferredMetricsTieBreakers>
 </document>
