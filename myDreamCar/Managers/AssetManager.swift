@@ -29,7 +29,8 @@ class func getAsset() -> SCNNode {
     //  node?.position = SCNVector3Make(0.0, 0.5, 0)
          node?.scale = SCNVector3Make(0.020, 0.020, 0.020)
     //  node?.position = SCNVector3Make(0.0, 0.0, 0.0)
-             node?.position = SCNVector3Make(0.0, 0.5, -3.0)
+       
+            node?.position = SCNVector3Make(0.5, -0.4, -5.0)
             }
         }
             

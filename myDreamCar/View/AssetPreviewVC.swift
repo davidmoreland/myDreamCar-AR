@@ -23,7 +23,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.size = CGSize(width: 800, height: 400)
+        self.size = CGSize(width: 1400, height: 800)
         
     //    view.frame = CGRect(origin: CGPoint.zero, size: size)
      //   fatalError("init(coder:) has not been implemented")
@@ -77,31 +77,53 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
+        // Get 'notFound' Asset
         let context = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<Asset>(entityName: "Asset")
+        let predName = "name"
+        let predValue = "AssetNotFound"
         
+       
+   
+    
         do {
             self.assets = try context.fetch(fetchRequest)
             print("Successfully fetched data.")
             print("# of Assets: \(assets.count)")
+       //     print("Fetched Asset Name: \(assets)
           //  completion(true)
-            self.unavailableAsset = assets[0] as! Asset
+           // self.unavailableAsset = assets[0] as! Asset
             
+         //   let notFound = self.assets.filter { (a: String) -> Bool in a.elementsEqual("AssetNotFound")}
         } catch {
             debugPrint("Could not Fetch: \(error.localizedDescription)")
           //  completion(false)
             
         }
+       
+        fetchRequest.predicate = NSPredicate(format: "name = %@", predValue)
+        do {
+            let notFoundAsset = try context.fetch(fetchRequest) as! [Asset]
+            print("Successfully fetched data.")
+            print("# of Assets: \(assets.count)")
+        //   print("Fetched Asset Name: \(notFoundAsset[0].name)")
+            //  completion(true)
+            // self.unavailableAsset = assets[0] as! Asset
+        } catch {
+            debugPrint("Could not Fetch: \(error.localizedDescription)")
+            //  completion(false)
+ 
+        }
+        
         
         
 
       //  self.unavailableAsset = dataManager.fetch(entityName: "AssetNotFound", completion:(true))
   //      view.frame = CGRect(origin: CGPoint.zero, size: size)
-        arSceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width , height: size.height))
-      //  self.WorldViewVC = (storyboard?.instantiateInitialViewController())! as! WorldViewVC
-         
+  
+        self.arSceneView = SCNView(frame: CGRect(x: 0, y: 0, width: 1200 , height: 800))
+     
         self.arSceneView.delegate = self
         
       
@@ -233,18 +255,19 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         
 // Asset Preview View
         view.insertSubview(arSceneView, at: 0)
-        preferredContentSize = size
+       preferredContentSize = size
         view.layer.borderWidth = 5.00
         view.layer.borderColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
        
 // DISPLAY 3D - Object
     
-        //let selectedSceneName = "art.scnassets/370z_2013.scn"
-        let selectedSceneName = "art.scnassets/MainScene.scn"
+       // let selectedSceneName = "art.scnassets/370z_2013.scn"
+       let selectedSceneName = "art.scnassets/MainScene.scn"
         
     selectedScene = SCNScene(named: selectedSceneName)!
-   // let nodeName = "pivot"
-        arSceneView.scene = selectedScene
+
+     self.arSceneView.scene = selectedScene
+       
         //testing
       // getCar WORKS
           let assetObject = AssetManager.getAsset()
@@ -253,6 +276,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
        // let assetObject: SCNNode = displaySelectedAssetIn(scene: selectedScene, nodeName: nodeName)
      //  Ramp.startRotation(node: car)
     selectedScene.rootNode.addChildNode(assetObject)
+        
         
       setupTapGestureRecon(view: self.view)
       
@@ -318,24 +342,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
          view.addGestureRecognizer(tapGestureRecognizer)
         self.dismiss(animated: true, completion: nil)
     }
-/*
-    override func performSegue(withIdentifier identifier: String, sender: Any?) {
 
-   // WorldViewVC = WorldViewVC()
-     // let destinationVC = segue.destination as! WorldViewVC
-      // self.parent?.dismiss(animated: true, completion: nil)
-        
-        let worldViewVC : WorldViewVC = WorldViewVC()
-        worldViewVC.delegate = self
-       print("PerformSegue, WorldViewVC: \(worldViewVC)")
-        parent?.addChild(worldViewVC)
-        parent?.show(worldViewVC, sender: self)
-        dismiss(animated: true, completion: nil)
-        
-    //    show(worldViewVC, sender: self)
-      // dismiss(animated: true, completion: nil)
-      }
- */
    
 
  
@@ -349,11 +356,12 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             destinationVC.delegate = self
         //test
             print("PA_VC: \(destinationVC)")
-        // Pass the selected object to the new view controller.
-       // destinationVC.delegate?.selectedAsset = self.selectedAsset
-        destinationVC.delegate?.selectedNodeName = self.selectedNodeName
+   
+            // Pass the selected object to the new view controller.
+       destinationVC.delegate?.selectedNodeName = self.selectedNodeName
           //  destinationVC.selected(asset: self.selectedAsset)
             destinationVC.fetchScene(asset: self.selectedAsset ?? self.unavailableAsset)
+            print("Selected Assset: \(String(describing: self.selectedAsset))")
         }
     }
 
@@ -369,36 +377,10 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             let selectedNode = hitResults[0].node
             print("Parent Node: \(String(describing: selectedNode.parent?.name!))")
             print("Node Name: \(selectedNode.name!)")
-       //     let cameraViewSize = CGSize(view.sizeToFit())
             
       let tempAssetLocation = "art/scnassets"
             let assetSufix = ".scn"
             
-          //  self.selectedAssetPath = tempAssetLocation + selectedNodeName + assetSufix
-            
-            
-            // from stackOverFlow
-     //      let mainStoryboard : UIStoryboard  = UIStoryboard(name: "Main", bundle: nil)
-    //        let worldViewVC = mainStoryboard.instantiateViewController(withIdentifier: "WorldViewVC") as? WorldViewVC
-            
-            // Get the new view controller using segue.destination.
-           
-           //  let worldViewVC = mainStoryboard.instantiateViewController(withIdentifier: "WorldViewVC") as? WorldViewVC
-        //    let worldViewVC: WorldViewVC = WorldViewVC()
-            
-       //     worldViewVC.selectedAssetName = self.selectedAssetName
-       //     worldViewVC.selectedAsset = self.selectedAsset
-        //
-        //    self.delegate?.selected(asset: self.selectedAsset)
-            //WorldViewVC.arSceneView = ARSCNView()
-            
-            //WorldViewVC.view = UIView()
-          //  self.removeFromParent()
-            
-       //     show(worldViewVC, sender: self)
-      
-           performSegue(withIdentifier: "showWorldViewScreen", sender: self)
-        //    self.dismiss(animated: true, completion: nil)
               }
     }
   
@@ -406,11 +388,11 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
    
-}  //end Class
 
 
 
-    /*
+
+
     func displaySelectedAssetIn(scene: SCNScene?, nodeName: String) -> SCNNode {
         //Camera
         
@@ -421,7 +403,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         scene?.rootNode.camera = camera
         
        //let parentScene = scene
-      // let parentObj = SCNScene(named:"art.scnassets/370z_2013.scn")
+       let parentObj = SCNScene(named:"art.scnassets/370z_2013.scn")
 
 let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true)
         //Car - refactor into object retrieval class
@@ -437,8 +419,8 @@ let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true
         
         return objNode!
     }
-    */
-    
+
+   }  //end Class
 
         
 

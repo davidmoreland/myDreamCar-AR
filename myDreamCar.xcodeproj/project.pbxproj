@@ -18,6 +18,7 @@
 		55B9F3132113FCAE00BAFCBC /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F3122113FCAD00BAFCBC /* bg.jpg */; };
 		55B9F316211407E100BAFCBC /* Transitional_Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9F315211407E100BAFCBC /* Transitional_Slider.swift */; };
 		55B9F3182114086A00BAFCBC /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9F3172114086A00BAFCBC /* ControlView.swift */; };
+		55C3B6872137BA2F000CEE10 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C3B6862137BA2F000CEE10 /* AboutVC.swift */; };
 		55DA934021162156007B8012 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DA933F21162156007B8012 /* SceneManager.swift */; };
 		55DA934221162195007B8012 /* LightingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DA934121162195007B8012 /* LightingManager.swift */; };
 		55DA9344211621B3007B8012 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DA9343211621B3007B8012 /* CameraManager.swift */; };
@@ -35,7 +36,6 @@
 		F672290C21035A3500C2126A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F672290B21035A3500C2126A /* art.scnassets */; };
 		F672290E2104233F00C2126A /* MyInventoryCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672290D2104233F00C2126A /* MyInventoryCV.swift */; };
 		F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */; };
-		F6C6BE4D2104C39D00606B51 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BE4C2104C39D00606B51 /* AboutVC.swift */; };
 		F6DBB6562106BD8A00D619D5 /* inventoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB6542106BD8A00D619D5 /* inventoryModel.xcdatamodeld */; };
 		F6DBB6592106C72C00D619D5 /* AssetPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB6582106C72C00D619D5 /* AssetPreviewVC.swift */; };
 		F6DBB65B2106D6E600D619D5 /* InventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB65A2106D6E600D619D5 /* InventoryCell.swift */; };
@@ -70,6 +70,7 @@
 		55B9F3122113FCAD00BAFCBC /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		55B9F315211407E100BAFCBC /* Transitional_Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitional_Slider.swift; sourceTree = "<group>"; };
 		55B9F3172114086A00BAFCBC /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		55C3B6862137BA2F000CEE10 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutVC.swift; path = myDreamCar/View/AboutVC.swift; sourceTree = "<group>"; };
 		55DA933F21162156007B8012 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		55DA934121162195007B8012 /* LightingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightingManager.swift; sourceTree = "<group>"; };
 		55DA9343211621B3007B8012 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		F672290B21035A3500C2126A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		F672290D2104233F00C2126A /* MyInventoryCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInventoryCV.swift; sourceTree = "<group>"; };
 		F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = columnFlowLayout.swift; sourceTree = "<group>"; };
-		F6C6BE4C2104C39D00606B51 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		F6DBB6552106BD8A00D619D5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F6DBB6582106C72C00D619D5 /* AssetPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPreviewVC.swift; sourceTree = "<group>"; };
 		F6DBB65A2106D6E600D619D5 /* InventoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryCell.swift; sourceTree = "<group>"; };
@@ -167,6 +167,7 @@
 		F64F064A20FF10D10039D14A = {
 			isa = PBXGroup;
 			children = (
+				55C3B6862137BA2F000CEE10 /* AboutVC.swift */,
 				555CC76F211A476B00DD1988 /* AssetPreviewDelegate.swift */,
 				F64F065620FF10D20039D14A /* AppDelegate.swift */,
 				F64F065520FF10D20039D14A /* myDreamCar */,
@@ -229,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				559B308E2114418700C1D787 /* Cells */,
-				F6C6BE4C2104C39D00606B51 /* AboutVC.swift */,
 				F672290D2104233F00C2126A /* MyInventoryCV.swift */,
 				F64F065A20FF10D20039D14A /* WorldViewVC.swift */,
 				F6DBB6582106C72C00D619D5 /* AssetPreviewVC.swift */,
@@ -386,10 +386,10 @@
 				559B308D21143F1000C1D787 /* ViewLayout.swift in Sources */,
 				55DA9344211621B3007B8012 /* CameraManager.swift in Sources */,
 				55B9F3182114086A00BAFCBC /* ControlView.swift in Sources */,
-				F6C6BE4D2104C39D00606B51 /* AboutVC.swift in Sources */,
 				F672290E2104233F00C2126A /* MyInventoryCV.swift in Sources */,
 				F6DBB6592106C72C00D619D5 /* AssetPreviewVC.swift in Sources */,
 				55EAF7C3210EF81700972D48 /* TestData.swift in Sources */,
+				55C3B6872137BA2F000CEE10 /* AboutVC.swift in Sources */,
 				55DA934221162195007B8012 /* LightingManager.swift in Sources */,
 				55DA9346211621D1007B8012 /* MaterialManager.swift in Sources */,
 				F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */,

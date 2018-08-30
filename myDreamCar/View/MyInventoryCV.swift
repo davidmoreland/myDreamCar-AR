@@ -24,20 +24,16 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // from stackOverFlow
-    //    let mainStoryboard : UIStoryboard  = UIStoryboard(name: "Main", bundle: nil)
-     //   let assetPreviewVC = mainStoryboard.instantiateViewController(withIdentifier: "AssetPreviewVC") as? AssetPreviewVC
-        
+  
         // TEST - Create DUMMY DATA in MOC
      let testDataManager: TestData = TestData()
-        testDataManager.createDummyData(context: DataManager.getMainManagedContext())
+      testDataManager.createDummyData(context: DataManager.getMainManagedContext())
 
         flowLayout = ColumnFlowLayout()
         
         collectionView = UICollectionView(frame: (view.bounds), collectionViewLayout: flowLayout)
         collectionView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-       // collectionView.backgroundColor = UIColor.blue
-        let collectionViewBackGroundImageView: UIImageView = UIImageView()
+          let collectionViewBackGroundImageView: UIImageView = UIImageView()
      let image = UIImage.init(named: "Rufwood.jpg")
         collectionViewBackGroundImageView.image = image
         collectionViewBackGroundImageView.alpha = 0.2
@@ -57,7 +53,6 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         collectionView?.delegate = self
         
         //Add touch
-     //  let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
         
         
@@ -133,7 +128,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
 
  
 }
-   /*
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAssetPreviewScreen" {
            let previewAssetVC = segue.destination as! AssetPreviewVC
@@ -142,14 +137,17 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         previewAssetVC.popoverPresentationController?.sourceView = self.view
         previewAssetVC.selectedAssetName = self.selectedAssetName
         previewAssetVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
+          //  previewAssetVC.size.width = 1400
+          //  previewAssetVC.size.height = 800
         //set popoverReferce to Main View
         previewAssetVC.selectedAsset = selectedAsset
+            print("CV: Selected Asset: \\(selectedAsset)")
         }
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell Tapped: \(indexPath.item)")
     }
- */
+ 
     
     /*
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {

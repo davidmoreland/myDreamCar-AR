@@ -1,17 +1,15 @@
 //
-//  AboutViewController.swift
+//  AboutVC.swift
 //  myDreamCar
 //
-//  Created by David on 7/22/18.
+//  Created by Dave on 8/30/18.
 //  Copyright © 2018 DigitalSuccess-Systems. All rights reserved.
 //
 
 import UIKit
 
 class AboutVC: UIViewController {
-   
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
