@@ -61,6 +61,8 @@ class SceneManager: UIView {
         
         sceneView.debugOptions = .showFeaturePoints
         
+        // set lighting
+        sceneView.automaticallyUpdatesLighting = true
         sceneView.session.run(configuration)
         
     
@@ -87,7 +89,7 @@ class SceneManager: UIView {
             // set position via the screen anchor position
             planeNode.position = SCNVector3(x: planeAnchor.center.x, y:0, z: planeAnchor.center.z)
             // rotate vertical plane to horizonal
-            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 0, 0, 0)
             planeNode.geometry = plane
             
             node.addChildNode(planeNode)
