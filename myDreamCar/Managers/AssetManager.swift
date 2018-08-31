@@ -7,6 +7,7 @@
 //
 
 import SceneKit
+import ARKit
 
 class AssetManager {
     
@@ -43,5 +44,14 @@ class func getAsset() -> SCNNode {
         return node!
 }
 
-
+    func place3D(asset: SCNNode, with assetInfo: Asset, at point: (x:Float,y:Float,z:Float)) {
+        // 1.  get Node from info in Asset
+        
+    //    asset.position = SCNVector3()
+        // 2.
+        
+        
+    }
+    
+ //   func placePlaneAt(tap:)
 }

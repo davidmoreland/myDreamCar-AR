@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import SceneKit
 
 protocol AssetPreviewDelegate {
-    func selected(asset: Asset)
+    func selected(node: SCNNode)
 }

@@ -25,10 +25,12 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         super.init(coder: aDecoder)
         self.size = CGSize(width: 1400, height: 800)
         
-    //    view.frame = CGRect(origin: CGPoint.zero, size: size)
-     //   fatalError("init(coder:) has not been implemented")
 }
 
+    @IBAction func tap(_ sender: UITapGestureRecognizer) {
+        
+        performSegue(withIdentifier: "showWorldViewScreen", sender: self)
+    }
     
  //  let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
     
@@ -44,7 +46,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     var selectedNodeName: String!
     var selectedAssetName: String!
     var selectedAsset: Asset!
-    var selctedNode: SCNNode!
+    var selectedNode: SCNNode!
     let dataManager: DataManager = DataManager()
     
     var assets: [NSManagedObject]!
@@ -274,11 +276,13 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         
         // Display Asset WORKS 8.4.18
        // let assetObject: SCNNode = displaySelectedAssetIn(scene: selectedScene, nodeName: nodeName)
+        
+        self.selectedNode = assetObject
      //  Ramp.startRotation(node: car)
     selectedScene.rootNode.addChildNode(assetObject)
         
         
-      setupTapGestureRecon(view: self.view)
+//      setupTapGestureRecon(view: self.view)
       
     }  // end viewDidLoad
   
@@ -334,7 +338,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             positionPosZlabel.text = String(Int(sender.value))
         }
     }
-    
+    /*
     func setupTapGestureRecon(view: UIView) {
          let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
             tapGestureRecognizer.delegate = self
@@ -342,7 +346,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
          view.addGestureRecognizer(tapGestureRecognizer)
         self.dismiss(animated: true, completion: nil)
     }
-
+*/
    
 
  
@@ -355,18 +359,18 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         let destinationVC = segue.destination as! WorldViewVC
             destinationVC.delegate = self
         //test
-            print("PA_VC: \(destinationVC)")
+          //  print("pre_VC: \(destinationVC)")
    
             // Pass the selected object to the new view controller.
-       destinationVC.delegate?.selectedNodeName = self.selectedNodeName
-          //  destinationVC.selected(asset: self.selectedAsset)
-            destinationVC.fetchScene(asset: self.selectedAsset ?? self.unavailableAsset)
-            print("Selected Assset: \(String(describing: self.selectedAsset))")
+    //   destinationVC.delegate?.selectedNodeName = self.selectedNodeName
+            destinationVC.selected(node: self.selectedNode)
+          //  destinationVC.fetchScene(asset: self.selectedAsset ?? self.unavailableAsset)
+     //       print("Selected Assset: \(String(describing: self.selectedAsset))")
         }
     }
 
 //Add touch
-
+/*
     @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
  
         let touchPoint = gestureRecognizer.location(in: arSceneView)
@@ -383,7 +387,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             
               }
     }
-  
+  */
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

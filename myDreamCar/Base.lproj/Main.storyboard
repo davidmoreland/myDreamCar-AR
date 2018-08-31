@@ -164,6 +164,10 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Td7-PE-Q5L">
                                 <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="16y-N8-nr3" appends="YES" id="Y5D-47-z7F"/>
+                                </connections>
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -178,10 +182,15 @@
                     </view>
                     <connections>
                         <outlet property="arSceneView" destination="Td7-PE-Q5L" id="NVj-bE-RTF"/>
-                        <segue destination="tfC-op-Qyq" kind="presentation" modalPresentationStyle="fullScreen" id="Z0d-ZT-3uG"/>
+                        <segue destination="tfC-op-Qyq" kind="presentation" identifier="showWorldViewScreen" modalPresentationStyle="fullScreen" id="Z0d-ZT-3uG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9CE-Xd-4Ze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="16y-N8-nr3">
+                    <connections>
+                        <action selector="tap:" destination="DSi-Qh-ces" id="Si2-71-lqY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="915" y="-734"/>
         </scene>
