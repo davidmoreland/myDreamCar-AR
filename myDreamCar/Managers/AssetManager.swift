@@ -14,10 +14,10 @@ class AssetManager {
 
 class func getAsset() -> SCNNode {
     
-    var obj = SCNScene(named: "art.scnassets/370z_2013.scn")
+    var obj = SCNScene(named: "art.scnassets/Nissan370Z2013ActualSize.scn")
   //  var obj = SCNScene(named:"art.scnassets/MainScence.scn")
     
-    var node = obj?.rootNode.childNode(withName: "obj_pivot", recursively: false)!
+    var node = obj?.rootNode.childNode(withName: "pivot", recursively: false)!
     
     if (obj != nil) {
         print("Scene is loaded: , \(String(describing: obj)) as Any")

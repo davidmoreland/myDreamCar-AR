@@ -57,7 +57,7 @@ class TestData: DataManager
         
         save1(context: context)
         
-     /*
+     
           assetInfo = AssetInfo(name: "Chev", imageName: "", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 0.00)
         
         asset.name = assetInfo.name
@@ -101,7 +101,7 @@ class TestData: DataManager
         NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
         
         save1(context: context)
-        */
+        
         
         assetInfo = AssetInfo(name: "AssetNotFound", imageName: "AssetNotFound.jpg", fileType: "", type: "", numOfTriangles: 0, note: "This is dummy Data", price: 0.00)
         
@@ -116,7 +116,7 @@ class TestData: DataManager
         NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
         
         save1(context: context)
-        /*
+        
           assetInfo = AssetInfo(name: "Nissan", imageName: "Nissan_370z_perspective.jpg", fileType: "dae", type: "Car", numOfTriangles: 1000, note: "This is dummy Data", price: 75.00)
         
         asset.name = assetInfo.name
@@ -130,7 +130,7 @@ class TestData: DataManager
         NSEntityDescription.insertNewObject(forEntityName: "Asset", into: context)
         
         save1(context: context)
-*/
+
  }
 
  }

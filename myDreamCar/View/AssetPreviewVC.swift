@@ -269,7 +269,8 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     selectedScene = SCNScene(named: selectedSceneName)!
 
      self.arSceneView.scene = selectedScene
-       
+        
+ //   selectedScene.enableDefaultLighting = true
         //testing
       // getCar WORKS
           let assetObject = AssetManager.getAsset()
@@ -278,6 +279,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
        // let assetObject: SCNNode = displaySelectedAssetIn(scene: selectedScene, nodeName: nodeName)
         
         self.selectedNode = assetObject
+
      //  Ramp.startRotation(node: car)
     selectedScene.rootNode.addChildNode(assetObject)
         
@@ -323,6 +325,8 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             positionPosYlabel.text = String(Int(sender.value))
           }
     }
+    
+    
     @objc func position_Z_action(sender: UISlider) {
         if(sender.value < 0){
             positionNegZlabel.textColor = UIColor.green
@@ -338,17 +342,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
             positionPosZlabel.text = String(Int(sender.value))
         }
     }
-    /*
-    func setupTapGestureRecon(view: UIView) {
-         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-            tapGestureRecognizer.delegate = self
-        self.view.isUserInteractionEnabled = true
-         view.addGestureRecognizer(tapGestureRecognizer)
-        self.dismiss(animated: true, completion: nil)
-    }
-*/
-   
-
+    
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -358,44 +352,16 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         print("AssetPreview-->WorldView 'prepareForSegue': ")
         let destinationVC = segue.destination as! WorldViewVC
             destinationVC.delegate = self
-        //test
-          //  print("pre_VC: \(destinationVC)")
-   
-            // Pass the selected object to the new view controller.
-    //   destinationVC.delegate?.selectedNodeName = self.selectedNodeName
+        
             destinationVC.selected(node: self.selectedNode)
-          //  destinationVC.fetchScene(asset: self.selectedAsset ?? self.unavailableAsset)
-     //       print("Selected Assset: \(String(describing: self.selectedAsset))")
         }
     }
 
-//Add touch
-/*
-    @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
- 
-        let touchPoint = gestureRecognizer.location(in: arSceneView)
-        let hitResults = arSceneView.hitTest(touchPoint, options: [ : ])
-      
-        if hitResults .count > 0 {
-            // test scene
-            let selectedNode = hitResults[0].node
-            print("Parent Node: \(String(describing: selectedNode.parent?.name!))")
-            print("Node Name: \(selectedNode.name!)")
-            
-      let tempAssetLocation = "art/scnassets"
-            let assetSufix = ".scn"
-            
-              }
-    }
-  */
+
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
    
-
-
-
-
 
     func displaySelectedAssetIn(scene: SCNScene?, nodeName: String) -> SCNNode {
         //Camera
@@ -407,7 +373,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         scene?.rootNode.camera = camera
         
        //let parentScene = scene
-       let parentObj = SCNScene(named:"art.scnassets/370z_2013.scn")
+       let parentObj = SCNScene(named:"art.scnassets/Nissan370Z2013ActualSize.scn")
 
 let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true)
         //Car - refactor into object retrieval class
