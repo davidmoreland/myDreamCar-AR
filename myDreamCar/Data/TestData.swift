@@ -43,7 +43,7 @@ class TestData: DataManager
       
         let context = DataManager.getMainManagedContext()
         
-        var asset = Asset(context: context )
+        let asset = Asset(context: context )
         asset.name = assetInfo.name
         asset.imageName = assetInfo.imageName
         asset.fileType = assetInfo.fileType

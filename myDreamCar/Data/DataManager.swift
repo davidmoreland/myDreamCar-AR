@@ -98,7 +98,7 @@ func setUpFRCwPredicate(entityName :String, predKey: NSPredicate )->NSFetchedRes
 
 
 func addAssetTo(context: NSManagedObjectContext) {
-    var asset = AssetInfo(name: "Nissan",imageName: "Nissan_370z_perspective.jpg", fileType: "dae", type: "vehicle", numOfTriangles: 1200, note: ""      , price: 75.00 )
+    let asset = AssetInfo(name: "Nissan",imageName: "Nissan_370z_perspective.jpg", fileType: "dae", type: "vehicle", numOfTriangles: 1200, note: ""      , price: 75.00 )
     let cdAsset = Asset(context: context)
     cdAsset.name = asset.name
     cdAsset.fileType = asset.fileType

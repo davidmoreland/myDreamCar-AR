@@ -30,7 +30,7 @@ class Ramp {
     
         var obj = SCNScene(named: "art.scnassets/370z_2013.scn")
         
-        var node = obj?.rootNode.childNode(withName: "obj_pivot", recursively: true)!
+        let node = obj?.rootNode.childNode(withName: "obj_pivot", recursively: true)!
         
         if (obj != nil) {
             print("Scene is loaded: , \(String(describing: obj)) as Any")

@@ -9,15 +9,15 @@
 import UIKit
 
 class ControlView: UIView {
-
+/*
     func positionControlinView(control: UIControl, view: UIView) -> UIView
     {
-        var customControlView: UIView?
+        let customControlView: UIView?
         var mainView_size: CGRect?
        
         return customControlView!
     }
-    
+*/
     
     /*
     // Only override draw() if you perform custom drawing.

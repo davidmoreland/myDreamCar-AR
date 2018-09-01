@@ -38,7 +38,7 @@ class Assets {
     
         var obj = SCNScene(named: "art.scnassets/Nissan370Z2013ActualSize.scn")
         
-        var node = obj?.rootNode.childNode(withName: "obj_pivot", recursively: true)!
+        let node = obj?.rootNode.childNode(withName: "obj_pivot", recursively: true)!
         
         if (obj != nil) {
             print("Scene is loaded: , \(String(describing: obj)) as Any")

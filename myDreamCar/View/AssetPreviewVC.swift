@@ -106,7 +106,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
        
         fetchRequest.predicate = NSPredicate(format: "name = %@", predValue)
         do {
-            let notFoundAsset = try context.fetch(fetchRequest) as! [Asset]
+            let notFoundAsset = try context.fetch(fetchRequest)
             print("Successfully fetched data.")
             print("# of Assets: \(assets.count)")
         //   print("Fetched Asset Name: \(notFoundAsset[0].name)")

@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		552FA833210C5F8D00B89535 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552FA832210C5F8D00B89535 /* Assets.swift */; };
-		5534B86A213A68AF00055C14 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534B869213A68AE00055C14 /* AboutVC.swift */; };
 		5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEB210EA1D5004815B2 /* TranslationControl.swift */; };
 		5545ADEF210EA380004815B2 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545ADEE210EA380004815B2 /* Assembler.swift */; };
 		555CC770211A476B00DD1988 /* AssetPreviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555CC76F211A476B00DD1988 /* AssetPreviewDelegate.swift */; };
 		5567FEEE2115011300D4C512 /* orange-lamborghini.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5567FEED2115011200D4C512 /* orange-lamborghini.jpg */; };
 		559B308D21143F1000C1D787 /* ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559B308C21143F1000C1D787 /* ViewLayout.swift */; };
-		55B39296213A94E500397B54 /* ARWorldViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B39295213A94E500397B54 /* ARWorldViewVC.swift */; };
+		55B39298213AAA2400397B54 /* SceneManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B39297213AAA2400397B54 /* SceneManagerDelegate.swift */; };
 		55B9F30F2113EC9100BAFCBC /* Ramp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9F30E2113EC8F00BAFCBC /* Ramp.swift */; };
 		55B9F3112113ED4E00BAFCBC /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9F3102113ED4E00BAFCBC /* AssetManager.swift */; };
 		55B9F3132113FCAE00BAFCBC /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F3122113FCAD00BAFCBC /* bg.jpg */; };
@@ -62,19 +61,18 @@
 
 /* Begin PBXFileReference section */
 		552FA832210C5F8D00B89535 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
-		5534B869213A68AE00055C14 /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		5545ADEB210EA1D5004815B2 /* TranslationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationControl.swift; sourceTree = "<group>"; };
 		5545ADEE210EA380004815B2 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		555CC76F211A476B00DD1988 /* AssetPreviewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPreviewDelegate.swift; sourceTree = "<group>"; };
 		5567FEED2115011200D4C512 /* orange-lamborghini.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "orange-lamborghini.jpg"; sourceTree = "<group>"; };
 		559B308C21143F1000C1D787 /* ViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLayout.swift; sourceTree = "<group>"; };
-		55B39295213A94E500397B54 /* ARWorldViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARWorldViewVC.swift; sourceTree = "<group>"; };
+		55B39297213AAA2400397B54 /* SceneManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerDelegate.swift; sourceTree = "<group>"; };
 		55B9F30E2113EC8F00BAFCBC /* Ramp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ramp.swift; sourceTree = "<group>"; };
 		55B9F3102113ED4E00BAFCBC /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		55B9F3122113FCAD00BAFCBC /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		55B9F315211407E100BAFCBC /* Transitional_Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitional_Slider.swift; sourceTree = "<group>"; };
 		55B9F3172114086A00BAFCBC /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
-		55C3B6862137BA2F000CEE10 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutVC.swift; path = myDreamCar/View/AboutVC.swift; sourceTree = "<group>"; };
+		55C3B6862137BA2F000CEE10 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		55DA933F21162156007B8012 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		55DA934121162195007B8012 /* LightingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightingManager.swift; sourceTree = "<group>"; };
 		55DA9343211621B3007B8012 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 		559B308B21143C6200C1D787 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				5534B869213A68AE00055C14 /* AboutVC.swift */,
 				F6C6BE472104AE8F00606B51 /* columnFlowLayout.swift */,
 				559B308C21143F1000C1D787 /* ViewLayout.swift */,
 			);
@@ -172,7 +169,7 @@
 		F64F064A20FF10D10039D14A = {
 			isa = PBXGroup;
 			children = (
-				55C3B6862137BA2F000CEE10 /* AboutVC.swift */,
+				55B39297213AAA2400397B54 /* SceneManagerDelegate.swift */,
 				555CC76F211A476B00DD1988 /* AssetPreviewDelegate.swift */,
 				F64F065620FF10D20039D14A /* AppDelegate.swift */,
 				F64F065520FF10D20039D14A /* myDreamCar */,
@@ -234,11 +231,11 @@
 		F6C6BE492104AEA400606B51 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				55B39295213A94E500397B54 /* ARWorldViewVC.swift */,
-				559B308E2114418700C1D787 /* Cells */,
+				55C3B6862137BA2F000CEE10 /* AboutVC.swift */,
 				F672290D2104233F00C2126A /* MyInventoryCV.swift */,
 				F64F065A20FF10D20039D14A /* WorldViewVC.swift */,
 				F6DBB6582106C72C00D619D5 /* AssetPreviewVC.swift */,
+				559B308E2114418700C1D787 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -398,19 +395,18 @@
 				55C3B6872137BA2F000CEE10 /* AboutVC.swift in Sources */,
 				55DA934221162195007B8012 /* LightingManager.swift in Sources */,
 				55DA9346211621D1007B8012 /* MaterialManager.swift in Sources */,
+				55B39298213AAA2400397B54 /* SceneManagerDelegate.swift in Sources */,
 				F6C6BE482104AE8F00606B51 /* columnFlowLayout.swift in Sources */,
 				55B9F30F2113EC9100BAFCBC /* Ramp.swift in Sources */,
 				F6DBB6562106BD8A00D619D5 /* inventoryModel.xcdatamodeld in Sources */,
 				F64F065B20FF10D20039D14A /* WorldViewVC.swift in Sources */,
 				552FA833210C5F8D00B89535 /* Assets.swift in Sources */,
-				55B39296213A94E500397B54 /* ARWorldViewVC.swift in Sources */,
 				5545ADEC210EA1D5004815B2 /* TranslationControl.swift in Sources */,
 				F6DBB65B2106D6E600D619D5 /* InventoryCell.swift in Sources */,
 				5545ADEF210EA380004815B2 /* Assembler.swift in Sources */,
 				555CC770211A476B00DD1988 /* AssetPreviewDelegate.swift in Sources */,
 				55DA934021162156007B8012 /* SceneManager.swift in Sources */,
 				55EAF7C9210FAD4900972D48 /* DataManager.swift in Sources */,
-				5534B86A213A68AF00055C14 /* AboutVC.swift in Sources */,
 				55B9F3112113ED4E00BAFCBC /* AssetManager.swift in Sources */,
 				55B9F316211407E100BAFCBC /* Transitional_Slider.swift in Sources */,
 				F64F065720FF10D20039D14A /* AppDelegate.swift in Sources */,

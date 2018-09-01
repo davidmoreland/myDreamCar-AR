@@ -10,8 +10,9 @@ import Foundation
 import SceneKit
 import ARKit
 
-class SceneManager: UIView {
+class SceneManager: UIView{
     
+ //   var arView = ARSCNView?
     /*
     class func sceneHitDetectionFor(sceneView: SCNView, gestureRecongnizer: UIGestureRecognizer)-> SCNNode {
         var tappedNodeName: String!
@@ -38,13 +39,17 @@ class SceneManager: UIView {
     func setUp(sceneView: ARSCNView, using sceneName: String)-> ARSCNView {
         print("Func-SetUpScene:")
    
+        // set ARView Delegate
+      //  sceneView.delegate = delegate
     // Show statistics such as fps and timing information
     //  arSceneView.showsStatistics = true
-    
+    let scenePath = "art.scnassets/" + sceneName + ".scn"
+        
+        
     // Creat an an empty scene
         //test
        // sceneName = "art.scnassets/MainScene.scn"
-        let scene = SCNScene(named: sceneName)!
+        let scene = SCNScene(named: scenePath)!
     
     // Set the scene to the view
     sceneView.scene = scene
@@ -100,3 +105,11 @@ class SceneManager: UIView {
         }
     }
  }
+
+extension SceneManager {
+
+    func setARSceneView(arView: ARSCNView) {
+     //   self.arView = arView
+    }
+}
+
