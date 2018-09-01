@@ -276,7 +276,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
           let assetObject = AssetManager.getAsset()
         
         // Display Asset WORKS 8.4.18
-       // let assetObject: SCNNode = displaySelectedAssetIn(scene: selectedScene, nodeName: nodeName)
+        let assetObjectNode: SCNNode = displaySelectedAssetIn(scene: selectedScene, nodeName: "none")
         
         self.selectedNode = assetObject
 
@@ -379,8 +379,8 @@ let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true
         //Car - refactor into object retrieval class
         objNode?.scale = SCNVector3Make(0.0200, 0.0200, 0.0200)
       //  parentNode?.position = SCNVector3Make(0, -1, 1) // centered X, off bottom Y
-        objNode?.position = SCNVector3Make(0, -0.5, -15.00)
-      scene?.rootNode.addChildNode(objNode!)
+        objNode?.position = SCNVector3Make(0, -0.5, -5.00)
+   //   scene?.rootNode.addChildNode(objNode!)
         
        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.1 * Double.pi), z: 0, duration: 1.0))
         

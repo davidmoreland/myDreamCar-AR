@@ -21,6 +21,7 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
     var selectedNode: SCNNode!
     var assetPreviewVC: AssetPreviewVC!
     let sceneManager: SceneManager = SceneManager()
+    var planeNodes: [SCNNode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +37,14 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
         // Set the scene to the view (moved to SceneManager)
        arSceneView.scene = scene
        // arSceneView = sceneManager.setUp(sceneView: arSceneView, using: "MainScene")
+        arSceneView.autoenablesDefaultLighting = true
+        
+        arSceneView.scene.rootNode.addChildNode(selectedNode)
         
         print("WorldView: selectedNode \(String(describing: selectedNode))")
         //   print("...       : sceneView: \(sceneView)")
         print("...       ARView Delegate: \(String(describing: arSceneView.delegate))")
+        
         
     }
     
@@ -48,7 +53,12 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+        if #available(iOS 11.3, *) {
+            configuration.planeDetection = [.horizontal, .vertical]
+        } else {
+            // Fallback on earlier versions
+            configuration.planeDetection = .horizontal
+        }
         // Run the view's session
         arSceneView.session.run(configuration)
     }
@@ -66,11 +76,13 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
     
 
     // Override to create and configure nodes for anchors added to the view's session.
+    /*
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
      
         return node
     }
+    */
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if anchor is ARPlaneAnchor {
@@ -87,8 +99,9 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
             // set position via the screen anchor position
             planeNode.position = SCNVector3(x: planeAnchor.center.x, y:0, z: planeAnchor.center.z)
             // rotate vertical plane to horizonal
-            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 0, 1, 0)
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
             planeNode.geometry = plane
+            self.planeNodes.append(planeNode)
             
             node.addChildNode(planeNode)
             print("Plane at: \(planeNode.transform)")
@@ -98,33 +111,48 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
         }
     }
         
-/*
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {return}
-        let results = arSceneView.hitTest(touch.location(in: arSceneView), types: [.featurePoint])
-        guard let hitFeature = results.last else {return}
-        let hitTransform = SCNVector3
-       
-        let hitPosition = SCNVector3Make(hitTransform.m41, hitTransform.m42, hitTransform.m43)
+        let touchlocation = touch.location(in: arSceneView)
         
+        let results = arSceneView.hitTest(touchlocation, types: [.existingPlaneUsingExtent])
         
-        placeObjectInScene(at: hitPosition, using: <#SCNVector3#>)
- 
+        if let hitResult = results.first {
+            let hitPosition = SCNVector3(
+                x: hitResult.worldTransform.columns.3.x,
+                y: hitResult.worldTransform.columns.3.y,
+                z: hitResult.worldTransform.columns.3.z
+            )
+            print("=============================================")
+            print("Position in Scene: \(hitPosition)")
+            
+       //     selectedNode.boundingBox = vector3(x:.boundingBox.x,y:.boundingBox.y, z:.boundingBox.z)
+       let scale = SCNVector3(1, 1, 1)
+            print("Scale: \(scale)")
+            print("=============================================")
+            //
+            //Anchor Grid to 3D selected Position
+            let gridAnchor = planeNodes[0].
+            placeObjectInScene(on: planeNodes[0], at: hitPosition, using: scale)
+        }
  }
     
-  */
+
    /* func onObjectSelected(obj: SCNNode) {
         self.selectedAsset = obj
     }
 */
     
-    func placeObjectInScene(at position: SCNVector3, using scale: SCNVector3) {
-        if selectedNode != nil {
+    func placeObjectInScene(on gridNode: SCNNode, at position: SCNVector3, using scale: SCNVector3)
+    {
+        if gridNode != nil {
          //   let obj = SCNScene(named: "art.scnassets/Nissan_370Z_2013_ActualSize.copy.scn")
        // let node = obj?.rootNode.childNode(withName: "obj_pivot", recursively: true)!
-            selectedNode.position = position
-            selectedNode.scale = scale
-            
+            gridNode.position = position
+            gridNode.scale = scale
+            gridNode.addChildNode(selectedNode)
+          //  arScene.scene.rootNode.addChildNode(selectedNode)
         }
     }
  
