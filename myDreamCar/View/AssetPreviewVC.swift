@@ -25,14 +25,12 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         super.init(coder: aDecoder)
         self.size = CGSize(width: 1400, height: 800)
         
-}
+    }
 
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
         
         performSegue(withIdentifier: "showWorldViewScreen", sender: self)
     }
-    
- //  let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
     
     @IBOutlet var arSceneView: SCNView!
     
@@ -66,10 +64,6 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     
     
  // End Preview Positional Sliders
-   
-    //MARK Gesture Recognizers
- 
-  //  weak var WorldViewVC: WorldViewVC!
     
     
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
@@ -86,8 +80,6 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         let predName = "name"
         let predValue = "AssetNotFound"
         
-       
-   
     
         do {
             self.assets = try context.fetch(fetchRequest)
@@ -119,22 +111,17 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         }
         
         
-        
-
-      //  self.unavailableAsset = dataManager.fetch(entityName: "AssetNotFound", completion:(true))
-  //      view.frame = CGRect(origin: CGPoint.zero, size: size)
+//  self.unavailableAsset = dataManager.fetch(entityName: "AssetNotFound", completion:(true))
+//      view.frame = CGRect(origin: CGPoint.zero, size: size)
   
         self.arSceneView = SCNView(frame: CGRect(x: 0, y: 0, width: 1200 , height: 800))
-     
         self.arSceneView.delegate = self
         
-      
         // control view
         controlsView = UIView()
         controlsView.backgroundColor = UIColor.black
         controlsView.backgroundColor?.withAlphaComponent(0.10)
         controlsView.frame = CGRect(x: 0, y: size.height - 250.00, width: size.width, height: 250.00)
-        
         
         //control_X_Slider = UISlider()
         // MARK: Preview Posional Sliders
@@ -151,7 +138,6 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         
         let control_Z_Slider: UISlider = UISlider(frame: CGRect(x: 0, y: 200.00, width: sliderLength, height: 10.00))
         control_Z_Slider.addTarget(self, action: #selector(position_Z_action(sender:)), for: UIControl.Event.valueChanged)
-        
         
         control_X_Slider.backgroundColor = UIColor.orange
         control_X_Slider.tintColor = UIColor.white
@@ -184,7 +170,6 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         controlsView.bringSubviewToFront(control_X_Slider)
         controlsView.bringSubviewToFront(control_Y_Slider)
         controlsView.bringSubviewToFront(control_Z_Slider)
-        
         
         // Labels
         // X Label
@@ -288,10 +273,6 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
       
     }  // end viewDidLoad
   
-    
-    
-    
-    
     
     @objc func position_X_action(sender: UISlider) {
         if(sender.value < 0){

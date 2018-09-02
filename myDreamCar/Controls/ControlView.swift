@@ -26,5 +26,11 @@ class ControlView: UIView {
         // Drawing code
     }
     */
-
+    func setControlLabel(height:CGFloat, width:CGFloat) -> CGSize {
+        let labelSize: CGSize = CGSize(width: width, height: height)
+        
+        return labelSize
+    }
+    
+    
 }

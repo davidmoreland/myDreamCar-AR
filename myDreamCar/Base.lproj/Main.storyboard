@@ -13,20 +13,24 @@
         <!--AboutVC-->
         <scene sceneID="3ex-7a-nJB">
             <objects>
-                <viewController id="aja-mK-w3k" userLabel="AboutVC" customClass="AboutVC" sceneMemberID="viewController">
+                <viewController id="aja-mK-w3k" userLabel="AboutVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PgW-vi-lB1" userLabel="View" customClass="AboutVC" customModule="myDreamCar">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ABOUT ME !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaE-SU-5a4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABOUT ME !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaE-SU-5a4">
                                 <rect key="frame" x="206" y="346" width="169" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="CBb-3l-oqw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xaE-SU-5a4" secondAttribute="trailing" symbolic="YES" id="KMA-BC-rSR"/>
+                            <constraint firstItem="xaE-SU-5a4" firstAttribute="leading" secondItem="CBb-3l-oqw" secondAttribute="leading" constant="206" id="Vrc-SV-jq9"/>
+                            <constraint firstItem="xaE-SU-5a4" firstAttribute="top" secondItem="CBb-3l-oqw" secondAttribute="top" constant="326" id="yyV-cF-s0b"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CBb-3l-oqw"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" id="WXx-qS-IOP"/>
@@ -97,6 +101,11 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h6m-Fc-j2J">
                                 <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="fn1-kc-1d4" appends="YES" id="S0W-sr-9xm"/>
+                                    <outletCollection property="gestureRecognizers" destination="4GY-LG-Pg4" appends="YES" id="i2q-BZ-N4l"/>
+                                </connections>
                             </arscnView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="d9p-TX-jJB">
                                 <rect key="frame" x="20" y="684" width="75" height="315"/>
@@ -105,7 +114,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="75" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="AEG-6T-S3u"/>
-                                            <constraint firstAttribute="width" constant="75" id="FBM-3N-7t2"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="FBM-3N-7t2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="KannadaSangamMN-Bold" family="Kannada Sangam MN" pointSize="22"/>
                                         <size key="titleShadowOffset" width="-2" height="-1"/>
@@ -117,7 +126,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL2-qR-sZn" userLabel="Place">
                                         <rect key="frame" x="0.0" y="165" width="75" height="150"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="WN3-xF-cOy"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="WN3-xF-cOy"/>
                                             <constraint firstAttribute="height" constant="150" id="y0n-rn-JLB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="KannadaSangamMN" family="Kannada Sangam MN" pointSize="23"/>
@@ -144,9 +153,17 @@
                     <tabBarItem key="tabBarItem" title="Item" id="HJf-5B-1hQ"/>
                     <connections>
                         <outlet property="arSceneView" destination="h6m-Fc-j2J" id="zHz-Ld-qTN"/>
+                        <outlet property="longPress" destination="fn1-kc-1d4" id="uuE-2w-QwF"/>
+                        <outlet property="tap" destination="4GY-LG-Pg4" id="iyA-BS-u9L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8v-ZA-ndT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="fn1-kc-1d4"/>
+                <tapGestureRecognizer id="4GY-LG-Pg4">
+                    <connections>
+                        <action selector="tapGesture:" destination="tfC-op-Qyq" id="lxL-j4-Rf2"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="276" y="-1648"/>
         </scene>

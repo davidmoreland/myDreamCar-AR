@@ -87,8 +87,10 @@ class SceneManager: UIView{
             // convert anchor into a plane
             let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
             
+            //build plane Node
+            
             let planeNode = SCNNode()
-             let gridMaterial = SCNMaterial()
+            let gridMaterial = SCNMaterial()
             gridMaterial.diffuse.contents = UIImage(named: "grid.png")
             plane.materials = [gridMaterial]
             // set position via the screen anchor position
@@ -104,7 +106,62 @@ class SceneManager: UIView{
         return
         }
     }
- }
+    
+    func buildPlaneNode(at anchor: ARAnchor, using node: SCNNode) -> SCNNode {
+        let planeAnchor = anchor as! ARPlaneAnchor
+        // convert anchor into a plane
+        let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+        
+        let planeNode = SCNNode()
+        planeNode.geometry = plane
+        
+        // rotate to orient correctly in scene
+        // rotate vertical plane to horizonal
+      //  planeNode.transform = SCNMatrix4MakeRotation(Float.pi/2, 1, 0, 0)
+        // set position via the screen anchor position
+        // change .extent.x to .center.x
+        planeNode.position = SCNVector3(x: planeAnchor.extent.x, y:0, z: planeAnchor.extent.z)
+        // Create Grid
+        let gridMaterial = SCNMaterial()
+        gridMaterial.diffuse.contents = UIImage(named: "grid.png")
+        plane.materials = [gridMaterial]
+        //node.addChildNode(planeNode)
+        print("Plane at: \(planeNode.transform)")
+        
+    return planeNode
+    }
+    
+    
+    func anchorGrid(node:SCNNode, at anchor: ARAnchor) {
+        print("Func: AnchorGrid ==")
+        
+        let hitTransform = SCNMatrix4(anchor.transform)
+        let location = SCNVector3Make(hitTransform.m41, hitTransform.m42, hitTransform.m43)
+        /*
+         if let hitResult = results.first {
+         let hitPosition = SCNVector3(
+         x: hitResult.worldTransform.columns.3.x,
+         y: hitResult.worldTransform.columns.3.y,
+         z: hitResult.worldTransform.columns.3.z
+         )
+         */
+        print("=============================================")
+        print("Grid Anchor Position in Scene: \(location)")
+        
+        //     selectedNode.boundingBox = vector3(x:.boundingBox.x,y:.boundingBox.y, z:.boundingBox.z)
+        let scale = SCNVector3(1, 1, 1)
+        print("Scale: \(scale)")
+        print("=============================================")
+        //
+        //Anchor Grid to 3D selected Position
+      //  let gridAnchor = planeNodes[0]
+     //   arSceneView.scene.rootNode.addChildNode(gridAnchor)
+        
+        //   placeObjectInScene(on: planeNodes[0], at: hitPosition, using: scale)
+    }
+    
+    
+}
 
 extension SceneManager {
 

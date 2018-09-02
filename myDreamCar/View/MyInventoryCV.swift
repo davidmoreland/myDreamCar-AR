@@ -136,7 +136,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
    //     previewAssetVC.popoverPresentationController?.delegate = self
         previewAssetVC.popoverPresentationController?.sourceView = self.view
         previewAssetVC.selectedAssetName = self.selectedAssetName
-        previewAssetVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
+        previewAssetVC.selectedSceneName = "art.scnassets/370z_2013.scn"
           //  previewAssetVC.size.width = 1400
           //  previewAssetVC.size.height = 800
         //set popoverReferce to Main View

@@ -14,7 +14,11 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
   
     @IBOutlet  var arSceneView: ARSCNView!
     
-   var delegate: AssetPreviewVC?
+    @IBOutlet var longPress: UILongPressGestureRecognizer!
+    
+    @IBOutlet var tap: UITapGestureRecognizer!
+    
+    var delegate: AssetPreviewVC?
     var size: CGSize!
     var selectedAsset: Asset!
     var selectedAssetName: String!
@@ -22,6 +26,7 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
     var assetPreviewVC: AssetPreviewVC!
     let sceneManager: SceneManager = SceneManager()
     var planeNodes: [SCNNode] = []
+    var selectedFeaturePoint = SCNVector3Make(0, 0, 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,20 +44,20 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
        // arSceneView = sceneManager.setUp(sceneView: arSceneView, using: "MainScene")
         arSceneView.autoenablesDefaultLighting = true
         
-        arSceneView.scene.rootNode.addChildNode(selectedNode)
+     //   arSceneView.scene.rootNode.addChildNode(selectedNode)
         
-        print("WorldView: selectedNode \(String(describing: selectedNode))")
+      //  print("WorldView: selectedNode \(String(describing: selectedNode))")
         //   print("...       : sceneView: \(sceneView)")
         print("...       ARView Delegate: \(String(describing: arSceneView.delegate))")
-        
-        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+     //   configuration.planeDetection = [.horizontal]
         if #available(iOS 11.3, *) {
             configuration.planeDetection = [.horizontal, .vertical]
         } else {
@@ -79,7 +84,6 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
     /*
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
-     
         return node
     }
     */
@@ -87,43 +91,47 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if anchor is ARPlaneAnchor {
             print("Plane Detected")
-            let planeAnchor = anchor as! ARPlaneAnchor
             
-            // convert anchor into a plane
-            let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+            let planeNode = sceneManager.buildPlaneNode(at: anchor, using: node)
+            // rotate vertical pla ne to horizonal
+              planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
             
-            let planeNode = SCNNode()
-            let gridMaterial = SCNMaterial()
-            gridMaterial.diffuse.contents = UIImage(named: "grid.png")
-            plane.materials = [gridMaterial]
-            // set position via the screen anchor position
-            planeNode.position = SCNVector3(x: planeAnchor.center.x, y:0, z: planeAnchor.center.z)
-            // rotate vertical plane to horizonal
-            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
-            planeNode.geometry = plane
             self.planeNodes.append(planeNode)
+            print("# of Planes in Nodes Array: \(planeNodes.count)")
             
             node.addChildNode(planeNode)
+         
             print("Plane at: \(planeNode.transform)")
-        } else {
-            print("Plane NOT Detected")
-            return
+            
+           // sceneManager.anchorGrid(node, anchor) {
+         //       planeNode.transform = selectedFeaturePoint
+         //   node.addChildNode(planeNode.worldTransform = selectedFeaturePoint)
         }
     }
-        
-
+    
+    @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
+    }
+   
+    /*
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {return}
         let touchlocation = touch.location(in: arSceneView)
-        
-        let results = arSceneView.hitTest(touchlocation, types: [.existingPlaneUsingExtent])
-        
+        // Locate Point on Grid
+       // let results = arSceneView.hitTest(touchlocation, types: [.existingPlaneUsingExtent])
+        let results = arSceneView.hitTest(touchlocation, types: [.featurePoint])
+      
+        guard let hitFeature = results.last else {return}
+            
+        let hitTransform = SCNMatrix4(hitFeature.worldTransform)
+        let hitPosition = SCNVector3Make(hitTransform.m41, hitTransform.m42, hitTransform.m43)
+        /*
         if let hitResult = results.first {
             let hitPosition = SCNVector3(
                 x: hitResult.worldTransform.columns.3.x,
                 y: hitResult.worldTransform.columns.3.y,
                 z: hitResult.worldTransform.columns.3.z
             )
+ */
             print("=============================================")
             print("Position in Scene: \(hitPosition)")
             
@@ -133,27 +141,65 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
             print("=============================================")
             //
             //Anchor Grid to 3D selected Position
-            let gridAnchor = planeNodes[0].
-            placeObjectInScene(on: planeNodes[0], at: hitPosition, using: scale)
-        }
- }
+            let gridAnchor = planeNodes[0]
+            arSceneView.scene.rootNode.addChildNode(gridAnchor)
+            
+         //   placeObjectInScene(on: planeNodes[0], at: hitPosition, using: scale)
+}
+  
+    */
     
-
+    
    /* func onObjectSelected(obj: SCNNode) {
         self.selectedAsset = obj
     }
 */
     
+    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
+    // single tap places Grid
+        let touchlocation = sender.location(in: arSceneView)
+        // Locate Point on Grid
+        let results = arSceneView.hitTest(touchlocation, types: [.featurePoint])
+        
+        guard let hitFeature = results.last else {return}
+        
+        let hitTransform = SCNVector3Make(
+            hitFeature.worldTransform.columns.3.x,
+            hitFeature.worldTransform.columns.3.y - 0.5,
+            hitFeature.worldTransform.columns.3.z
+        )
+        
+        self.selectedFeaturePoint = hitTransform
+       
+        print("=============================================")
+        print("Car Position in Scene: \(selectedFeaturePoint)")
+        
+        let scale = SCNVector3(1, 1, 1)
+        print("Scale: \(scale)")
+        print("=============================================")
+        //
+        //Anchor Grid to 3D selected Position
+      //  let gridAnchor = planeNodes[0]
+       // let gridAnchor = selectedFeaturePoint
+     // gride
+         selectedNode.position = selectedFeaturePoint
+       arSceneView.scene.rootNode.addChildNode(selectedNode)
+    }
+    
+        //   placeObjectInScene(on: planeNodes[0], at: hitPosition, using: scale)
+    
+    
+    
     func placeObjectInScene(on gridNode: SCNNode, at position: SCNVector3, using scale: SCNVector3)
     {
-        if gridNode != nil {
+        guard gridNode .isKind(of: SCNNode.self) else {return}
          //   let obj = SCNScene(named: "art.scnassets/Nissan_370Z_2013_ActualSize.copy.scn")
        // let node = obj?.rootNode.childNode(withName: "obj_pivot", recursively: true)!
             gridNode.position = position
             gridNode.scale = scale
-            gridNode.addChildNode(selectedNode)
+            gridNode.addChildNode(self.selectedNode)
           //  arScene.scene.rootNode.addChildNode(selectedNode)
-        }
+    
     }
  
     
@@ -179,7 +225,7 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
     }
  */
     
-    }
+}
 
 
 extension WorldViewVC: AssetPreviewDelegate {

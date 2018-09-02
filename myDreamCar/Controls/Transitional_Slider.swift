@@ -19,6 +19,25 @@ class Transitional_Slider: UISlider {
         
     }
     
+    func updateAssetPosition(x: UISlider) ->Float {
+        let position = x.value
+        
+        return position
+        
+    }
+    
+    func updateAssetPosition(y: UISlider) ->Float {
+        let position = y.value
+        
+        return position
+    }
+    
+    func updateAssetPosition(z: UISlider) ->Float {
+        let position = z.value
+        
+        return position
+    }
+    
     func setupAssetPositionalSliders()
     {
         
