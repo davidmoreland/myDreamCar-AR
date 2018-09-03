@@ -36,18 +36,16 @@ class SceneManager: UIView{
     }
 */
     
-    func setUp(sceneView: ARSCNView, using sceneName: String)-> ARSCNView {
+    func setUpAR(sceneView: ARSCNView, using sceneName: String)-> ARSCNView {
         print("Func-SetUpScene:")
    
         // set ARView Delegate
       //  sceneView.delegate = delegate
     // Show statistics such as fps and timing information
-    //  arSceneView.showsStatistics = true
+      sceneView.showsStatistics = true
     let scenePath = "art.scnassets/" + sceneName + ".scn"
         
-        
     // Creat an an empty scene
-        //test
        // sceneName = "art.scnassets/MainScene.scn"
         let scene = SCNScene(named: scenePath)!
     
@@ -56,79 +54,115 @@ class SceneManager: UIView{
         
         //Set Configuration
         let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .horizontal
+       // configuration.planeDetection = .horizontal/
         if #available(iOS 11.3, *) {
-     //       configuration.planeDetection = .vertical
+            configuration.planeDetection = [.horizontal,.vertical]
         } else {
             print("Vertical Plane Detection is only available on iOS 11.3 +")
+            configuration.planeDetection = .horizontal
         }
-        
-        
-     //   sceneView.debugOptions = .showFeaturePoints
-        
         // set lighting
         sceneView.autoenablesDefaultLighting = true
         sceneView.session.run(configuration)
+        return sceneView
+    }
+    
+    
+    func setUp(sceneView: SCNView, using sceneName: String)-> SCNView {
+        print("Func-SetUpScene:")
+       // art.scnassets
+        // set ARView Delegate
+        //  sceneView.delegate = delegate
+        // Show statistics such as fps and timing information
+        //  arSceneView.showsStatistics = true
+        let scenePath = "art.scnassets/" + sceneName + ".scn"
+        
+        
+        // Creat an an empty scene
+        //test
+        // sceneName = "art.scnassets/MainScene.scn"
+        
+        guard let sceneView = SCNScene(named: "art.scnassets/MainScene.scn") else {return SCNView()}
         
     
+        // Set the scene to the view
+       // sceneView.scene = scene
+        /*  AR ONLY
+        //Set Configuration
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
+        if #available(iOS 11.3, *) {
+            //       configuration.planeDetection = .vertical
+        } else {
+            print("Vertical Plane Detection is only available on iOS 11.3 +")
+        }
+ */
+        // set lighting
+       // sceneView. .autoenablesDefaultLighting = true
+        
         return sceneView
-    
     }
+   
     
     func planeDetectionAt(tap: UITapGestureRecognizer) {
         
     }
-    
+   /*
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if anchor is ARPlaneAnchor {
             print("Plane Detected")
             let planeAnchor = anchor as! ARPlaneAnchor
-            
+            print("FUNC: renderer: plane anchor: \(planeAnchor)")
             // convert anchor into a plane
             let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
             
             //build plane Node
-            
             let planeNode = SCNNode()
+            // Geometry
+               planeNode.geometry = plane
+            // rotate vertical plane to horizonal
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 0, 1, 0)
+            // set position via the screen anchor position
+            planeNode.worldPosition = SCNVector3(x: planeAnchor.center.x, y:0, z: planeAnchor.center.z)
+            // add Grid
             let gridMaterial = SCNMaterial()
             gridMaterial.diffuse.contents = UIImage(named: "grid.png")
             plane.materials = [gridMaterial]
-            // set position via the screen anchor position
-            planeNode.position = SCNVector3(x: planeAnchor.center.x, y:0, z: planeAnchor.center.z)
-            // rotate vertical plane to horizonal
-            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 0, 1, 0)
-            planeNode.geometry = plane
-            
+            // Add to Scene
             node.addChildNode(planeNode)
-            print("Plane at: \(planeNode.transform)")
+            print("Plane at: \(planeNode.worldPosition)")
         } else {
             print("Plane NOT Detected")
         return
         }
     }
+  */
     
-    func buildPlaneNode(at anchor: ARAnchor, using node: SCNNode) -> SCNNode {
+    func buildPlane(node: SCNNode, at anchor: ARAnchor) -> SCNNode {
+        print("SceneManager - FUNC: buildPlaneNode")
         let planeAnchor = anchor as! ARPlaneAnchor
         // convert anchor into a plane
+        print("planeAnchor: \(planeAnchor)")
         let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
-        
-        let planeNode = SCNNode()
-        planeNode.geometry = plane
-        
-        // rotate to orient correctly in scene
-        // rotate vertical plane to horizonal
-      //  planeNode.transform = SCNMatrix4MakeRotation(Float.pi/2, 1, 0, 0)
-        // set position via the screen anchor position
-        // change .extent.x to .center.x
-        planeNode.position = SCNVector3(x: planeAnchor.extent.x, y:0, z: planeAnchor.extent.z)
+        print("plane: \(plane)")
         // Create Grid
         let gridMaterial = SCNMaterial()
         gridMaterial.diffuse.contents = UIImage(named: "grid.png")
         plane.materials = [gridMaterial]
-        //node.addChildNode(planeNode)
-        print("Plane at: \(planeNode.transform)")
         
-    return planeNode
+        //Configure Plane NODE
+       // let planeNode = SCNNode()
+        node.geometry = plane
+        // rotate vertical plane to horizonal
+        print("Plane b4 rotation: \(node.position)")
+    //node.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+        // set position via the screen anchor position
+        print("Plane after rotation: \(node.position)")
+        node.worldPosition = SCNVector3(x: planeAnchor.center.x, y:0, z: planeAnchor.center.z)
+        //Debug Print
+        print("Plane at World: \(node.worldPosition)")
+        
+    return node
     }
     
     

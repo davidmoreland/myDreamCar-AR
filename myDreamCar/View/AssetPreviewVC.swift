@@ -13,7 +13,7 @@ import ARKit
 
 
 
-class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDelegate{
+class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, SCNSceneRendererDelegate, ARSCNViewDelegate{
     
     init(size: CGSize) {
         super.init(nibName: nil, bundle: nil)
@@ -27,12 +27,16 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         
     }
 
+    
+    
+    
+    
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
         
         performSegue(withIdentifier: "showWorldViewScreen", sender: self)
     }
     
-    @IBOutlet var arSceneView: SCNView!
+    @IBOutlet var sceneView: SCNView!
     
     var delegate: AssetPreviewDelegate?
     
@@ -46,6 +50,7 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     var selectedAsset: Asset!
     var selectedNode: SCNNode!
     let dataManager: DataManager = DataManager()
+    let sceneManager: SceneManager = SceneManager()
     
     var assets: [NSManagedObject]!
     var unavailableAsset: Asset!
@@ -65,10 +70,21 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
     
  // End Preview Positional Sliders
     
-    
-    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        print("Rendering AssetPreview: ")
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+   
+    // Display Asset WORKS 8.4.18
+       
+        
+    // let node = AssetManager.getAsset()
+        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(
+            x: 0,
+            y: CGFloat(0.1 * Double.pi),
+            z: 0,
+            duration: 1.0))
+        
+            self.selectedNode.runAction(rotate)
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,9 +129,37 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         
 //  self.unavailableAsset = dataManager.fetch(entityName: "AssetNotFound", completion:(true))
 //      view.frame = CGRect(origin: CGPoint.zero, size: size)
-  
-        self.arSceneView = SCNView(frame: CGRect(x: 0, y: 0, width: 1200 , height: 800))
-        self.arSceneView.delegate = self
+       // self.sceneView = sceneManager.setUp(sceneView: self.sceneView, using: "MainScene")
+        
+        self.sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: 1200 , height: 800))
+        self.sceneView.delegate = self
+        
+       let assetObjectNode: SCNNode = displaySelected(asset: "Nissan370ZFullSize", using: "MainScene")
+        self.selectedNode = assetObjectNode
+        selectedScene.rootNode.addChildNode(assetObjectNode)
+        
+        
+        // DISPLAY 3D - Object
+        
+        // let selectedSceneName = "art.scnassets/370z_2013.scn"
+       // let selectedSceneName = "art.scnassets/MainScene.scn"
+        
+        selectedScene = SCNScene(named: selectedSceneName)!
+        
+        self.sceneView.scene = selectedScene
+        
+        // getCar WORKS
+        let assetObject = AssetManager.getAsset()
+        
+        // Display Asset WORKS 8.4.18
+        self.selectedNode = displaySelected(asset: "Nissan370Z2013ActualSize", using: "MainScene")
+        
+        self.selectedNode = assetObject
+        
+        selectedScene.rootNode.addChildNode(assetObject)
+        
+        
+        
         
         // control view
         controlsView = UIView()
@@ -241,34 +285,12 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         
         
 // Asset Preview View
-        view.insertSubview(arSceneView, at: 0)
+        view.insertSubview(sceneView, at: 0)
        preferredContentSize = size
         view.layer.borderWidth = 5.00
         view.layer.borderColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
-       
-// DISPLAY 3D - Object
-    
-       // let selectedSceneName = "art.scnassets/370z_2013.scn"
-       let selectedSceneName = "art.scnassets/MainScene.scn"
-        
-    selectedScene = SCNScene(named: selectedSceneName)!
 
-     self.arSceneView.scene = selectedScene
-        
- //   selectedScene.enableDefaultLighting = true
-        //testing
-      // getCar WORKS
-          let assetObject = AssetManager.getAsset()
-        
-        // Display Asset WORKS 8.4.18
-        let assetObjectNode: SCNNode = displaySelectedAssetIn(scene: selectedScene, nodeName: "none")
-        
-        self.selectedNode = assetObject
-
-     //  Ramp.startRotation(node: car)
-    selectedScene.rootNode.addChildNode(assetObject)
-        
-        
+ 
 //      setupTapGestureRecon(view: self.view)
       
     }  // end viewDidLoad
@@ -338,23 +360,27 @@ class AssetPreviewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDe
         }
     }
 
-
+ 
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
    
 
-    func displaySelectedAssetIn(scene: SCNScene?, nodeName: String) -> SCNNode {
+    func displaySelected(asset name: String, using sceneNamed: String) -> SCNNode {
         //Camera
         
-    //    let scene = SCNScene(named: "MainScene.scn")
+        let scene = SCNScene(named: "MainScene.scn")
         
         let camera = SCNCamera()
         camera.usesOrthographicProjection = true
         scene?.rootNode.camera = camera
         
+        let assetPathDir = "art.scnassets/"
+        let sceneExtension = ".scn"
+        
+       // sceneManager.
        //let parentScene = scene
-       let parentObj = SCNScene(named:"art.scnassets/Nissan370Z2013ActualSize.scn")
+       let parentObj = SCNScene(named: assetPathDir + name + sceneExtension)
 
 let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true)
         //Car - refactor into object retrieval class
@@ -362,15 +388,25 @@ let objNode = parentObj?.rootNode.childNode(withName: "pivot", recursively: true
       //  parentNode?.position = SCNVector3Make(0, -1, 1) // centered X, off bottom Y
         objNode?.position = SCNVector3Make(0, -0.5, -5.00)
    //   scene?.rootNode.addChildNode(objNode!)
-        
+    
+        /*
        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.1 * Double.pi), z: 0, duration: 1.0))
-        
     
         objNode?.runAction(rotate)
+        */
         
         return objNode!
     }
 
+    // AR Renderer
+    /*
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+    let node = AssetManager.getAsset()
+        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.1 * Double.pi), z: 0, duration: 1.0))
+        node.runAction(rotate)
+        return node
+ */
+    
    }  //end Class
 
         

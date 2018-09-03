@@ -81,13 +81,49 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
     
 
     // Override to create and configure nodes for anchors added to the view's session.
-    /*
+    
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
+        var node = SCNNode()
+        print("WorldView - nodeFor anchor: \(anchor)")
+        node = sceneManager.buildPlane(node: node, at: anchor)
+        // rotate vertical plane to horizonal
+         //     node.transform = SCNMatrix4MakeRotation(-Float.pi/2, 0, 1, 0)
+        
+        
         return node
     }
-    */
-    
+
+    /*
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if anchor is ARPlaneAnchor {
+            print("Plane Detected")
+            let planeAnchor = anchor as! ARPlaneAnchor
+            print("FUNC: renderer: plane anchor: \(planeAnchor)")
+            // convert anchor into a plane
+     //       let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+            
+            //build plane Node
+              let planeNode = sceneManager.buildPlane(node: node, at: anchor)
+            // Geometry
+      //      planeNode.geometry = plane
+            // rotate vertical plane to horizonal
+      //      planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+            // set position via the screen anchor position
+      //      planeNode.worldPosition = SCNVector3(x: planeAnchor.center.x, y:0, z: planeAnchor.center.z)
+            // add Grid
+      //      let gridMaterial = SCNMaterial()
+      //      gridMaterial.diffuse.contents = UIImage(named: "grid.png")
+     //       plane.materials = [gridMaterial]
+            // Add to Scene
+          //  node.addChildNode(planeNode)
+            print("Plane at: \(planeNode.worldPosition)")
+        } else {
+            print("Plane NOT Detected")
+            
+        }
+    }
+  */
+    /*  OLD Renderer  not anchoring grid to world location !!
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if anchor is ARPlaneAnchor {
             print("Plane Detected")
@@ -108,6 +144,7 @@ class WorldViewVC: UIViewController, UIGestureRecognizerDelegate, ARSCNViewDeleg
          //   node.addChildNode(planeNode.worldTransform = selectedFeaturePoint)
         }
     }
+    */
     
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
     }

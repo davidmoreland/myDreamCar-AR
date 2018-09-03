@@ -16,10 +16,10 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
    var assets:[Asset]?
     var dataExists: Bool?
     var context = appDelegate.persistentContainer.viewContext
-    var selectedCell: InventoryCell!
-    var selectedAssetName: String!
+    var selectedCell: InventoryCell?
+    var selectedAssetName: String?
     var flowLayout: UICollectionViewLayout!
-    var selectedAsset: Asset!
+    var selectedAsset: Asset?
     var assetPreviewVC: UIViewController!
 
     override func viewDidLoad() {
@@ -104,28 +104,17 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         let touchPoint = gestureRecognizer.location(in: self.view)
         
         if let indexPath = self.collectionView?.indexPathForItem(at: touchPoint) {
-            self.selectedCell = self.collectionView?.cellForItem(at: indexPath) as? InventoryCell
+            if let cellAtIndexPath = self.collectionView?.cellForItem(at: indexPath) as? InventoryCell {
             print("Cell Item #: \(indexPath.item)")
-            print("Cell Title: \(String(describing: self.selectedCell.cellTitle))")
+                print("Cell Title: \(String(describing: self.selectedCell?.cellTitle))")
       //  self.selectedAssetName = selectedAsset.name
-    
-        //  commented out to try segue
-          /*  let assetPreviewVC = AssetPreviewVC(size: CGSize(width: 1400, height: 1000 ))
-        
-        assetPreviewVC.modalPresentationStyle = .popover
-        assetPreviewVC.popoverPresentationController?.delegate = self
-        assetPreviewVC.popoverPresentationController?.sourceView = self.view
-        assetPreviewVC.selectedAssetName = self.selectedAssetName
-        assetPreviewVC.selectedSceneName = "art.scnassets/Nissan370Z2013ActualSize.scn"
-        //set popoverReferce to Main View
-     assetPreviewVC.selectedAsset = selectedAsset
-    //    previewAssetVC.WorldViewVC = WorldViewVC()
-// present(assetPreviewVC, animated: true, completion: nil)
- */
+            } else {
+                print("Inventory 'selectedCell' is NIL")
+            }
+            
             performSegue(withIdentifier: "showAssetPreviewScreen", sender: self)
  
-    }
-
+        }
  
 }
    
@@ -135,14 +124,19 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         previewAssetVC.modalPresentationStyle = .popover
    //     previewAssetVC.popoverPresentationController?.delegate = self
         previewAssetVC.popoverPresentationController?.sourceView = self.view
+            // TODO: database fetch
         previewAssetVC.selectedAssetName = self.selectedAssetName
         previewAssetVC.selectedSceneName = "art.scnassets/370z_2013.scn"
-          //  previewAssetVC.size.width = 1400
-          //  previewAssetVC.size.height = 800
-        //set popoverReferce to Main View
+            
+            if selectedAsset != nil {
+                
+            
         previewAssetVC.selectedAsset = selectedAsset
             print("CV: Selected Asset: \\(selectedAsset)")
-        }
+            } else {
+                print("Inventory 'Selected Asset' is NIL")
+            }
+            }
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell Tapped: \(indexPath.item)")
@@ -186,9 +180,13 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if assets?.count != nil {
+        
         print("CV: Num Items: \(String(describing: assets?.count))")
-       // return assets.count
         return assets!.count
+        } else {
+            return 0
+        }
     }
 
     
@@ -203,8 +201,7 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
 
     
     
-    
-    // MARK: UICollectionViewDelegate
+// MARK: UICollectionViewDelegate
 
     
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -219,24 +216,13 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         return false
     }
 
-    /*
-     @IBAction func onRampBtnPressed(_ sender: UIButton) {
-     let rampPickerVC = RampPickerVC(size: CGSize(width: 400, height: 550))
-     rampPickerVC.rampPlacerVC = self
-     rampPickerVC.modalPresentationStyle = .popover
-     rampPickerVC.popoverPresentationController?.delegate = self
-     present(rampPickerVC, animated: true, completion: nil)
-     rampPickerVC.popoverPresentationController?.sourceView = sender
-     rampPickerVC.popoverPresentationController?.sourceRect = sender.bounds
-     }
-     */
     
-    /*
+    
      // Uncomment this method to specify if the specified item should be selected
      override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
      return true
      }
-     */
+    
     
     /*
      // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
@@ -245,6 +231,5 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
      }
      */
  
-
 }
 

@@ -175,27 +175,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Td7-PE-Q5L">
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1I1-y5-KYE">
                                 <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="16y-N8-nr3" appends="YES" id="Y5D-47-z7F"/>
-                                </connections>
-                            </arscnView>
+                            </sceneKitView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="AOh-dh-CSR" firstAttribute="trailing" secondItem="Td7-PE-Q5L" secondAttribute="trailing" id="0z4-nn-Ltg"/>
-                            <constraint firstItem="AOh-dh-CSR" firstAttribute="bottom" secondItem="Td7-PE-Q5L" secondAttribute="bottom" id="9ah-MK-RPL"/>
-                            <constraint firstItem="Td7-PE-Q5L" firstAttribute="leading" secondItem="AOh-dh-CSR" secondAttribute="leading" id="Ao3-EU-Aws"/>
-                            <constraint firstItem="Td7-PE-Q5L" firstAttribute="top" secondItem="AOh-dh-CSR" secondAttribute="top" id="LDa-hp-Bza"/>
+                            <constraint firstItem="1I1-y5-KYE" firstAttribute="leading" secondItem="AOh-dh-CSR" secondAttribute="leading" id="1jc-Zc-ehC"/>
+                            <constraint firstItem="1I1-y5-KYE" firstAttribute="top" secondItem="AOh-dh-CSR" secondAttribute="top" id="aoY-48-2pd"/>
+                            <constraint firstItem="AOh-dh-CSR" firstAttribute="trailing" secondItem="1I1-y5-KYE" secondAttribute="trailing" id="e45-wd-grs"/>
+                            <constraint firstItem="AOh-dh-CSR" firstAttribute="bottom" secondItem="1I1-y5-KYE" secondAttribute="bottom" id="fuz-Ed-jve"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AOh-dh-CSR"/>
                     </view>
                     <connections>
-                        <outlet property="arSceneView" destination="Td7-PE-Q5L" id="NVj-bE-RTF"/>
+                        <outlet property="sceneView" destination="TQx-5c-1sv" id="PVP-7p-hvX"/>
                         <segue destination="tfC-op-Qyq" kind="presentation" identifier="showWorldViewScreen" modalPresentationStyle="fullScreen" id="Z0d-ZT-3uG"/>
                     </connections>
                 </viewController>
