@@ -105,9 +105,16 @@ class MyInventoryCollectionView: UICollectionViewController, UIPopoverPresentati
         
         if let indexPath = self.collectionView?.indexPathForItem(at: touchPoint) {
             self.selectedCell = self.collectionView?.cellForItem(at: indexPath) as? InventoryCell
+          //  let cellItem = indexPath.item
+         //   if cellItem != nil
+         //   {
             print("Cell Item #: \(indexPath.item)")
+         //   }
+            if (self.selectedCell.cellTitle) != nil
+            {
             print("Cell Title: \(String(describing: self.selectedCell.cellTitle))")
-      //  self.selectedAssetName = selectedAsset.name
+            }
+                //  self.selectedAssetName = selectedAsset.name
     
         //  commented out to try segue
           /*  let assetPreviewVC = AssetPreviewVC(size: CGSize(width: 1400, height: 1000 ))
